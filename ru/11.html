@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 11 · devops-aws-iam · ai|</title>
+<title>Примеры · Pro · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Семь продвинутых командных сценариев IAM: бесключевой OIDC для GitHub Actions, Permissions Boundary для CI/CD, KMS для EBS, IRSA в Kubernetes и cross-account...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/11.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/11.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/11.html">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 11">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Примеры · Pro">
+<meta property="og:description" content="Семь продвинутых командных сценариев IAM: бесключевой OIDC для GitHub Actions, Permissions Boundary для CI/CD, KMS для EBS, IRSA в Kubernetes и cross-account...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/11.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 11","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/11.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Примеры · Pro","description":"Семь продвинутых командных сценариев IAM: бесключевой OIDC для GitHub Actions, Permissions Boundary для CI/CD, KMS для EBS, IRSA в Kubernetes и cross-account...","url":"https://y-kolyada.github.io/aws-iam/ru/11.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
 <link rel="stylesheet" href="../assets/style.css?v=1">
 <script>
@@ -92,28 +92,210 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 11</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Примеры · Pro</h1>
+    <p class="page-size" data-words="928">Слов: 928</p>
+    <p class="lead">Семь продвинутых командных сценариев IAM: бесключевой OIDC для GitHub Actions, Permissions Boundary для CI/CD, KMS для EBS, IRSA в Kubernetes и cross-account S3.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Профессиональный уровень инженерии IAM (уровень Pro) ориентирован на надежную и безопасную эксплуатацию распределенных командных конвейеров. Фокус внимания смещается от единичных пользователей к бесключевой аутентификации сервисов (Zero Static Secrets), безопасному делегированию полномочий через Permissions Boundaries и изоляции прав при меж-аккаунтном обмене данными.</p>
+      <p>В этой главе собраны семь боевых сценариев уровня Pro. Каждый сценарий оформлен по строгому канону триады: практическая постановка инженерной задачи, рабочий документ политики в формате JSON и глубокий разбор рантайм-механики в блоке «Почему так». Переход на федеративные OIDC-токены и гранулированные границы привилегий исключает утечки статических учетных записей и обеспечивает соответствие принципам современной безопасной разработки DevSecOps.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="github-actions-oidc">1 · Бесключевой деплой из GitHub Actions через OpenID Connect <a class="anchor-link" href="#github-actions-oidc">#</a></h2>
+    <p><strong>Задача:</strong> Настроить IAM-роль для пайплайна GitHub Actions, позволяющую выкладывать статические файлы в S3-бакет без генерации долгоживущих ключей доступа <code>AKIA...</code> в секретах репозитория, ограничив вызов строго релизной веткой <code>main</code> репозитория <code>my-org/web-frontend</code>.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGitHubOIDCAssumeRole",
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "token.actions.githubusercontent.com:aud": "sts.amazonaws.com"
+        },
+        "StringLike": {
+          "token.actions.githubusercontent.com:sub": "repo:my-org/web-frontend:ref:refs/heads/main"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Раннер GitHub Actions запрашивает временный криптографический JWT-токен у провайдера GitHub. Служба AWS STS валидирует аудиторию (<code>aud: sts.amazonaws.com</code>) и проверяет поле темы (<code>sub</code>). Если ветка или имя репозитория не совпадают, вызов <code>AssumeRoleWithWebIdentity</code> отклоняется, исключая возможность запуска пайплайна из форков или сторонних репозиториев. Временные сессионные ключи живут от 15 минут до 1 часа и самоуничтожаются по завершении шага сборки.</div>
+
+    <h2 id="ci-permissions-boundary">2 · Защита от эскалации привилегий: обязательный Permissions Boundary для раннеров <a class="anchor-link" href="#ci-permissions-boundary">#</a></h2>
+    <p><strong>Задача:</strong> Разрешить сервисному раннеру Terraform создавать IAM-роли для микросервисов приложения, но запретить создание ролей с администраторскими правами без обязательного прикрепления границы разрешений <code>AppScopeBoundary</code>.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCreateRoleWithRequiredBoundary",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateRole",
+        "iam:AttachRolePolicy",
+        "iam:PutRolePolicy"
+      ],
+      "Resource": "arn:aws:iam::123456789012:role/app-*",
+      "Condition": {
+        "StringEquals": {
+          "iam:PermissionsBoundary": "arn:aws:iam::123456789012:policy/AppScopeBoundary"
+        }
+      }
+    },
+    {
+      "Sid": "DenyBoundaryAlteration",
+      "Effect": "Deny",
+      "Action": [
+        "iam:DeleteRolePermissionsBoundary",
+        "iam:DeletePolicy",
+        "iam:CreatePolicyVersion"
+      ],
+      "Resource": "arn:aws:iam::123456789012:policy/AppScopeBoundary"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Первый блок обязывает передавать параметр <code>--permissions-boundary</code> при любом создании роли. Второй блок с явным Deny блокирует попытки модифицировать саму политику границы или удалить ее с созданной роли. Это гарантирует, что даже скомпрометированный раннер не сможет поднять свои права до root-уровня или прикрепить к роли политику <code>AdministratorAccess</code> без фильтрации границей.</div>
+
+    <h2 id="kms-key-policy-ebs">3 · Делегирование ключа AWS KMS для шифрования EBS-томов Autoscaling <a class="anchor-link" href="#kms-key-policy-ebs">#</a></h2>
+    <p><strong>Задача:</strong> Настроить Key Policy кастомного ключа KMS для шифрования дисков EC2, позволяющую сервису Auto Scaling автоматически шифровать системные EBS-тома при масштабировании кластера.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EnableRootDelegation",
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::123456789012:root"},
+      "Action": "kms:*",
+      "Resource": "*"
+    },
+    {
+      "Sid": "AllowAutoScalingServiceGrant",
+      "Effect": "Allow",
+      "Principal": {"AWS": "arn:aws:iam::123456789012:role/aws-service-role/autoscaling.amazonaws.com/AWSServiceRoleForAutoScaling"},
+      "Action": [
+        "kms:Encrypt",
+        "kms:Decrypt",
+        "kms:ReEncrypt*",
+        "kms:GenerateDataKeyWithoutPlaintext",
+        "kms:DescribeKey",
+        "kms:CreateGrant"
+      ],
+      "Resource": "*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Сервису Auto Scaling для управления зашифрованными томами требуется право <code>kms:CreateGrant</code>, позволяющее делегировать право дешифровки конкретным дискам виртуальных машин. Без явного указания действий <code>CreateGrant</code> и <code>GenerateDataKeyWithoutPlaintext</code> запуск инстансов упадет с ошибкой <code>Client.InternalError</code>.</div>
+
+    <h2 id="kubernetes-irsa-sqs">4 · Аутентификация пода в Kubernetes (EKS IRSA) для отправки в SQS <a class="anchor-link" href="#kubernetes-irsa-sqs">#</a></h2>
+    <p><strong>Задача:</strong> Привязать IAM-роль к поду заказов в кластере Kubernetes через механизм IRSA, разрешив отправку сообщений в очередь <code>orders-queue</code> строго сервисному аккаунту <code>order-service-sa</code> в неймспейсе <code>production</code>.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowPodIRSATrust",
+      "Effect": "Allow",
+      "Principal": {
+        "Federated": "arn:aws:iam::123456789012:oidc-provider/oidc.eks.eu-central-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE"
+      },
+      "Action": "sts:AssumeRoleWithWebIdentity",
+      "Condition": {
+        "StringEquals": {
+          "oidc.eks.eu-central-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:sub": "system:serviceaccount:production:order-service-sa",
+          "oidc.eks.eu-central-1.amazonaws.com/id/EXAMPLED539D4633E53DE1B71EXAMPLE:aud": "sts.amazonaws.com"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> В EKS мутирующий вебхук монтирует OIDC-токен пода. Условие <code>system:serviceaccount:production:order-service-sa</code> изолирует роль: никакой другой под из других неймспейсов или с другими сервисными аккаунтами на том же сервере не сможет принять эту роль. Сервис AWS STS валидирует цифровую подпись токена через JWKS-эндпоинт кластера, полностью исключая передачу секретов через переменные окружения.</div>
+
+    <h2 id="cross-account-s3-ownership">5 · Меж-аккаунтный доступ к S3 с принудительной сменой владельца объекта <a class="anchor-link" href="#cross-account-s3-ownership">#</a></h2>
+    <p><strong>Задача:</strong> Разрешить роли сбора логов из аккаунта аналитики <code>222222222222</code> загружать архивы в бакет аккаунта <code>111122223333</code>, гарантируя, что владельцем всех файлов автоматически становится аккаунт-получатель.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowCrossAccountUpload",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::222222222222:role/DataCollectorRole"
+      },
+      "Action": [
+        "s3:PutObject",
+        "s3:PutObjectAcl"
+      ],
+      "Resource": "arn:aws:s3:::analytics-ingest-vault/incoming/*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Чтобы владелец бакета не потерял доступ к загруженным внешним аккаунтом файлам, в настройках бакета включается режим <code>BucketOwnerEnforced</code> (S3 Object Ownership). Он отключает старые ACL и автоматически делает владельца бакета полноправным хозяином всех загружаемых объектов.</div>
+
+    <h2 id="corporate-network-boundary">6 · Ограничение доступа к облаку корпоративным офисом с исключением для сервисов AWS <a class="anchor-link" href="#corporate-network-boundary">#</a></h2>
+    <p><strong>Задача:</strong> Запретить разработчикам выполнять любые API-операции в аккаунте вне корпоративного пула IP-адресов <code>203.0.113.0/24</code>, не нарушая при этом фоновое взаимодействие внутренних сервисов AWS (EventBridge, CloudWatch Logs).</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyOutsideCorporateIPExceptAWSServices",
+      "Effect": "Deny",
+      "Action": "*",
+      "Resource": "*",
+      "Condition": {
+        "NotIpAddress": {
+          "aws:SourceIp": ["203.0.113.0/24"]
+        },
+        "Bool": {
+          "aws:ViaAWSService": "false"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Оператор <code>NotIpAddress</code> блокирует все внешние IP-адреса. Однако внутренние сервисы AWS совершают прямые API-вызовы из собственных динамических сетей дата-центров. Условие <code>"aws:ViaAWSService": "false"</code> исключает запросы, отправленные доверенными сервисами от имени пользователя, предотвращая непреднамеренную блокировку асинхронных пайплайнов и фоновых обработчиков.</div>
+
+    <h2 id="secrets-manager-lambda">7 · Гранулярный доступ Lambda-функции к секрету в AWS Secrets Manager <a class="anchor-link" href="#secrets-manager-lambda">#</a></h2>
+    <p><strong>Задача:</strong> Настроить права для бессерверной функции Lambda, позволяющие ей прочитать единственный секрет подключения к PostgreSQL <code>app/prod/db-credentials</code> и расшифровать связанный KMS-ключ.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowGetSpecificSecretValue",
+      "Effect": "Allow",
+      "Action": "secretsmanager:GetSecretValue",
+      "Resource": "arn:aws:secretsmanager:eu-central-1:123456789012:secret:app/prod/db-credentials-???????"
+    },
+    {
+      "Sid": "AllowKMSDecryptForSecret",
+      "Effect": "Allow",
+      "Action": "kms:Decrypt",
+      "Resource": "arn:aws:kms:eu-central-1:123456789012:key/12345678-1234-1234-1234-123456789abc"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Secrets Manager автоматически использует KMS для расшифровки содержимого секрета при вызове <code>GetSecretValue</code>. Если выдать роли право на чтение секрета, но забыть действие <code>kms:Decrypt</code> для целевого ключа шифрования, функция завершится аварийно с ошибкой <code>AccessDeniedException</code>. Кроме того, сервис Secrets Manager автоматически генерирует шестизначный псевдослучайный суффикс к ARN каждого секрета, поэтому в поле Resource используется шаблон с вопросительными знаками <code>-???????</code> для точного таргетирования без избыточных прав.</div>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив продвинутые сценарии уровня Pro, вы научились строить надежные командные контуры безопасности без статических секретов:</p>
+      <ol>
+        <li><strong>Бесключевой CI/CD:</strong> отказ от секретов AWS в GitHub Actions через федерацию OIDC со строгим фильтром по веткам.</li>
+        <li><strong>Защита от эскалации привилегий:</strong> делегирование создания ролей раннерам под защитой Permissions Boundary.</li>
+        <li><strong>Сложные связки шифрования:</strong> понимание механики грантов KMS для Autoscaling и Secrets Manager.</li>
+        <li><strong>Изоляция контейнеров:</strong> настройка точечного доверия IRSA в Kubernetes на уровне связки namespace и ServiceAccount.</li>
+      </ol>
     </div>
   
 
     <footer>
       <nav class="pager" aria-label="Соседние темы">
-        <p class="pager-next">Следующая тема: <a href="12.html">Раздел 12</a></p>
-        <p class="pager-prev">Предыдущая тема: <a href="10.html">Раздел 10</a></p>
+        <p class="pager-next">Следующая тема: <a href="12.html">Примеры · IGL</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="10.html">Примеры · Noob</a></p>
       </nav>
       <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
     </footer>

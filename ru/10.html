@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 10 · devops-aws-iam · ai|</title>
+<title>Примеры · Noob · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Семь практических базовых сценариев IAM: доступ к бакету S3, домашние папки пользователей, принудительный TLS, требование MFA и безопасная смена паролей.">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/10.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/10.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/10.html">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 10">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Примеры · Noob">
+<meta property="og:description" content="Семь практических базовых сценариев IAM: доступ к бакету S3, домашние папки пользователей, принудительный TLS, требование MFA и безопасная смена паролей.">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/10.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 10","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/10.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Примеры · Noob","description":"Семь практических базовых сценариев IAM: доступ к бакету S3, домашние папки пользователей, принудительный TLS, требование MFA и безопасная смена паролей.","url":"https://y-kolyada.github.io/aws-iam/ru/10.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
 <link rel="stylesheet" href="../assets/style.css?v=1">
 <script>
@@ -92,27 +92,206 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 10</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Примеры · Noob</h1>
+    <p class="page-size" data-words="923">Слов: 923</p>
+    <p class="lead">Семь практических базовых сценариев IAM: доступ к бакету S3, домашние папки пользователей, принудительный TLS, требование MFA и безопасная смена паролей.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Начальный уровень владения AWS IAM (уровень Noob) ставит главную цель: преодолеть страх перед синтаксисом JSON-документов и отказаться от опасных прав администратора при решении типовых задач. Любая типовая операция - будь то чтение бакета, изоляция каталогов сотрудников или защита от случайных удалений - решается компактным, математически точным набором правил без использования опасных масок <code>"Action": "*"</code>.</p>
+      <p>В этой главе собраны семь боевых сценариев начального уровня. Каждый сценарий оформлен в виде строгой инженерной триады: точная постановка задачи, проверенный манифест политики и детальный разбор физической модели рантайма в блоке «Почему так». Соблюдение принципа наименьших привилегий (Least Privilege) на начальном этапе закладывает прочный фундамент безопасности и исключает риски горизонтальной эскалации прав в облачной инфраструктуре.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="s3-read-only">1 · Чтение содержимого одного конкретного S3-бакета <a class="anchor-link" href="#s3-read-only">#</a></h2>
+    <p><strong>Задача:</strong> Предоставить фоновому скрипту аналитики возможность просматривать список файлов и скачивать объекты из бакета <code>reports-archive-prod</code>, категорически запретив любые операции модификации, удаления и доступ к другим бакетам аккаунта.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowBucketListing",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::reports-archive-prod"
+    },
+    {
+      "Sid": "AllowObjectRead",
+      "Effect": "Allow",
+      "Action": "s3:GetObject",
+      "Resource": "arn:aws:s3:::reports-archive-prod/*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Операция листинга бакета <code>s3:ListBucket</code> выполняется над самим контейнером бакета (Resource без суффикса слэша), тогда как операция чтения содержимого <code>s3:GetObject</code> выполняется над конкретными ключами объектов внутри него (Resource с обязательным суффиксом <code>/*</code>). Попытка объединить их в одну строку или указать <code>/*</code> для ListBucket приводит к ошибке <code>AccessDenied</code> при выполнении вызова <code>aws s3 ls</code>. Четкое разделение прав на уровне контейнера и объектов предотвращает случайное открытие доступа к метаданным всего аккаунта.</div>
+
+    <h2 id="user-home-folder">2 · Изоляция персональной папки инженера в общем хранилище <a class="anchor-link" href="#user-home-folder">#</a></h2>
+    <p><strong>Задача:</strong> Настроить единую групповую политику для сотрудников компании, при которой каждый разработчик имеет полный доступ на чтение и запись исключительно в свой личный каталог <code>home/${aws:username}/*</code> в бакете <code>corporate-shared-storage</code>, не имея возможности читать файлы коллег.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowListOwnFolderOnly",
+      "Effect": "Allow",
+      "Action": "s3:ListBucket",
+      "Resource": "arn:aws:s3:::corporate-shared-storage",
+      "Condition": {
+        "StringLike": {
+          "s3:prefix": ["home/${aws:username}/*", "home/${aws:username}"]
+        }
+      }
+    },
+    {
+      "Sid": "AllowManageOwnObjects",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:PutObject",
+        "s3:DeleteObject"
+      ],
+      "Resource": "arn:aws:s3:::corporate-shared-storage/home/${aws:username}/*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Динамическая переменная <code>${aws:username}</code> подставляется ядром IAM в момент авторизации запроса, принимая значение логина аутентифицированного пользователя. Условие <code>s3:prefix</code> в первом блоке не позволяет пользователю запросить список объектов в корне или чужих папках. Это устраняет необходимость создания сотен отдельных политик для каждого сотрудника.</div>
+
+    <h2 id="enforce-tls">3 · Принудительное требование HTTPS/TLS шифрования в Bucket Policy <a class="anchor-link" href="#enforce-tls">#</a></h2>
+    <p><strong>Задача:</strong> Защитить корпоративный бакет <code>secure-documents-vault</code> от передачи конфиденциальных данных по незашифрованному протоколу HTTP, заблокировав любые операции без TLS на стороне политики самого ресурса.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyInsecureHTTPTraffic",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::secure-documents-vault",
+        "arn:aws:s3:::secure-documents-vault/*"
+      ],
+      "Condition": {
+        "Bool": {
+          "aws:SecureTransport": "false"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Явный запрет <code>Effect: Deny</code> переопределяет любые разрешающие правила identity-политик. Глобальный контекстный ключ <code>aws:SecureTransport</code> принимает значение <code>"false"</code>, если запрос пришел по открытому HTTP без шифрования TLS. Использование <code>Principal: "*"</code> гарантирует блокировку незащищенного трафика для любых субъектов, включая владельца аккаунта. Это строго закрывает обязательные регуляторные требования отраслевых стандартов PCI DSS и SOC 2 по защите данных в транзите.</div>
+
+    <h2 id="mfa-protection">4 · Защита деструктивных операций через обязательный MFA <a class="anchor-link" href="#mfa-protection">#</a></h2>
+    <p><strong>Задача:</strong> Запретить инженерам удаление или остановку серверов EC2 в продакшне, если их текущая сессия не подтверждена вторым фактором аутентификации (аппаратным токеном или приложением MFA).</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "DenyEC2TerminationWithoutMFA",
+      "Effect": "Deny",
+      "Action": [
+        "ec2:StopInstances",
+        "ec2:TerminateInstances"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "BoolIfExists": {
+          "aws:MultiFactorAuthPresent": "false"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Контекстный ключ <code>aws:MultiFactorAuthPresent</code> сообщает, задействован ли второй фактор. Модификатор <code>BoolIfExists</code> гарантирует, что если запрос пришел от статического ключа CLI, в котором концепция MFA отсутствует вовсе, ключ считается <code>false</code> и деструктивное действие блокируется. Это надежно спасает продакшн при случайной или злонамеренной утечке статических токенов доступа из репозиториев или рабочих станций.</div>
+
+    <h2 id="billing-read-only">5 · Предоставление прав на просмотр биллинга и счетов без доступа к серверам <a class="anchor-link" href="#billing-read-only">#</a></h2>
+    <p><strong>Задача:</strong> Выдать финансовому менеджеру доступ для просмотра счетов, анализа затрат в AWS Cost Explorer и мониторинга бюджетов AWS Budgets, полностью исключив возможность просмотра или изменения виртуальных машин, баз данных и хранилищ.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowBillingAndCostExplorerView",
+      "Effect": "Allow",
+      "Action": [
+        "ce:GetCostAndUsage",
+        "ce:GetDimensionValues",
+        "ce:GetTags",
+        "budgets:ViewBudget",
+        "cur:DescribeReportDefinitions",
+        "account:GetAccountInformation"
+      ],
+      "Resource": "*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Сервисы аналитики затрат (Cost Explorer с префиксом <code>ce</code> и Budgets) оперируют глобальными данными аккаунта и не поддерживают ARN-ресурсы, поэтому в поле <code>Resource</code> указывается <code>*</code>. Политика содержит только глаголы чтения и описания, предотвращая эскалацию привилегий в инженерные сервисы.</div>
+
+    <h2 id="region-restriction-policy">6 · Ограничение управления EC2-инстансами строго одним регионом <a class="anchor-link" href="#region-restriction-policy">#</a></h2>
+    <p><strong>Задача:</strong> Разрешить разработчикам тестовых сред запускать, перезагружать и останавливать виртуальные машины EC2 строго во франкфуртском дата-центре <code>eu-central-1</code>, блокируя случайное развертывание инстансов в дорогих удаленных регионах.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowEC2ManagementOnlyInFrankfurt",
+      "Effect": "Allow",
+      "Action": [
+        "ec2:RunInstances",
+        "ec2:StartInstances",
+        "ec2:StopInstances",
+        "ec2:RebootInstances",
+        "ec2:Describe*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringEquals": {
+          "aws:RequestedRegion": "eu-central-1"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Глобальный контекстный ключ <code>aws:RequestedRegion</code> считывает идентификатор региона из целевого эндпоинта сетевого запроса. Если запрос отправлен к API в Вирджинии (<code>us-east-1</code>), условие не совпадает и срабатывает неявный запрет (Default Deny), удерживая команду в утвержденных географических границах.</div>
+
+    <h2 id="self-service-password-mfa">7 · Безопасное самообслуживание: смена пароля и привязка MFA пользователем <a class="anchor-link" href="#self-service-password-mfa">#</a></h2>
+    <p><strong>Задача:</strong> Предоставить сотруднику возможность самостоятельно изменить собственный пароль входа и зарегистрировать виртуальное устройство MFA в консоли AWS, не давая ему доступа к учетным записям других инженеров.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowSelfPasswordChange",
+      "Effect": "Allow",
+      "Action": "iam:ChangePassword",
+      "Resource": "arn:aws:iam::123456789012:user/${aws:username}"
+    },
+    {
+      "Sid": "AllowManageOwnMFA",
+      "Effect": "Allow",
+      "Action": [
+        "iam:CreateVirtualMFADevice",
+        "iam:EnableMFADevice",
+        "iam:ResyncMFADevice"
+      ],
+      "Resource": [
+        "arn:aws:iam::123456789012:mfa/${aws:username}",
+        "arn:aws:iam::123456789012:user/${aws:username}"
+      ]
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Жесткое ограничение поля <code>Resource</code> через шаблон <code>arn:aws:iam::123456789012:user/${aws:username}</code> гарантирует, что пользователь может выполнить <code>ChangePassword</code> только над собственным объектом пользователя. Попытка сменить пароль коллеги вызовет ошибку <code>AccessDenied</code>.</div>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив семь базовых сценариев уровня Noob, вы получили надежный практический инструментарий для безопасного разграничения доступа в повседневной инженерной практике:</p>
+      <ol>
+        <li><strong>Разделение бакетов и объектов:</strong> навык правильного распределения прав между <code>s3:ListBucket</code> (бакет) и <code>s3:GetObject</code> (объекты с <code>/*</code>).</li>
+        <li><strong>Динамическая изоляция хранилища:</strong> шаблонизация личных каталогов через контекстную переменную <code>${aws:username}</code>.</li>
+        <li><strong>Сетевая гигиена TLS:</strong> защита периметра S3 Bucket Policy с явным Deny незашифрованного HTTP-трафика через <code>aws:SecureTransport</code>.</li>
+        <li><strong>Самообслуживание без риска:</strong> безопасная смена паролей и MFA пользователями без привлечения DevOps-инженеров.</li>
+      </ol>
     </div>
   
 
     <footer>
       <nav class="pager" aria-label="Соседние темы">
-        <p class="pager-next">Следующая тема: <a href="11.html">Раздел 11</a></p>
+        <p class="pager-next">Следующая тема: <a href="11.html">Примеры · Pro</a></p>
         <p class="pager-prev">Предыдущая тема: <a href="09.html">Почему доступ запрещён</a></p>
       </nav>
       <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
