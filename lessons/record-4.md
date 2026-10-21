@@ -225,4 +225,4 @@ b871d08 feat(content): deliver practical example chapters 10-12 and sync landing
 
 | Кто | Вердикт |
 | :-- | :-- |
-| Conductor (`ik`) | *ожидает приёмки* |
+| Conductor (`ik`) | Принято 21.10.2026 |
