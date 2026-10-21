@@ -17,11 +17,11 @@
 | Глава 15: Банк вопросов IGL (50 вопросов с обоснованием «Зачем спрашивают», 5 блоков по 10) | [ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html) (`data-words="2594"`, 0 заглушек, 50 вопросов) |
 | Инженерный навигатор по 9 каноническим линзам без таблиц и языковые заглушки | [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html) (~1780 слов, 9 линз, взаимные ссылки), [en/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/en/navigator.html), [uk/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/uk/navigator.html), [de/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/de/navigator.html) |
 | Терминологический словарь: 35 карточек по 3 блокам с терминами Навигатора | [ru/glossary.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/glossary.html) (`data-words="2361"`, 35 карточек, перекрестные ссылки) |
-| Интерактивная семантическая разметка понятий (.term) по главам курса (35 карточек) | [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/09.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/09.html), [ru/11.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/11.html), [ru/12.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/12.html), [ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html) (ровно 35 карточек `.term`) |
+| Интерактивная семантическая разметка понятий (.term) по главам курса (35 карточек) и Навигатору (22 карточки) | [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/09.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/09.html), [ru/11.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/11.html), [ru/12.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/12.html), [ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html), [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html) (ровно 57 карточек `.term` на сайте: 35 в главах + 22 в 9 линзах Навигатора) |
 | Синхронизация посадочной страницы снизу вверх по 150 вопросам и инструментам | [ru/index.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/index.html) (обновленные описания глав 13-15 и панели инструментов) |
 | Стандарт Active Tool Promotion и блочная обертка ссылок nav-extra | [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html), [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html), [ru/glossary.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/glossary.html) |
 | 11 новых верифицируемых утверждений (44 всего) | [tools/claims.tsv](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/tools/claims.tsv) (`./tools/check-claims.sh` -> 44/44 ДА, `ЗЕЛЁНОЕ`) |
-| Актуализированный поисковый индекс | [assets/search-ru.js](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/assets/search-ru.js) (281 запись, 461 КБ) |
+| Актуализированный поисковый индекс | [assets/search-ru.js](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/assets/search-ru.js) (281 запись, 465 КБ) |
 
 ---
 
@@ -63,10 +63,12 @@
   $ grep -c 'id="block-' ru/glossary.html
   3
   ```
-- Интерактивная семантическая разметка `.term > .term-btn + .term-card` внедрена во всех главах курса на первом смысловом появлении каждого из 35 понятий словаря:
+- Интерактивная семантическая разметка `.term > .term-btn + .term-card` внедрена во всех главах курса на первом смысловом появлении каждого из 35 понятий словаря, а также во всех 9 линзах Инженерного навигатора:
   ```bash
   $ python3 -c 'import glob, re; print(sum(len(re.findall(r"class=\"term\"", open(f).read())) for f in glob.glob("ru/*.html")))'
-  35
+  57
+  $ python3 -c 'import re; print(len(re.findall(r"class=\"term\"", open("ru/navigator.html").read())))'
+  22
   ```
 - Объем страниц в словах превышает установленный порог:
   - `ru/13.html`: `data-words="2302"` (порог 800)
@@ -90,7 +92,7 @@
   - Структурирование Навигатора строго по 9 каноническим линзам (`#lens-components`..`#lens-sre`).
   - Наличие не менее 30 терминологических карточек в словаре понятий.
   - Реализация стандарта Active Tool Promotion на странице Навигатора.
-  - Наличие интерактивной семантической разметки терминов `class="term"` в главах курса (ровно 35).
+  - Наличие интерактивной семантической разметки понятий `class="term"` в главах курса и Навигаторе (ровно 57 карточек суммарно).
 - Запуск `./tools/check-claims.sh` выполняет все 44 утверждения, код возврата 0, вердикт `ЗЕЛЁНОЕ` (44/44 ДА).
 - **Вердикт по предикату 2:** ДА.
 
@@ -98,7 +100,7 @@
 
 - Посадочная страница `ru/index.html` синхронизирована снизу вверх: в сводке глав 13-15 подробно раскрыты ключевые темы вопросов Noob, Pro и IGL, а также актуализировано описание Навигатора и Словаря.
 - На всех страницах курса ссылки в `<div class="nav-extra">` обернуты в индивидуальные блоки `<div><a ...></a></div>`, на странице Навигатора ссылка на Навигатор идет первой (`aria-current="page"`), на странице Словаря первой идет ссылка на Словарь.
-- Двусторонний контракт терминалов и глав полностью соблюден: 100% терминов словаря покрывают Навигатор и имеют интерактивные всплывающие карточки первого вхождения в главах курса.
+- Двусторонний контракт терминалов, Навигатора и глав полностью соблюден: 100% понятий словаря (35 терминов) покрывают концепты Навигатора и имеют интерактивные всплывающие карточки первого вхождения в главах курса и линзах Навигатора (57 карточек всего).
 - Полный тестовый скрипт `./check.sh` проходит с кодом 0 и выдает `ЗЕЛЁНОЕ` по всем 9 блокам проверок.
 - **Вердикт по предикату 3:** ДА.
 
@@ -170,7 +172,7 @@
   [ ДА  ] Инженерный навигатор структурирован строго по 9 каноническим линзам
   [ ДА  ] Словарь понятий содержит не менее 30 терминологических словарных карточек
   [ ДА  ] Навигатор на своей странице расположен первым в блоке nav-extra
-  [ ДА  ] Главы курса содержат интерактивную семантическую разметку понятий term
+  [ ДА  ] Главы курса и Инженерный навигатор содержат интерактивную семантическую разметку понятий term
   ----------------------------------------------
   ЗЕЛЁНОЕ
 
@@ -186,7 +188,7 @@
   Линейка ссылок
   ----------------------------------------------
   страниц просмотрено: 73
-  ссылок проверено:    2184 (из них якорей: 344)
+  ссылок проверено:    2206 (из них якорей: 366)
   битых:               0
   ----------------------------------------------
   ЗЕЛЁНОЕ
@@ -202,7 +204,7 @@
 
   Индекс поиска
   ----------------------------------------------
-  ru:   281 записей,  461 КБ - без изменений
+  ru:   281 записей,  465 КБ - без изменений
   en:     0 записей,    0 КБ - без изменений
   uk:     0 записей,    0 КБ - без изменений
   de:     0 записей,    0 КБ - без изменений
@@ -255,7 +257,11 @@
 ## Список коммитов смены
 
 ```
+f4fea6b feat(content): integrate in-page interactive term markup across navigator
+d64c1be docs(record): update Batch 4 record with in-page terms and full glossary
 36435cc feat(content): add in-page term markup and sync glossary with navigator
+8fad89b chore(agents): adopt rule 5.17 for Navigator -> Glossary -> Term markup sequence
+bf7b9d2 docs(record): record delivery of Batch 4 in lessons/record-5.md
 bdcdb7a feat(content): deliver question banks 13-15, navigator, and glossary
 ```
 
