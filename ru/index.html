@@ -84,7 +84,8 @@
       <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -93,7 +94,7 @@
 
   <main id="main">
     <h1>Практический справочник-ассессмент по AWS IAM для инженера</h1>
-    <p class="page-size" data-words="1754">Слов: 1754</p>
+    <p class="page-size" data-words="1873">Слов: 1873</p>
     <p class="lead">Практический справочник-ассессмент по AWS IAM для инженера: от базовой грамматики политик и вычисления Allow/Deny до OIDC-федерации, SCP организаций и 150 экзаменационных вопросов.</p>
 
     <div class="box key" id="key-idea">
@@ -143,10 +144,14 @@
       <a href="10.html">10 · Примеры · Noob</a> - базовый фундамент инженера: чтение из одного конкретного S3-бакета без утечек, изолированные домашние папки пользователей через <code>${aws:username}</code>, принудительный TLS/HTTPS в Bucket Policy, блокировка критических действий без MFA, безопасный read-only аудит биллинга, региональное ограничение <code>aws:RequestedRegion</code> и профиль самообслуживания для смены пароля и MFA.<br>
       <a href="11.html">11 · Примеры · Pro</a> - командный продакшн и бесключевая автоматизация: OIDC-аутентификация для GitHub Actions без долгоживущих секретов, Permissions Boundary для безопасного создания ролей в CI/CD, KMS Key Policy для шифрования EBS в Auto Scaling, IRSA для подов Kubernetes с доступом к SQS, кросс-аккаунтный S3 с принудительным <code>BucketOwnerEnforced</code>, защита корпоративного IP-периметра с учетом <code>aws:ViaAWSService</code> и безопасная связка Lambda + Secrets Manager + KMS.<br>
       <a href="12.html">12 · Примеры · IGL</a> - уровень системного архитектора и платформы: глобальный геоблокинг регионов через SCP с белым списком <code>NotAction</code>, абсолютная защита неизменяемости CloudTrail и логов аудита, сетевой защитный периметр через VPC Endpoint и <code>aws:sourceVpc</code>, организационный барьер <code>aws:PrincipalOrgID</code>, архитектура аварийной Break-Glass роли с алертами через EventBridge/SNS, бессерверная X.509 PKI-аутентификация через IAM Roles Anywhere и непрерывный мониторинг внешнего доступа с IAM Access Analyzer.</li>
-      <li><strong>Банки экзаменационных вопросов (150 вопросов с глубоким разбором):</strong><br>
-      <a href="13.html">13 · Вопросы · Noob</a> - 50 вопросов начального уровня с подробными ответами: грамматика JSON, базовые действия сервисов, разница между пользователем и ролью, значение явного Deny и базовая настройка политик.<br>
-      <a href="14.html">14 · Вопросы · Pro</a> - 50 вопросов уровня Middle+/Senior: матрица вычисления решений, cross-account доверие, блоки Condition, тонкости KMS Key Policies, временные токены STS и работа с Permissions Boundaries.<br>
-      <a href="15.html">15 · Вопросы · IGL</a> - 50 вопросов архитектурного уровня: векторы эскалации привилегий, SCP и управление мульти-аккаунтами, OIDC-федерация с enterprise IDP (Okta, Azure AD), комплаенс, защита от атак на supply-chain и непрерывный аудит IAM.</li>
+      <li><strong>Банки квалификационных вопросов (150 вопросов с глубоким инженерным разбором):</strong><br>
+      Три фундаментальных банка вопросов по 50 вопросов в каждом, сгруппированных по 5 логическим блокам с обоснованием «Зачем спрашивают»:<br>
+      <a href="13.html">13 · Вопросы · Noob</a> - 50 базовых вопросов: синтаксис JSON и обязательные элементы (1-10), субъекты, роли, пользователи и группы (11-20), пространства имен действий сервисов (21-30), явный и неявный отказ (31-40), аутентификация, MFA и гигиена учетных записей (41-50).<br>
+      <a href="14.html">14 · Вопросы · Pro</a> - 50 вопросов Middle+/Senior уровня: кросс-аккаунтное доверие и рукопожатие прав (1-10), операторы условий Condition и глобальные контекстные ключи (11-20), специфика Key Policy в KMS и гранты (21-30), бесключевой OIDC и контейнеры IRSA в EKS (31-40), делегирование прав и Permissions Boundaries (41-50).<br>
+      <a href="15.html">15 · Вопросы · IGL</a> - 50 вопросов уровня Lead/Principal: Service Control Policies в Organizations (1-10), защитный периметр данных Data Perimeter и изоляция сетей (11-20), моделирование векторов атак и эскалация привилегий (21-30), гибридная архитектура и IAM Roles Anywhere (31-40), непрерывный аудит Access Analyzer и протокол Break-Glass (41-50).</li>
+      <li><strong>Сквозные инженерные инструменты курса:</strong><br>
+      <a href="navigator.html">Инженерный навигатор</a> - синтез предметной области через 9 канонических линз: Компоненты, Код, Сила, Слабости, Экосистема, В контексте AI, В контексте облака, DevOps-практики и SRE-практики со сквозными ссылками на главы курса.<br>
+      <a href="glossary.html">Словарь понятий</a> - 30 фундаментальных терминов и механизмов AWS IAM (от Policy Engine и STS до Data Perimeter и Automated Reasoning) с объяснением физики рантайма и последствий ошибок в продакшне.</li>
     </ol>
 
     <h2 id="levels">Три уровня зрелости, и зачем они разделены <a class="anchor-link" href="#levels">#</a></h2>

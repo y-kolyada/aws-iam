@@ -84,7 +84,8 @@
       <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -93,7 +94,7 @@
 
   <main id="main">
     <h1>Язык политики JSON</h1>
-    <p class="page-size" data-words="920">Слов: 920</p>
+    <p class="page-size" data-words="923">Слов: 923</p>
     <p class="lead">Спецификация грамматики AWS IAM: анатомия элементов Version, Statement, Effect, Action, Resource, Condition, Principal, строгие типы данных и типичные синтаксические ошибки.</p>
 
     <div class="box key" id="key-idea">
@@ -102,7 +103,7 @@
       <p>Освоение языка политик требует отказа от восприятия JSON как «просто словаря с произвольными полями». В IAM каждый элемент документа выполняет строгую семантическую функцию: <code>Version</code> определяет диалект парсера, <code>Statement</code> формирует массив предикатов, а связка <code>Effect</code>, <code>Action</code>, <code>Resource</code> и <code>Condition</code> задает логику вычисления доступа.</p>
     </div>
 
-    <h2 id="grammar-overview">1 · Анатомия корневых элементов: Version, Id, Statement <a class="anchor-link" href="#grammar-overview">#</a></h2>
+    <h2 id="grammar-overview">1 · Анатомия корневых элементов JSON-политики (Policy Grammar): Version, Id, Statement <a class="anchor-link" href="#grammar-overview">#</a></h2>
     <p>На верхнем уровне документ политики IAM является объектом JSON, содержащим до трех ключей:</p>
     <ul>
       <li><strong>Version (Обязательный стандарт)</strong> - строковый литерал, указывающий версию языка политик. Сегодня существует единственный актуальный стандарт: <code>"Version": "2012-10-17"</code>. Если этот ключ опущен или указана устаревшая версия <code>"2008-10-17"</code>, парсер AWS отключает поддержку динамических переменных политик (таких как <code>${aws:username}</code> или <code>${aws:PrincipalTag/Team}</code>) и строгую валидацию типов. Распространенная ошибка новичков - указывать в поле Version сегодняшнюю дату: такой документ вызовет ошибку валидации схемы.</li>

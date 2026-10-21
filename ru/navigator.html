@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="ru" data-site="aws-iam">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Навигатор инженера · devops-aws-iam · ai|</title>
+<!-- meta: built by tools/build-meta.py - do not edit by hand -->
+<meta name="description" content="Сквозная матрица инженерных линз AWS IAM: компоненты, код, сила, слабости, экосистема, AI, облака, DevOps и SRE.">
+<link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/navigator.html">
+<link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/navigator.html">
+<link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/navigator.html">
+<link rel="alternate" hreflang="uk" href="https://y-kolyada.github.io/aws-iam/uk/navigator.html">
+<link rel="alternate" hreflang="de" href="https://y-kolyada.github.io/aws-iam/de/navigator.html">
+<link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="devops-aws-iam">
+<meta property="og:title" content="Навигатор инженера">
+<meta property="og:description" content="Сквозная матрица инженерных линз AWS IAM: компоненты, код, сила, слабости, экосистема, AI, облака, DevOps и SRE.">
+<meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/navigator.html">
+<meta property="og:locale" content="ru_RU">
+<meta name="twitter:card" content="summary">
+<link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Навигатор инженера","description":"Сквозная матрица инженерных линз AWS IAM: компоненты, код, сила, слабости, экосистема, AI, облака, DevOps и SRE.","url":"https://y-kolyada.github.io/aws-iam/ru/navigator.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<!-- /meta -->
+<link rel="stylesheet" href="../assets/style.css?v=1">
+<script>
+  (function() {
+    var s = document.documentElement.dataset.site || 'swa';
+    var t = localStorage.getItem('swa-' + s + '-theme');
+    if (t) document.documentElement.setAttribute('data-theme', t);
+    var f = localStorage.getItem('swa-' + s + '-font');
+    if (f) document.documentElement.setAttribute('data-font', f);
+  })();
+</script>
+</head>
+<body>
+<a class="skip" href="#main">К содержанию</a>
+<div class="wrap">
+
+<header class="top">
+  <div class="brand-group">
+    <a class="home" href="index.html">
+      <span class="badge-ai">ai|</span>
+      <span class="sub-brand">devops-aws-iam</span>
+    </a>
+    <div class="three" aria-hidden="true">инструменты · <span class="topic">AWS IAM</span> · практика · 150 вопросов</div>
+  </div>
+  <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
+    <nav class="lang-switcher" aria-label="Язык страницы">
+      <a href="../en/navigator.html" lang="en" hreflang="en" aria-label="English">EN</a>
+      <a href="navigator.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
+      <a href="../uk/navigator.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
+      <a href="../de/navigator.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
+    </nav>
+    <div class="font-scaler" role="group" aria-label="Размер шрифта">
+      <button type="button" class="font-btn font-s" data-size="s" title="Мелкий шрифт" aria-label="Мелкий шрифт">A</button>
+      <button type="button" class="font-btn font-m active" data-size="m" title="Стандартный шрифт" aria-label="Стандартный шрифт">A</button>
+      <button type="button" class="font-btn font-l" data-size="l" title="Крупный шрифт" aria-label="Крупный шрифт">A</button>
+    </div>
+    <button type="button" class="theme-toggle" id="themeToggle" title="Сменить тему (День/Ночь)" aria-label="Сменить тему день/ночь">
+      <span class="theme-icon" aria-hidden="true"><svg class="icon" data-icon="sun" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="3.8"/><path d="M10 1.2v2.2M10 16.6v2.2M1.2 10h2.2M16.6 10h2.2M3.7 3.7l1.6 1.6M14.7 14.7l1.6 1.6M16.3 3.7l-1.6 1.6M5.3 14.7l-1.6 1.6"/></svg></span>
+    </button>
+  </div>
+</header>
+
+<div class="cols">
+
+  <nav class="contents" aria-label="Разделы сайта">
+    <ol>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
+    </ol>
+    <div class="nav-extra">
+      <div><a href="navigator.html" aria-current="page"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
+    </div>
+    <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
+      <ul class="toc-list" id="tocList"></ul>
+    </div>
+  </nav>
+
+  <main id="main">
+    <h1>Навигатор инженера</h1>
+    <p class="page-size" data-words="1473">Слов: 1473</p>
+    <p class="lead">Сквозная матрица инженерных линз AWS IAM: компоненты, код, сила, слабости, экосистема, AI, облака, DevOps и SRE.</p>
+
+    <div class="box key" id="key-idea">
+      <h2>Главная мысль навигатора <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
+      <p>Инженерный навигатор систематизирует всю архитектуру безопасности и авторизации AWS Identity and Access Management через девять канонических линз серии Simple Web Architecture. Вместо разрозненных справочных страниц навигатор объединяет механизмы платформы в целостную инженерную систему: от физической структуры контекста вызова и грамматики JSON-документов до эшелонированного сетевого периметра данных, бесключевой OIDC-федерации для микросервисов, нейтрализации векторов эскалации привилегий и протоколов ликвидации масштабных инцидентов.</p>
+    </div>
+
+    <h2 id="lens-components">1 · Компоненты (Components) <a class="anchor-link" href="#lens-components">#</a></h2>
+    <p>Архитектура AWS IAM построена на разделении аутентификации (Authn) и авторизации (Authz). На физическом уровне входящий запрос в облако декомпозируется ядром Policy Engine на четыре компонента: Principal (кто запрашивает), Action (какую операцию API пытается выполнить), Resource (к какому целевому объекту адресован запрос) и Context (атрибуты среды: IP-адрес источника, время, наличие TLS, статус MFA). Ядро авторизации не содержит состояния и вычисляет вердикт детерминированно для каждого входящего вызова на основе набора активных политик.</p>
+    <p>Система оперирует шестью фундаментальными типами документов: Identity-based политики (привязаны к пользователям, группам и ролям), Resource-based политики (размещены непосредственно на ресурсах: S3 Bucket Policy, KMS Key Policy, SQS Policy), Trust Policies (доверительные документы ролей для шлюза STS), Permissions Boundaries (максимальные границы прав для делегирования), Service Control Policies (глобальные фильтры в AWS Organizations) и Session Policies (временные фильтры при принятии роли). Вспомогательная служба AWS Security Token Service (STS) генерирует временные криптографические токены доступа, а сервис метаданных инстансов IMDSv2 безопасно доставляет учетные данные на виртуальные машины EC2 без хранения секретов на диске.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="01.html">01 · Кто решает и как</a>, <a href="04.html">04 · На личности и ресурсе</a>, <a href="05.html">05 · Роли и доверие</a>, <a href="06.html">06 · Границы разрешений</a>, <a href="10.html">10 · Примеры Noob</a>, <a href="13.html">13 · Вопросы Noob</a>.</p>
+
+    <h2 id="lens-code">2 · Код и скрипты (Code / Scripts) <a class="anchor-link" href="#lens-code">#</a></h2>
+    <p>Декларативной основой IAM является диалект JSON со строгой спецификацией версии <code>"Version": "2012-10-17"</code>. Документ политики состоит из одного или нескольких блоков в массиве <code>Statement</code>. Обязательный элемент <code>Effect</code> принимает строгие значения <code>Allow</code> или <code>Deny</code>. Действия адресуются через пространства имен сервисов (<code>Action</code> или <code>NotAction</code> с синтаксисом <code>service:ActionName</code>). Адресация сущностей и хранилищ осуществляется через Amazon Resource Names (ARN), где четко разграничиваются операции над контейнером метаданных (<code>arn:aws:s3:::bucket</code>) и ключами объектов внутри него (<code>arn:aws:s3:::bucket/*</code>).</p>
+    <p>Грануляризация доступа достигается через блок <code>Condition</code>, включающий богатую систему операторов сравнения: строковые (<code>StringEquals</code>, <code>StringLike</code> с подстановками <code>*</code> и <code>?</code>), числовые (<code>NumericLessThan</code>), проверки дат (<code>DateGreaterThan</code>), IP-диапазонов (<code>IpAddress</code>, <code>NotIpAddress</code>), булевых флагов (<code>Bool</code>) и оператора проверки факта существования ключа (<code>Null</code>). Модификатор <code>IfExists</code> предотвращает отказ при отсутствии необязательного ключа в запросе. Динамическая контекстная интерполяция переменных политики вида <code>${aws:username}</code> и <code>${aws:PrincipalTag/TagKey}</code> позволяет создавать масштабируемые политики изоляции данных без раздувания кодовой базы.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="02.html">02 · Язык политики</a>, <a href="07.html">07 · Условия и переменные</a>, <a href="10.html">10 · Примеры Noob</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="14.html">14 · Вопросы Pro</a>.</p>
+
+    <h2 id="lens-strength">3 · Сила и преимущества (Strength) <a class="anchor-link" href="#lens-strength">#</a></h2>
+    <p>Главная архитектурная сила IAM - это математически строгая модель нулевого доверия (Zero Trust) и детерминированный алгоритм вычисления вердикта. По умолчанию любой запрос блокируется неявным запретом (Default Deny). Ни одно действие не может выполниться без явного разрешающего правила <code>Allow</code>. При этом явный запрет (Explicit Deny) обладает абсолютным приоритетом над любыми разрешениями во всех применимых документах, что дает архитекторам надежный инструмент для создания жестких защитных рамок, которые невозможно обойти изнутри проекта.</p>
+    <p>Мощным механизмом масштабирования выступает бесключевая федерация: интеграция OpenID Connect (OIDC) для пайплайнов GitHub Actions и IAM Roles for Service Accounts (IRSA) в Kubernetes полностью исключает использование долгоживущих статических секретов. Поддержка Attribute-Based Access Control (ABAC) позволяет автоматически сопоставлять теги сотрудников и теги облачных ресурсов, исключая необходимость редактировать политики прав при найме новых специалистов или добавлении проектов в организацию.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="03.html">03 · Как вычисляется ответ</a>, <a href="07.html">07 · Условия и переменные</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="14.html">14 · Вопросы Pro</a>.</p>
+
+    <h2 id="lens-weaknesses">4 · Слабости и границы (Weaknesses and Limits) <a class="anchor-link" href="#lens-weaknesses">#</a></h2>
+    <p>Сложность архитектуры IAM создает скрытые риски информационной безопасности. Главный класс уязвимостей связан с непреднамеренной эскалацией привилегий: наличие у непривилегированного пользователя прав <code>iam:PassRole</code> в связке с запуском серверов EC2 или Lambda-функций позволяет ему присвоить роль администратора и перехватить контроль над аккаунтом. Право <code>iam:CreatePolicyVersion</code> позволяет перезаписать версию политики по умолчанию широкими правами, а модификация доверия <code>iam:UpdateAssumeRolePolicyDocument</code> используется злоумышленниками для создания скрытых бэкдоров.</p>
+    <p>Платформа накладывает жесткие технические квоты: размер тела управляемой политики ограничен 6144 байтами (10240 байт для inline-политик, 5140 байт для SCP), а количество версий Customer Managed политики строго равно 5. При меж-аккаунтном взаимодействии существует риск атаки «подставного помощника» (Confused Deputy), требующий обязательной проверки <code>sts:ExternalId</code>. Кроме того, использование широких масок <code>*</code> в действиях и пренебрежение раздельными ARN для контейнеров и объектов бакетов регулярно приводят к катастрофическим утечкам конфиденциальных данных.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="02.html">02 · Язык политики</a>, <a href="03.html">03 · Как вычисляется ответ</a>, <a href="06.html">06 · Границы разрешений</a>, <a href="09.html">09 · Почему отказ</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="15.html">15 · Вопросы IGL</a>.</p>
+
+    <h2 id="lens-ecosystem">5 · Связи в экосистеме (Ecosystem Interconnections) <a class="anchor-link" href="#lens-ecosystem">#</a></h2>
+    <p>IAM является несущей конструкцией всей экосистемы AWS: ни один сервис не функционирует в изоляции от его политик. Криптографический периметр обеспечивается службой AWS KMS: сервисное шифрование дисков EBS, баз данных RDS и очередей SQS опирается на Key Policies кастомных ключей и динамические гранты (KMS Grants), связывающие права дешифрования с жизненным циклом инстансов. Аудиторский след фиксируется службой AWS CloudTrail, регистрирующей каждый вызов API с указанием личности вызывающего, исходного IP-адреса и результата авторизации.</p>
+    <p>Сетевой периметр опирается на приватные шлюзы VPC Endpoints и технологию AWS PrivateLink, позволяя политикам ресурсов отсекать интернет-трафик и замыкать обмен данными строго внутри доверенных виртуальных сетей. Непрерывный мониторинг рисков обеспечивается связкой с AWS Security Hub, Amazon GuardDuty и IAM Access Analyzer, автоматически выявляющими непреднамеренное раскрытие ресурсов наружу и аномалии в поведении учетных записей.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="04.html">04 · На личности и ресурсе</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="09.html">09 · Почему отказ</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="15.html">15 · Вопросы IGL</a>.</p>
+
+    <h2 id="lens-ai">6 · В контексте AI (In AI Context) <a class="anchor-link" href="#lens-ai">#</a></h2>
+    <p>С развитием генеративного искусственного интеллекта и агентных систем роль IAM трансформировалась в двух направлениях: как инструмент защиты AI-инфраструктуры и как предмет автоматизированного анализа. При развертывании больших языковых моделей (LLM) через Amazon Bedrock или Amazon SageMaker IAM обеспечивает строгую изоляцию векторных баз данных, весов моделей и пользовательских промптов через гранулярные политики ресурсов и ключи шифрования KMS, исключая утечку обучающих данных между тенантами.</p>
+    <p>С другой стороны, AI-ассистенты и автономные агенты кодогенерации требуют строгого ограничения полномочий: выдача агенту широких прав <code>AdministratorAccess</code> создает риск случайного или спровоцированного удаления production-инфраструктуры при атаках Prompt Injection. При этом сам AWS активно применяет математические методы Automated Reasoning (автоматическое доказательство теорем) в составе IAM Access Analyzer, математически верифицируя конфигурации сотен миллионов политик без исполнения реальных сетевых запросов.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="07.html">07 · Условия и переменные</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="09.html">09 · Почему отказ</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="15.html">15 · Вопросы IGL</a>.</p>
+
+    <h2 id="lens-cloud">7 · В контексте облака (In Cloud Context) <a class="anchor-link" href="#lens-cloud">#</a></h2>
+    <p>В масштабе корпоративного облака управление доступом выходит за рамки одного аккаунта и реализуется как эшелонированный Data Perimeter в AWS Organizations. Периметр строится на трех независимых барьерах: доверенные субъекты (Trusted Identities через условие <code>aws:PrincipalOrgID</code>), доверенные ресурсы (Trusted Resources через условие <code>aws:ResourceOrgID</code>) и доверенные сети (Trusted Networks через условия <code>aws:sourceVpc</code> и <code>aws:sourceVpce</code>). Ни один запрос, не прошедший одновременно все три фильтра, не допускается к чувствительным данным предприятия.</p>
+    <p>На уровне организации Service Control Policies (SCP) накладывают превентивные ограничения на дочерние аккаунты, запрещая выход за пределы утвержденных географических юрисдикций и блокируя модификацию системного аудита. Интеграция с корпоративными identity-провайдерами (Okta, Microsoft Entra ID) по протоколам SAML 2.0 и SCIM через AWS IAM Identity Center централизует жизненный цикл сотрудников, а сервис IAM Roles Anywhere переносит бесключевой доступ на физические серверы в локальных дата-центрах через корпоративный PKI X.509.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="05.html">05 · Роли и доверие</a>, <a href="06.html">06 · Границы разрешений</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="15.html">15 · Вопросы IGL</a>.</p>
+
+    <h2 id="lens-devops">8 · Практики DevOps (DevOps Practices) <a class="anchor-link" href="#lens-devops">#</a></h2>
+    <p>В парадигме DevOps управление доступом становится частью парадигмы Policy-as-Code. Все сущности IAM (роли, политики, границы) версионируются в коде Terraform, OpenTofu или CloudFormation. Чтобы устранить бутылочное горлышко централизованной службы безопасности, платформенные инженеры внедряют Permissions Boundaries: разработчики получают право самостоятельно создавать роли для микросервисов в CI/CD пайплайнах, но граница физически не позволяет созданной роли выйти за выделенные лимиты ресурсов и действий.</p>
+    <p>Конвейеры CI/CD защищаются на этапе проверки кода (Shift-Left Security): валидаторы схем и линтеры проверяют JSON-манифесты на синтаксические ошибки, а вызов API <code>accessanalyzer validate-policy</code> блокирует пулл-реквесты, содержащие избыточные маски <code>*</code> или опасные векторы эскалации привилегий. Автоматизированные сборщики в GitHub Actions получают доступ через бесключевые временные токены OIDC со строгой привязкой к релизным веткам репозиториев.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="06.html">06 · Границы разрешений</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="09.html">09 · Почему отказ</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="14.html">14 · Вопросы Pro</a>.</p>
+
+    <h2 id="lens-sre">9 · Практики SRE (SRE Practices) <a class="anchor-link" href="#lens-sre">#</a></h2>
+    <p>С точки зрения Site Reliability Engineering надежность системы прав напрямую определяет непрерывность бизнес-процессов. Ошибки отказа в доступе (<code>AccessDenied</code>) в распределенных микросервисах расследуются по строгой инженерной методологии: декодирование зашифрованных сообщений через <code>aws sts decode-authorization-message</code> мгновенно раскрывает, какое именно правило (SCP, Permissions Boundary, явный Deny или неявный отказ) заблокировало выполнение операции.</p>
+    <p>Для обеспечения непрерывности бизнеса в чрезвычайных ситуациях проектируются аварийные роли Break-Glass: они полностью отвязаны от внешних SaaS SSO провайдеров, требуют прямого аппаратного MFA и находятся под непрерывным мониторингом Amazon EventBridge, мгновенно отправляя высокоприоритетный алерт в PagerDuty при любом вызове <code>AssumeRole</code>. Наконец, инструмент Unused Access в IAM Access Analyzer непрерывно сканирует инфраструктуру на предмет неиспользуемых ролей и разрешений старше 90 дней, планомерно ликвидируя архитектурный технический долг.</p>
+    <p><strong>Связанные главы курса:</strong> <a href="03.html">03 · Как вычисляется ответ</a>, <a href="08.html">08 · Ключи и федерация</a>, <a href="09.html">09 · Почему отказ</a>, <a href="11.html">11 · Примеры Pro</a>, <a href="12.html">12 · Примеры IGL</a>, <a href="15.html">15 · Вопросы IGL</a>.</p>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-prev">Предыдущая тема: <a href="glossary.html">Словарь понятий</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
+  </main>
+
+</div>
+</div>
+<script src="../assets/swa.js?v=1"></script>
+<script src="../assets/terms.js?v=1"></script>
+<script src="../assets/cp.js?v=1"></script>
+</body>
+</html>

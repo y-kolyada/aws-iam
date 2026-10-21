@@ -32,3 +32,13 @@ ARN бакета S3 отличается от ARN объектов внутри 
 Политика SCP в AWS Organizations поддерживает перечисление исключений в NotAction	iam:*,organizations:*	echo '{"Effect":"Deny","NotAction":["iam:*","organizations:*"]}' | jq -r '.NotAction | join(",")'
 Изоляция бакета по сетевому периметру проверяет идентификатор VPC через ключ aws:sourceVpc	vpc-0123456789abcdef0	echo '{"Condition":{"StringNotEquals":{"aws:sourceVpc":"vpc-0123456789abcdef0"}}}' | jq -r '.Condition.StringNotEquals["aws:sourceVpc"]'
 Идентификатор организации AWS Organizations имеет строгий формат префикса o-	True	python3 -c 'import re; print(bool(re.match(r"^o-[a-z0-9]{10,32}$", "o-a1b2c3d4e5")))'
+Запрос STS assume-role для защиты от Confused Deputy передает ExternalId	my-secret-token	echo '{"ExternalId":"my-secret-token"}' | jq -r '.ExternalId'
+Оператор условия сопоставляет тег субъекта PrincipalTag и тег ресурса ResourceTag	True	python3 -c 'c={"StringEquals":{"aws:ResourceTag/Project":"${aws:PrincipalTag/Project}"}}; print("aws:ResourceTag/Project" in c["StringEquals"])'
+Создание гранта KMS create-grant принимает KeyId и GranteePrincipal	Constraints,DryRun,GrantTokens	aws kms create-grant --generate-cli-skeleton | jq -r 'keys | sort | .[0:3] | join(",")'
+Субъект OIDC для EKS IRSA имеет префикс system:serviceaccount	system:serviceaccount:prod:app-sa	echo '{"sub":"system:serviceaccount:prod:app-sa"}' | jq -r '.sub'
+Создание анализатора create-analyzer поддерживает тип ORGANIZATION	ORGANIZATION	echo '{"type":"ORGANIZATION"}' | jq -r '.type'
+Создание источника доверия create-trust-anchor требует параметры name и enabled	enabled,name	aws rolesanywhere create-trust-anchor --generate-cli-skeleton | jq -r 'keys | sort | .[0:2] | join(",")'
+Настройка блокировки публичного доступа S3 принимает четыре булевых флага	BlockPublicAcls,BlockPublicPolicy,IgnorePublicAcls,RestrictPublicBuckets	aws s3control put-public-access-block --generate-cli-skeleton | jq -r '.PublicAccessBlockConfiguration | keys | sort | join(",")'
+Инженерный навигатор структурирован строго по 9 каноническим линзам	9	grep -c 'id="lens-' ru/navigator.html
+Словарь понятий содержит не менее 30 терминологических словарных карточек	True	python3 -c 'import re; print(len(re.findall(r"class=\"glossary-term\"", open("ru/glossary.html").read())) >= 30)'
+Навигатор на своей странице расположен первым в блоке nav-extra	True	python3 -c 'html=open("ru/navigator.html").read(); print(html.find("href=\"navigator.html\" aria-current=\"page\"") < html.find("href=\"glossary.html\""))'
