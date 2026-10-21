@@ -175,4 +175,4 @@ af68e9d docs(record): record acceptance of Batch 1
 
 | Кто | Вердикт |
 | :-- | :-- |
-| Conductor |  |
+| Conductor | Принято (Батч 2) · 21.10.2026 |
