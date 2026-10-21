@@ -94,7 +94,7 @@
 
   <main id="main">
     <h1>Границы разрешений</h1>
-    <p class="page-size" data-words="904">Слов: 904</p>
+    <p class="page-size" data-words="953">Слов: 953</p>
     <p class="lead">Архитектура защитных барьеров IAM: механика Permissions Boundaries, Service Control Policies (SCP) в AWS Organizations, сессионные ограничения и безопасное делегирование прав.</p>
 
     <div class="box key" id="key-idea">
@@ -104,7 +104,7 @@
     </div>
 
     <h2 id="boundary-mechanics">1 · Механика Permissions Boundary: ограничение максимальных полномочий <a class="anchor-link" href="#boundary-mechanics">#</a></h2>
-    <p>Permissions Boundary - это продвинутая функция AWS IAM, использующая стандартную управляемую политику (Customer Managed Policy) в качестве верхнего предела полномочий для пользователя или роли.</p>
+    <p><span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Граница разрешений (Permissions Boundary)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Граница разрешений</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Превентивный фильтр, ограничивающий максимальные права создаваемых ролей через логическое И.</span><span class="term-links"><a href="glossary.html#term-permissions-boundary">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> - это продвинутая функция AWS IAM, использующая стандартную управляемую политику (Customer Managed Policy) в качестве верхнего предела полномочий для пользователя или роли.</p>
     <p>Главный закон границы разрешений формулируется математически: <strong>эффективные права субъекта равны строгому пересечению его политик личности и назначенной границы:</strong></p>
     <pre><code>Эффективные_Права = Identity_Policy ∩ Permissions_Boundary</code></pre>
     <p>Permissions Boundary обладает следующими фундаментальными свойствами:</p>
@@ -137,7 +137,7 @@
     <p>В результате разработчик получает полную свободу: он может создавать любые сервисные роли для своих микросервисов в коде Terraform, но если он попытается создать роль без указания границы или с чужой границей, AWS IAM моментально заблокирует вызов API с ошибкой <code>AccessDenied</code>.</p>
 
     <h2 id="scp-organizations">3 · Service Control Policies (SCP): управление на уровне AWS Organizations <a class="anchor-link" href="#scp-organizations">#</a></h2>
-    <p>Если Permissions Boundary настраивается локально внутри одного аккаунта инженерами платформы, то Service Control Policies (SCP) действуют на самом верхнем уровне иерархии - в сервисе AWS Organizations.</p>
+    <p>Если Permissions Boundary настраивается локально внутри одного аккаунта инженерами платформы, то <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Service Control Policies (SCP)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Service Control Policy (SCP)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованные превентивные guardrails AWS Organizations, ограничивающие даже Root User.</span><span class="term-links"><a href="glossary.html#term-scp">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> действуют на самом верхнем уровне иерархии - в сервисе AWS Organizations.</p>
     <p>SCP прикрепляются к корню организации (Root), организационным единицам (Organizational Units, OU) или отдельным учетным записям. Они задают максимальные пределы полномочий для ВСЕХ сущностей внутри дочерних аккаунтов.</p>
     <div class="box">
       <p><strong>Фундаментальное отличие SCP от обычных политик:</strong> SCP распространяют свое действие на ВСЕХ пользователей и роли в аккаунте, <strong>ВКЛЮЧАЯ КОРНЕВОГО ПОЛЬЗОВАТЕЛЯ АККАУНТА (ROOT USER)!</strong></p>
@@ -151,7 +151,7 @@
     </ul>
 
     <h2 id="session-policies">4 · Сессионные политики (Session Policies) в STS <a class="anchor-link" href="#session-policies">#</a></h2>
-    <p>Третий уровень динамического ограничения максимальных прав - сессионные политики (Session Policies). Они передаются в качестве аргумента при вызове команд службы STS:</p>
+    <p>Третий уровень динамического ограничения максимальных прав - <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">сессионные политики (Session Policies)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Сессионная политика</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Временный фильтр, передаваемый при вызове AssumeRole для дополнительного сужения прав сессии.</span><span class="term-links"><a href="glossary.html#term-session-policy">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>. Они передаются в качестве аргумента при вызове команд службы STS:</p>
     <pre><code>aws sts assume-role \
   --role-arn arn:aws:iam::123456789012:role/DataWorkerRole \
   --role-session-name TenantWorkerSession \

@@ -42,3 +42,4 @@ ARN бакета S3 отличается от ARN объектов внутри 
 Инженерный навигатор структурирован строго по 9 каноническим линзам	9	grep -c 'id="lens-' ru/navigator.html
 Словарь понятий содержит не менее 30 терминологических словарных карточек	True	python3 -c 'import re; print(len(re.findall(r"class=\"glossary-term\"", open("ru/glossary.html").read())) >= 30)'
 Навигатор на своей странице расположен первым в блоке nav-extra	True	python3 -c 'html=open("ru/navigator.html").read(); print(html.find("href=\"navigator.html\" aria-current=\"page\"") < html.find("href=\"glossary.html\""))'
+Главы курса содержат интерактивную семантическую разметку понятий term	35	python3 -c 'import glob, re; print(sum(len(re.findall(r"class=\"term\"", open(f).read())) for f in glob.glob("ru/*.html")))'
