@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 7 · devops-aws-iam · ai|</title>
+<title>Условия и контекстные ключи · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Глубокая грануляризация доступа через блок Condition: операторы проверки данных, глобальные ключи aws:*, переменные политики и защита периметра.">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/07.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/07.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/07.html">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 7">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Условия и контекстные ключи">
+<meta property="og:description" content="Глубокая грануляризация доступа через блок Condition: операторы проверки данных, глобальные ключи aws:*, переменные политики и защита периметра.">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/07.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 7","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/07.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Условия и контекстные ключи","description":"Глубокая грануляризация доступа через блок Condition: операторы проверки данных, глобальные ключи aws:*, переменные политики и защита периметра.","url":"https://y-kolyada.github.io/aws-iam/ru/07.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
 <link rel="stylesheet" href="../assets/style.css?v=1">
 <script>
@@ -92,28 +92,95 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 7</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Условия и контекстные ключи</h1>
+    <p class="page-size" data-words="907">Слов: 907</p>
+    <p class="lead">Глубокая грануляризация доступа через блок Condition: операторы проверки данных, глобальные ключи aws:*, переменные политики и защита периметра.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Без использования условий политики IAM были бы слишком неизбирательными: они позволяли бы либо предоставить доступ ко всем объектам бакета, либо полностью заблокировать его. Однако в реальном продакшне требования безопасности формулируются через контекст: <em>«разрешить чтение файлов только в том случае, если трафик зашифрован через TLS 1.2+, запрос поступил из офисной подсети компании, у пользователя включена многофакторная аутентификация (MFA), а целевой префикс бакета строго совпадает с логином вызывающего инженера»</em>.</p>
+      <p>Блок <code>Condition</code> (Условие) превращает документ политики из статичного списка прав в динамический, контекстно-зависимый вычислитель. Понимание грамматики операторов, глобальных ключей <code>aws:*</code> и динамических шаблонов подстановки позволяет проектировать самоадаптирующиеся политики, не требующие передеплоя при появлении новых пользователей.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="condition-syntax">1 · Анатомия блока Condition: структура операторов и логика оценки <a class="anchor-link" href="#condition-syntax">#</a></h2>
+    <p>Блок условий располагается внутри оператора <code>Statement</code> и имеет строгую трехуровневую иерархию:</p>
+    <pre><code>"Condition": {
+  "Operator": {
+    "ContextKey": [ "Value1", "Value2" ]
+  }
+}</code></pre>
+    <p>Логика вычисления блока Condition подчиняется строгим математическим законам булевой алгебры:</p>
+    <ul>
+      <li><strong>Несколько значений одного ключа (Массив значений):</strong> оцениваются через логическое <strong>ИЛИ (OR)</strong>. Если контекстный ключ запроса совпадает хотя бы с одним из элементов массива (например, IP-адрес входит в один из трех разрешенных диапазонов CIDR), условие для этого ключа возвращает <code>true</code>.</li>
+      <li><strong>Несколько ключей внутри одного оператора:</strong> оцениваются через логическое <strong>И (AND)</strong>. Запрос обязан одновременно удовлетворить условиям по каждому из перечисленных контекстных ключей.</li>
+      <li><strong>Несколько операторов внутри одного блока Condition:</strong> также объединяются через логическое <strong>И (AND)</strong>. Если в одном Statement указаны <code>StringEquals</code> и <code>IpAddress</code>, оба оператора обязаны вернуть истину.</li>
+    </ul>
+
+    <h2 id="operators-catalog">2 · Каталог операторов условий: String, Numeric, Date, IP, Bool, Arn, Null <a class="anchor-link" href="#operators-catalog">#</a></h2>
+    <p>Спецификация AWS IAM классифицирует операторы условий по типу данных, с которыми они работают:</p>
+    <dl>
+      <dt><strong>Строковые операторы (StringEquals, StringNotEquals, StringLike):</strong></dt>
+      <dd>Выполняют точное сравнение строк или сопоставление по маске. Оператор <code>StringLike</code> поддерживает подстановочные знаки <code>*</code> (любое количество символов) и <code>?</code> (один символ). Например, <code>"StringLike": {"aws:PrincipalArn": "arn:aws:iam::*:role/app-*"}</code> разрешает вызовы только от ролей с префиксом app-.</dd>
+      <dt><strong>Сетевые операторы (IpAddress, NotIpAddress):</strong></dt>
+      <dd>Проверяют публичный IP-адрес клиента по отношению к блокам подсетей IPv4 или IPv6 в нотации CIDR (например, <code>198.51.100.0/24</code>).</dd>
+      <dt><strong>Булевые операторы (Bool):</strong></dt>
+      <dd>Сравнивают булевы флаги. Критическое требование: строковое значение обязано передаваться в кавычках: <code>"Bool": {"aws:SecureTransport": "true"}</code>.</dd>
+      <dt><strong>Операторы проверки существования (Null):</strong></dt>
+      <dd>Проверяют сам факт наличия ключа в запросе авторизации: <code>"Null": {"aws:MultiFactorAuthPresent": "false"}</code> означает «проверить, что ключ MFA присутствует в запросе».</dd>
+      <dt><strong>Модификатор IfExists:</strong></dt>
+      <dd>Любой оператор может быть расширен суффиксом <code>IfExists</code> (например, <code>StringEqualsIfExists</code>). Если контекстный ключ вообще отсутствует в запросе, проверка не бракует запрос, а автоматически считает условие выполненным. Это необходимо для политик, применяемых к разным типам вызовов.</dd>
+    </dl>
+
+    <h2 id="global-keys">3 · Глобальные контекстные ключи: aws:PrincipalArn, aws:SecureTransport, aws:SourceIp <a class="anchor-link" href="#global-keys">#</a></h2>
+    <p>В отличие от специфичных ключей отдельных сервисов (вроде <code>s3:prefix</code> или <code>ec2:InstanceType</code>), глобальные ключи с префиксом <code>aws:*</code> доступны движку IAM при вызове абсолютно любого API-метода в любом сервисе:</p>
+    <ul>
+      <li><strong>aws:SecureTransport (Принудительный TLS):</strong> Принимает значение <code>"true"</code>, если запрос пришел по протоколу HTTPS, и <code>"false"</code> при открытом HTTP. Стандартом безопасности является явный запрет любых вызовов при значении false.</li>
+      <li><strong>aws:SourceIp (Ограничение периметра сети):</strong> Фильтрует клиентский IP-адрес. <em>Важное архитектурное предупреждение:</em> этот ключ не работает для запросов, отправленных самими сервисами AWS (например, когда Lambda обращается к S3), если трафик не идет через VPC Endpoint.</li>
+      <li><strong>aws:PrincipalOrgID (Защита организации):</strong> Позволяет в политике ресурса одним условием <code>"StringEquals": {"aws:PrincipalOrgID": "o-a1b2c3d4e5"}</code> разрешить доступ пользователям и ролям из всех десятков аккаунтов вашей организации без перечисления их ARN.</li>
+      <li><strong>aws:CurrentTime (Окна обслуживания):</strong> Позволяет ограничить выполнение опасных операций (деплой, удаление баз) узким временным окном в формате ISO 8601.</li>
+    </ul>
+
+    <h2 id="policy-variables">4 · Динамические переменные политики: ${aws:username} и теги ${aws:PrincipalTag/TagKey} <a class="anchor-link" href="#policy-variables">#</a></h2>
+    <p>Одной из мощнейших возможностей языка политик является динамическая подстановка значений контекста прямо в поля <code>Resource</code> и <code>Condition</code> в момент выполнения запроса. Для подстановки используется синтаксис <code>${variable}</code>:</p>
+    <div class="box">
+      <p><strong>Пример изоляции домашних каталогов инженеров:</strong></p>
+      <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowIndividualUserFolder",
+      "Effect": "Allow",
+      "Action": ["s3:GetObject", "s3:PutObject"],
+      "Resource": "arn:aws:s3:::corporate-home-storage/${aws:username}/*"
+    }
+  ]
+}</code></pre>
+      <p>Вместо создания отдельной уникальной политики для каждого из 500 сотрудников компании создается одна общая групповая политика. Когда инженер с логином <code>alex</code> обращается к хранилищу, переменная <code>${aws:username}</code> на лету заменяется на <code>alex</code>, автоматически изолируя доступ без ручного труда администраторов.</p>
+    </div>
+    <p>На базе переменных реализуется современная парадигма управления доступом на основе атрибутов (Attribute-Based Access Control, ABAC). Переменная <code>${aws:PrincipalTag/Department}</code> подставляет значение тега подразделения из профиля вызывающего сотрудника. Если в политике прописать совпадение тега пользователя с тегом целевого ресурса <code>${aws:ResourceTag/Department}</code>, доступ будет автоматически регулироваться тегированием ресурсов без правок IAM.</p>
+
+    <h2 id="condition-pitfalls">5 · Подводные камни логики условий: ловушка ForAllValues и NotIpAddress Deny <a class="anchor-link" href="#condition-pitfalls">#</a></h2>
+    <p>При конструировании сложных условий инженеры регулярно попадают в две хрестоматийные ловушки платформы:</p>
+    <p><strong>1. Ловушка оператора ForAllValues (Парадокс пустого множества):</strong> Оператор <code>ForAllValues</code> проверяет, что каждое значение запроса входит в разрешенный список. Однако если запрос вообще не содержит ни одного значения по данному ключу (пустое множество), проверка математически возвращает <strong>ИСТИНУ (TRUE)</strong>! В результате политика, призванная строго ограничить теги, начинает разрешать вызовы без тегов вообще. Решение: всегда комбинировать <code>ForAllValues</code> с проверкой обязательного наличия ключа через <code>Null: false</code>.</p>
+    <p><strong>2. Ловушка NotIpAddress в сочетании с Allow:</strong> Попытка выдать права «всем, кто находится в офисной сети» через <code>"Effect": "Allow"</code> и <code>"NotIpAddress"</code> ошибочна. Правильный и безопасный паттерн ограничения периметра - использовать <strong>"Effect": "Deny"</strong> с оператором <code>NotIpAddress</code>, обязательно добавив исключение для внутренних сервисов AWS через условие <code>"Bool": {"aws:ViaAWSService": "false"}</code>.</p>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив грамматику и логику блока Condition, вы можете строить гранулярные контекстные периметры безопасности любого уровня строгости. Ваши практические артефакты:</p>
+      <ol>
+        <li><strong>Контекстное конструирование:</strong> умение комбинировать операторы String, Numeric, IP и Bool по законам логического умножения и сложения.</li>
+        <li><strong>Защита периметра глобальными ключами:</strong> принудительный SSL через <code>aws:SecureTransport</code> и ограничение области организации через <code>aws:PrincipalOrgID</code>.</li>
+        <li><strong>Масштабирование через ABAC:</strong> шаблонизация политик с переменными <code>${aws:username}</code> и <code>${aws:PrincipalTag/*}</code> для устранения рутинного ручного управления.</li>
+        <li><strong>Устойчивость к ловушкам логики:</strong> знание особенностей <code>ForAllValues</code> и корректное оформление сетевых запретов через Deny + NotIpAddress.</li>
+      </ol>
     </div>
   
 
     <footer>
       <nav class="pager" aria-label="Соседние темы">
-        <p class="pager-next">Следующая тема: <a href="08.html">Раздел 8</a></p>
-        <p class="pager-prev">Предыдущая тема: <a href="06.html">Раздел 6</a></p>
+        <p class="pager-next">Следующая тема: <a href="08.html">Ключи, федерация и машины</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="06.html">Границы разрешений</a></p>
       </nav>
       <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
     </footer>
