@@ -166,4 +166,4 @@ e0a6c0a feat(content): deliver Batch 1 with landing page and topics 01-05
 
 | Кто | Вердикт |
 | :-- | :-- |
-| Conductor |  |
+| Conductor | Принято (Батч 1) · 21.10.2026 |
