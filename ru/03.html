@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 3 · devops-aws-iam · ai|</title>
+<title>Как вычисляется ответ · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Детерминированный алгоритм вычисления решений в AWS IAM: приоритет явного Deny над Allow, неявный запрет по умолчанию и пересечение границ SCP, Permissions...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/03.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/03.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/03.html">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 3">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Как вычисляется ответ">
+<meta property="og:description" content="Детерминированный алгоритм вычисления решений в AWS IAM: приоритет явного Deny над Allow, неявный запрет по умолчанию и пересечение границ SCP, Permissions...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/03.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 3","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/03.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Как вычисляется ответ","description":"Детерминированный алгоритм вычисления решений в AWS IAM: приоритет явного Deny над Allow, неявный запрет по умолчанию и пересечение границ SCP, Permissions...","url":"https://y-kolyada.github.io/aws-iam/ru/03.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
 <link rel="stylesheet" href="../assets/style.css?v=1">
 <script>
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/03.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="03.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="03.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/03.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/03.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,21 +67,21 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page"><span class="num">1</span>Раздел 1</a></li>
-      <li><a href="02.html"><span class="num">2</span>Раздел 2</a></li>
-      <li><a href="03.html"><span class="num">3</span>Раздел 3</a></li>
-      <li><a href="04.html"><span class="num">4</span>Раздел 4</a></li>
-      <li><a href="05.html"><span class="num">5</span>Раздел 5</a></li>
-      <li><a href="06.html"><span class="num">6</span>Раздел 6</a></li>
-      <li><a href="07.html"><span class="num">7</span>Раздел 7</a></li>
-      <li><a href="08.html"><span class="num">8</span>Раздел 8</a></li>
-      <li><a href="09.html"><span class="num">9</span>Раздел 9</a></li>
-      <li><a href="10.html"><span class="num">10</span>Раздел 10</a></li>
-      <li><a href="11.html"><span class="num">11</span>Раздел 11</a></li>
-      <li><a href="12.html"><span class="num">12</span>Раздел 12</a></li>
-      <li><a href="13.html"><span class="num">13</span>Раздел 13</a></li>
-      <li><a href="14.html"><span class="num">14</span>Раздел 14</a></li>
-      <li><a href="15.html"><span class="num">15</span>Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html" aria-current="page"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
       <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
@@ -92,22 +92,90 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 3</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Как вычисляется ответ</h1>
+    <p class="page-size" data-words="1022">Слов: 1022</p>
+    <p class="lead">Детерминированный алгоритм вычисления решений в AWS IAM: приоритет явного Deny над Allow, неявный запрет по умолчанию и пересечение границ SCP, Permissions Boundaries и Session Policies.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Ошибки авторизации <code>AccessDenied</code> часто вызывают у инженеров ощущение непредсказуемости: «я же добавил политику с правами администратора, почему запрос все равно заблокирован?». В действительности ядро AWS IAM подчиняется математически строгому конечному автомату принятия решений, в котором нет места случайности.</p>
+      <p>Логика вычисления опирается на три аксиомы: 1) Исходное состояние - неявный запрет по умолчанию (Default / Implicit Deny); 2) Явное разрешение (Explicit Allow) переопределяет запрет по умолчанию; 3) Явный запрет (Explicit Deny) в любой применимой политике безусловно побеждает любые явные разрешения. Все защитные механизмы AWS (SCP организаций, Permissions Boundaries, сессионные политики) работают по принципу логического умножения (пересечения множеств), что гарантирует абсолютный контроль над полномочиями.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="three-verdicts">1 · Три состояния доступа: Default Deny, Explicit Allow, Explicit Deny <a class="anchor-link" href="#three-verdicts">#</a></h2>
+    <p>Каждое решение о доступе базируется на трех фундаментальных состояниях правил:</p>
+    <ul>
+      <li><strong>Неявный запрет (Default / Implicit Deny)</strong> - базовое состояние системы. Если для запрошенного действия ни в одном документе политик не найдено совпадающего правила с <code>"Effect": "Allow"</code>, доступ блокируется. Неявный запрет не требует создания специальных правил - он действует автоматически для всех действий и сервисов с момента создания аккаунта. При этом неявный запрет легко преодолевается любым единичным явным разрешением.</li>
+      <li><strong>Явное разрешение (Explicit Allow)</strong> - правило в политике, у которого <code>"Effect": "Allow"</code> и все критерии (Action, Resource, Condition) совпали с параметрами входящего вызова. Достаточно одного явного разрешения (при отсутствии явных запретов и соблюдении границ), чтобы запрос был успешно выполнен.</li>
+      <li><strong>Явный запрет (Explicit Deny)</strong> - правило в политике, содержащее <code>"Effect": "Deny"</code>, чьи критерии совпали с запросом. Явный запрет обладает абсолютной силой: если на пользователя или роль назначены десятки политик со статусом Allow, но хотя бы в одной строке одной политики встретился Deny, итоговым вердиктом неизбежно будет отказ в доступе. Явный запрет невозможно нейтрализовать или обойти добавлением новых разрешений.</li>
+    </ul>
+
+    <h2 id="evaluation-flowchart">2 · Пошаговое дерево принятия решений (Decision Flowchart) <a class="anchor-link" href="#evaluation-flowchart">#</a></h2>
+    <p>Когда запрос поступает в движок авторизации, он проходит строго определенную последовательность проверок:</p>
+    <ol>
+      <li><strong>Поиск явного запрета (Explicit Deny Check):</strong> Движок анализирует все применимые политики (SCP, политики ресурсов, политики личности, границы разрешений, сессионные политики). Если ХОТЯ БЫ В ОДНОЙ из них есть подходящий Explicit Deny, вычисление немедленно завершается. Вердикт: <strong>DENY</strong>.</li>
+      <li><strong>Проверка политик организации (SCP Check):</strong> Если аккаунт входит в состав AWS Organizations и к нему прикреплены Service Control Policies, SCP обязана явно разрешать запрошенное действие. Если подходящего Allow в цепочке SCP нет, вычисление завершается. Вердикт: <strong>DENY</strong>.</li>
+      <li><strong>Проверка политики ресурса (Resource-based Policy Check):</strong> Если у целевого ресурса (бакет S3, ключ KMS) есть Resource-based политика и она явно разрешает доступ:
+        <ul>
+          <li>Внутри одного аккаунта (Same Account): явного Allow в политике ресурса ДОСТАТОЧНО для авторизации.</li>
+          <li>Меж-аккаунтный доступ (Cross-Account): Allow в политике ресурса обязателен, но требует дополнительного Allow в аккаунте вызывающей стороны.</li>
+        </ul>
+      </li>
+      <li><strong>Проверка границы разрешений (Permissions Boundary Check):</strong> Если к вызывающему субъекту прикреплена Permissions Boundary, эта граница обязана явно разрешать действие. Если разрешения в boundary нет, вычисление завершается. Вердикт: <strong>DENY</strong>.</li>
+      <li><strong>Проверка сессионной политики (Session Policy Check):</strong> Если временные учетные данные получены через вызов STS с передачей сессионной политики (inline policy при assume-role), эта сессионная политика обязана содержать Allow. Если разрешения нет, вердикт: <strong>DENY</strong>.</li>
+      <li><strong>Проверка политик личности (Identity-based Policy Check):</strong> Проверяются управляемые и встраиваемые политики пользователя или роли. Если найдено правило с <code>"Effect": "Allow"</code>, итоговый вердикт: <strong>ALLOW</strong>. Если ни одного разрешения не найдено, вступает в силу неявный запрет. Вердикт: <strong>DENY</strong>.</li>
+    </ol>
+
+    <h2 id="set-intersection">3 · Математика пересечения множеств: SCP, Boundary и Session Policy <a class="anchor-link" href="#set-intersection">#</a></h2>
+    <p>Самое распространенное заблуждение - считать, что добавление новой политики к роли расширяет ее возможности. В случае защитных барьеров (Guardrails) действует математика пересечения множеств (логическое И):</p>
+    <div class="box">
+      <p><strong>Формула эффективных полномочий:</strong></p>
+      <pre><code>Эффективные_Права = Права_Личности ∩ Permissions_Boundary ∩ SCP ∩ Session_Policy</code></pre>
+      <p>Итоговые полномочия субъекта равны только той области прав, которая одновременно разрешена во ВСЕХ контролирующих контурах. Если хотя бы один контур не содержит разрешения, действие невозможно.</p>
+    </div>
+    <p>Например: если разработчик прикрепил к роли политику <code>AdministratorAccess</code> (разрешено все), но администратор безопасности назначил на роль Permissions Boundary с доступом только к сервису S3 (<code>"Action": "s3:*"</code>), роль сможет работать исключительно с бакетами S3. Любая попытка запустить виртуальную машину EC2 или прочитать секрет из Secrets Manager будет отвергнута, потому что EC2 отсутствует в пересечении множеств.</p>
+
+    <h2 id="cross-account-evaluation">4 · Особенности вычисления при меж-аккаунтном доступе (Cross-Account) <a class="anchor-link" href="#cross-account-evaluation">#</a></h2>
+    <p>Правило пересечения кардинально меняется при обращении между разными учетными записями AWS (Cross-Account Access), например когда роль из Аккаунта B читает бакет S3 в Аккаунте A:</p>
+    <p><strong>Внутри одного аккаунта (Same Account):</strong> Действует логическое ИЛИ между политикой личности и политикой ресурса. Если у роли есть <code>s3:GetObject</code>, а в Bucket Policy это действие не упомянуто, доступ РАЗРЕШЕН. И наоборот: если у роли нет прав на S3, но в Bucket Policy для этой роли прописан <code>Principal</code> и <code>Allow</code>, доступ также РАЗРЕШЕН.</p>
+    <p><strong>Между разными аккаунтами (Cross-Account):</strong> Действует строгое логическое И! Для успешного выполнения запроса ОБА аккаунта обязаны дать явное согласие:</p>
+    <ul>
+      <li>Аккаунт А (Владелец ресурса) ОБЯЗАН в политике ресурса (Resource-based policy) разрешить доступ субъекту или корню Аккаунта B.</li>
+      <li>Аккаунт B (Владелец субъекта) ОБЯЗАН в политике личности (Identity-based policy) разрешить своему пользователю или роли обращаться к ресурсу Аккаунта А.</li>
+    </ul>
+    <p>Если хотя бы одна из сторон не предоставила явного разрешения или любая из сторон выставила явный Deny, меж-аккаунтный запрос немедленно отклоняется.</p>
+
+    <h2 id="debugging-denials">5 · Диагностика: почему запрос упал с AccessDenied <a class="anchor-link" href="#debugging-denials">#</a></h2>
+    <p>Когда вызов возвращает ошибку <code>AccessDenied</code>, инженер должен методично исключать уровни по дереву решений:</p>
+    <ol>
+      <li><strong>Проверить явный Deny:</strong> не попал ли запрос под защитное правило (например, запрет действий без TLS в политике бакета или требование MFA).</li>
+      <li><strong>Проверить SCP организации:</strong> не запрещен ли регион выполнения запроса или данный сервис на уровне организационной единицы (OU).</li>
+      <li><strong>Проверить Permissions Boundary:</strong> прикреплена ли к вызываемой роли граница и включено ли в нее запрошенное действие.</li>
+      <li><strong>Расшифровать закодированное сообщение:</strong> если сервис возвращает зашифрованный токен ошибки, расшифровать его командой CLI:<br>
+      <code>aws sts decode-authorization-message --encoded-message &lt;Base64Token&gt;</code><br>
+      Вывод команды содержит точную причину отказа: конкретный тип политики (SCP, Boundary, Policy), заблокировавший запрос, и имя несовпавшего контекстного ключа.</li>
+    </ol>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Понимание алгоритма вычисления решений превращает диагностику безопасности в детерминированный расчет. Практические артефакты этой темы:</p>
+      <ol>
+        <li><strong>Ментальный автомат решений:</strong> четкая градация трех статусов (Default Deny, Explicit Allow, Explicit Deny) и осознание абсолютного приоритета Deny.</li>
+        <li><strong>Формула эффективных прав:</strong> понимание математики пересечения множеств для SCP, Permissions Boundary и Session Policies.</li>
+        <li><strong>Протокол Cross-Account доступа:</strong> знание правила двойного рукопожатия, требующего согласия обеих учетных записей.</li>
+        <li><strong>Инструмент дешифровки отказов:</strong> владение утилитой <code>sts decode-authorization-message</code> для мгновенного нахождения блокирующей политики.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="04.html">Политика на личности и на ресурсе</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="02.html">Язык политики JSON</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>

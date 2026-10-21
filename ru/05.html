@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 5 · devops-aws-iam · ai|</title>
+<title>Роли и доверие · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Анатомия IAM-ролей и службы AWS STS: механика доверительной политики Trust Policy, вызовы семейства AssumeRole, выпуск короткоживущих учетных данных и почему...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/05.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/05.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/05.html">
@@ -14,13 +14,13 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 5">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Роли и доверие">
+<meta property="og:description" content="Анатомия IAM-ролей и службы AWS STS: механика доверительной политики Trust Policy, вызовы семейства AssumeRole, выпуск короткоживущих учетных данных и почему...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/05.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 5","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/05.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Роли и доверие","description":"Анатомия IAM-ролей и службы AWS STS: механика доверительной политики Trust Policy, вызовы семейства AssumeRole, выпуск короткоживущих учетных данных и почему...","url":"https://y-kolyada.github.io/aws-iam/ru/05.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
 <link rel="stylesheet" href="../assets/style.css?v=1">
 <script>
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/05.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="05.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="05.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/05.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/05.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,21 +67,21 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page"><span class="num">1</span>Раздел 1</a></li>
-      <li><a href="02.html"><span class="num">2</span>Раздел 2</a></li>
-      <li><a href="03.html"><span class="num">3</span>Раздел 3</a></li>
-      <li><a href="04.html"><span class="num">4</span>Раздел 4</a></li>
-      <li><a href="05.html"><span class="num">5</span>Раздел 5</a></li>
-      <li><a href="06.html"><span class="num">6</span>Раздел 6</a></li>
-      <li><a href="07.html"><span class="num">7</span>Раздел 7</a></li>
-      <li><a href="08.html"><span class="num">8</span>Раздел 8</a></li>
-      <li><a href="09.html"><span class="num">9</span>Раздел 9</a></li>
-      <li><a href="10.html"><span class="num">10</span>Раздел 10</a></li>
-      <li><a href="11.html"><span class="num">11</span>Раздел 11</a></li>
-      <li><a href="12.html"><span class="num">12</span>Раздел 12</a></li>
-      <li><a href="13.html"><span class="num">13</span>Раздел 13</a></li>
-      <li><a href="14.html"><span class="num">14</span>Раздел 14</a></li>
-      <li><a href="15.html"><span class="num">15</span>Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html" aria-current="page"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
       <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
@@ -92,22 +92,83 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 5</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Роли и доверие</h1>
+    <p class="page-size" data-words="994">Слов: 994</p>
+    <p class="lead">Анатомия IAM-ролей и службы AWS STS: механика доверительной политики Trust Policy, вызовы семейства AssumeRole, выпуск короткоживущих учетных данных и почему роль надежнее статического пользователя.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>IAM-роль (IAM Role) - это личность в облаке, которая фундаментально не имеет собственных статических паролей или постоянных секретных ключей. Сама по себе роль не может выполнить ни одного действия: она существует как защищенный костюм или шляпа полномочий, которую уполномоченный субъект надевает на ограниченное время.</p>
+      <p>Каждая роль состоит из двух независимых политических контрактов: 1) Доверительная политика (Trust Policy / AssumeRolePolicyDocument), определяющая, <em>кто имеет право надеть эту шляпу</em>; 2) Политики разрешений (Permissions Policies), определяющие, <em>что надевшему шляпу разрешено делать в облаке</em>. Переход от статических пользователей к ролям через службу AWS STS (Security Token Service) полностью исключает компрометацию постоянных секретов и является ключевым требованием современной безопасности.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="role-vs-user">1 · Роль против пользователя: почему долгие ключи - технический долг <a class="anchor-link" href="#role-vs-user">#</a></h2>
+    <p>Исторически первой моделью доступа в AWS были IAM-пользователи (IAM Users). Пользователь создается с постоянным именем и статической парой учетных данных: <code>AWS_ACCESS_KEY_ID</code> (начинается с префикса <code>AKIA...</code>) и <code>AWS_SECRET_ACCESS_KEY</code>. Такие ключи не имеют срока давности и действуют годами, пока их не удалят вручную.</p>
+    <p>В реальной инженерной практике статические ключи пользователей неизбежно приводят к инцидентам безопасности: они случайно коммитятся в публичные репозитории Git, оседают в логах CI/CD раннеров, сохраняются в истории bash и жестко зашиваются в Docker-образы. При компрометации статического ключа злоумышленник получает постоянный невидимый доступ к облаку.</p>
+    <p>IAM-роль решает эту проблему архитектурно: у нее физически нет постоянных ключей. Любая сущность (сервер EC2, под в Kubernetes, пайплайн GitHub Actions или живой разработчик), которой требуется доступ, обращается к службе STS и запрашивает временные учетные данные со сроком жизни от 15 минут до 12 часов. По истечении срока действия токен мгновенно становится недействительным, делая утечки бессмысленными для атакующего.</p>
+
+    <h2 id="trust-policy-anatomy">2 · Анатомия Trust Policy: единственный шлюз для принятия роли <a class="anchor-link" href="#trust-policy-anatomy">#</a></h2>
+    <p>Нельзя просто создать роль и объявить, что микросервис будет ее использовать. Единственным шлюзом, разрешающим принятие роли, является доверительная политика (Trust Policy). Это разновидность Resource-based политики, которая встраивается прямо в объект роли под именем <code>AssumeRolePolicyDocument</code>.</p>
+    <p>Команда создания роли в CLI обязательно требует передачи этого документа:</p>
+    <pre><code>aws iam create-role \
+  --role-name ApplicationBackendRole \
+  --assume-role-policy-document file://trust-policy.json</code></pre>
+    <p>Внутри доверительной политики действие (Action) всегда принадлежит семейству вызовов STS (например, <code>sts:AssumeRole</code>), а субъект (Principal) декларирует доверенную сторону:</p>
+    <ul>
+      <li><strong>Сервисы AWS (Service Principal):</strong> <code>"Principal": {"Service": "ec2.amazonaws.com"}</code> или <code>"lambda.amazonaws.com"</code> - разрешает вычислительным сервисам AWS принимать роль от имени вашего аккаунта.</li>
+      <li><strong>Другие аккаунты AWS (Cross-Account Principal):</strong> <code>"Principal": {"AWS": "arn:aws:iam::111122223333:root"}</code> - делегирует возможность принятия роли доверенному аккаунту-партнеру.</li>
+      <li><strong>Внешние OIDC-провайдеры (Federated Principal):</strong> <code>"Principal": {"Federated": "arn:aws:iam::123456789012:oidc-provider/token.actions.githubusercontent.com"}</code> - разрешает обмен токенов OpenID Connect из внешних конвейеров CI/CD.</li>
+    </ul>
+
+    <h2 id="sts-and-tokens">3 · Служба AWS STS: как устроен временный токен <a class="anchor-link" href="#sts-and-tokens">#</a></h2>
+    <p>Центром генерации временного доступа выступает глобальный сервис AWS Security Token Service (STS). Когда клиент выполняет вызов <code>aws sts assume-role</code>, происходит следующий цикл:</p>
+    <ol>
+      <li>STS валидирует подпись входящего запроса и проверяет, что вызывающий субъект явно упомянут в Trust Policy целевой роли.</li>
+      <li>Если доверие подтверждено, STS генерирует и возвращает криптографическую триаду учетных данных:
+        <ul>
+          <li><code>AccessKeyId</code> - идентификатор временного ключа. Все временные ключи, выпущенные через STS, <strong>обязательно начинаются с префикса <code>ASIA...</code></strong> (в отличие от статических пользовательских ключей <code>AKIA...</code>). Префикс <code>ASIA</code> позволяет системам аудита моментально идентифицировать сессионный доступ.</li>
+          <li><code>SecretAccessKey</code> - секретный производный ключ для подписи запросов по алгоритму SigV4.</li>
+          <li><code>SessionToken</code> - длинная строка криптографически подписанного bearer-токена, содержащая метаданные сессии, метку истечения срока (Expiration) и контекст вызывающей стороны.</li>
+        </ul>
+      </li>
+    </ol>
+    <p>При использовании временных ключей передача переменной <code>AWS_SESSION_TOKEN</code> является строго обязательной! Если передать только Access Key и Secret Key с префиксом ASIA без сессионного токена, шлюз AWS немедленно отклонит вызов с ошибкой <code>InvalidClientTokenId</code>.</p>
+
+    <h2 id="instance-profiles">4 · Доставка токенов машинам: Instance Profiles и метаданные IMDSv2 <a class="anchor-link" href="#instance-profiles">#</a></h2>
+    <p>Каким образом виртуальная машина EC2 или контейнер ECS получают ключи без ручной конфигурации файлов <code>~/.aws/credentials</code>? Для этого AWS использует механизм профилей инстансов (Instance Profiles) и локальную службу метаданных (Instance Metadata Service, IMDS).</p>
+    <p>Профиль инстанса - это сущность-мост в IAM, связывающая виртуальную машину EC2 с целевой ролью. Когда инстанс запускается с назначенным профилем, гипервизор запускает локальный link-local веб-сервер по адресу <code>http://169.254.169.254/latest/meta-data/iam/security-credentials/&lt;role-name&gt;</code>.</p>
+    <p><strong>Эволюция от IMDSv1 к IMDSv2:</strong> Первая версия службы метаданных (IMDSv1) позволяла получить временные токены простым HTTP GET-запросом. Это приводило к катастрофическим утечкам: если веб-приложение на сервере содержало уязвимость Server-Side Request Forgery (SSRF), атакующий заставлял сервер сделать GET на <code>169.254.169.254</code> и крал токены роли.</p>
+    <p>Современный промышленный стандарт - IMDSv2. Он требует сессионного взаимодействия: клиент обязан предварительно запросить сессионный токен через HTTP PUT с заголовком <code>X-aws-ec2-metadata-token-ttl-seconds</code>, а затем использовать этот токен в заголовке <code>X-aws-ec2-metadata-token</code>. Пакеты с TTL=1 блокируются маршрутизаторами и не могут покинуть пределы хоста, полностью нейтрализуя атаки через SSRF и открытые прокси.</p>
+    <p>Официальные SDK AWS (boto3, aws-sdk-go, aws-sdk-java) опрашивают IMDS в фоновом режиме, автоматически кэшируют учетные данные и бесшовно обновляют их за несколько минут до истечения срока жизни без перезапуска приложения.</p>
+
+    <h2 id="chaining-and-session-policies">5 · Цепочки ролей (Role Chaining) и передача Session Policy <a class="anchor-link" href="#chaining-and-session-policies">#</a></h2>
+    <p>В сложных мультитенантных архитектурах роли могут выстраиваться в последовательные цепочки: Субъект принимает Роль А, которая затем принимает Роль Б (Role Chaining). При этом инженеры обязаны учитывать два фундаментальных ограничения платформы:</p>
+    <ul>
+      <li><strong>Сброс времени сессии до 1 часа:</strong> Даже если целевая роль настроена на максимальную длительность сессии в 12 часов, при цепочке ролей максимальная продолжительность сессии принудительно ограничивается ровно одним часом.</li>
+      <li><strong>Потеря исходной личности в логах:</strong> В журнале CloudTrail вызовы будут зафиксированы от имени промежуточной роли, скрывая первоначального автора запроса. Для сохранения сквозной прослеживаемости используется атрибут <code>sts:SourceIdentity</code>, передаваемый при первом вызове и запрещенный к перезаписи в последующих шагах цепочки.</li>
+    </ul>
+    <p>Кроме того, при вызове <code>assume-role</code> клиент может передать дополнительную сессионную политику (Session Policy) через флаг <code>--policy</code>. Сессионная политика не может расширить права роли, но позволяет динамически сузить их на время одной операции (например, ограничить права фонового воркера обработкой ровно одного клиентского каталога в S3).</p>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Переход на бесключевую архитектуру на базе ролей и STS - главный признак зрелости облачного инженера. Ваши осязаемые практические результаты:</p>
+      <ol>
+        <li><strong>Бесключевая парадигма:</strong> отказ от статических ключей пользователей (<code>AKIA...</code>) в пользу временных короткоживущих токенов STS (<code>ASIA...</code>).</li>
+        <li><strong>Конструирование Trust Policy:</strong> навык точного описания условий в <code>AssumeRolePolicyDocument</code> для сервисов, мульти-аккаунтов и федеративных провайдеров.</li>
+        <li><strong>Безопасная эксплуатация IMDSv2:</strong> понимание механизма сессионной доставки токенов вычислительным ресурсам и защита от атак SSRF.</li>
+        <li><strong>Управление сессиями и цепочками:</strong> учет лимитов Role Chaining и динамическое сужение привилегий через Session Policies.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="06.html">Раздел 6</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="04.html">Политика на личности и на ресурсе</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
