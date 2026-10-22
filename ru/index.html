@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>AWS IAM: Посадочная страница · devops-aws-iam · ai|</title>
+<title>Практический справочник-ассессмент по AWS IAM для инженера · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Практический справочник-ассессмент по AWS IAM для инженера: от базовой грамматики политик и вычисления Allow/Deny до OIDC-федерации, SCP организаций и 150...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/index.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/index.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/index.html">
@@ -14,15 +14,15 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="AWS IAM: Посадочная страница">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Практический справочник-ассессмент по AWS IAM для инженера">
+<meta property="og:description" content="Практический справочник-ассессмент по AWS IAM для инженера: от базовой грамматики политик и вычисления Allow/Deny до OIDC-федерации, SCP организаций и 150...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/index.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/","inLanguage":"ru","description":"Лид страницы: о чём она и кому нужна."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/","inLanguage":"ru","description":"Практический справочник-ассессмент по AWS IAM для инженера: от базовой грамматики политик и вычисления Allow/Deny до OIDC-федерации, SCP организаций и 150..."}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -92,25 +93,120 @@
   </nav>
 
   <main id="main">
-    <h1>AWS IAM: Посадочная страница</h1>
-    <p class="page-size" data-words="41">Слов: 41</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Практический справочник-ассессмент по AWS IAM для инженера</h1>
+    <p class="page-size" data-words="1993">Слов: 1993</p>
+    <p class="lead">Практический справочник-ассессмент по AWS IAM для инженера: от базовой грамматики политик и вычисления Allow/Deny до OIDC-федерации, SCP организаций и 150 экзаменационных вопросов.</p>
 
     <div class="box key" id="key-idea">
-      <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <h3>Главная мысль сайта <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h3>
+      <p>Большинство инженеров воспринимают <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">AWS IAM (Identity and Access Management)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS IAM</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Глобальный бессерверный сервис контроля доступа, авторизующий каждый входящий API-запрос к инфраструктуре AWS.</span><span class="term-links"><a href="glossary.html#term-iam">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> как досадное препятствие, генератор бесконечных ошибок <code>AccessDenied</code> или набор случайных галочек в веб-консоли AWS. Столкнувшись с отказом доступа при деплое микросервиса или запуске пайплайна, разработчик часто идет по пути наименьшего сопротивления: вешает на роль политику <code>AdministratorAccess</code>, добавляет звездочку <code>"Action": "*"</code> в манифест политики и оставляет небезопасную конфигурацию жить годами. При первом же аудите безопасности или компрометации статического ключа доступа проект оказывается под угрозой полного уничтожения данных и катастрофических счетов за облачную инфраструктуру.</p>
+      <p>Причина этого страха и ошибок - отсутствие ментальной модели рантайма авторизации. AWS IAM - это не разрозненный набор кнопок, а строгая, детерминированная математическая система вычисления решений. Каждый API-запрос к любому сервису AWS превращается в формальный запрос авторизации, состоящий из <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">субъекта (principal)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Субъект авторизации (Principal)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Идентифицированная сущность (пользователь, роль, сервис или аккаунт), совершающая вызов API.</span><span class="term-links"><a href="glossary.html#term-principal">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>, действия (action), целевого ресурса (resource) и контекстных переменных среды. Движок авторизации прогоняет этот запрос через жесткий алгоритм: <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">явный Deny</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Явный запрет (Explicit Deny)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Правило политики с директивой Deny, обладающее безусловным высшим приоритетом в алгоритме вычисления.</span><span class="term-links"><a href="glossary.html#term-explicit-deny">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> побеждает всегда, отсутствие явного Allow означает отказ по умолчанию, а <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">границы разрешений (Permissions Boundaries)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Граница разрешений (Permissions Boundary)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Управляемая политика верхнего уровня, устанавливающая максимальный потолок прав для IAM-сущности.</span><span class="term-links"><a href="glossary.html#term-permissions-boundary">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>, <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">политики организаций (SCP)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Service Control Policy (SCP)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованная политика AWS Organizations, задающая предельные рамки прав для целых учетных записей.</span><span class="term-links"><a href="glossary.html#term-scp">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> и сессионные политики работают как пересечение множеств, отсекая любые лишние права.</p>
+      <p>Этот справочник создан для того, чтобы заменить хаотичный подбор прав ясным инженерным расчетом. Вы научитесь читать и конструировать документы политик как программный код, понимать физическую разницу между Identity-based и Resource-based политиками, настраивать бесключевую аутентификацию через <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">OIDC</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">OpenID Connect Federation (OIDC)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Промышленный стандарт бесключевой криптографической федерации рабочих нагрузок с внешними системами.</span><span class="term-links"><a href="glossary.html#term-oidc">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> для GitHub Actions и Kubernetes без единого долгоживущего секрета и расследовать инциденты отказов доступа по логам <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">AWS CloudTrail</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS CloudTrail</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованный сервис криптографического аудита и журналирования всех API-вызовов в аккаунте.</span><span class="term-links"><a href="glossary.html#term-cloudtrail">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>. Материал структурирован по трем ступеням зрелости: Noob, Pro, IGL. Здесь нет воды и абстрактных пересказов документации - каждая глава дает проверяемые в терминале знания, необходимые для безопасного управления промышленным облаком.</p>
     </div>
+
+    <h2 id="structure">Что на этом сайте есть <a class="anchor-link" href="#structure">#</a></h2>
+    <p>Материал сайта охватывает полный путь инженера по управлению доступом в экосистеме Amazon Web Services: от синтаксических структур первого JSON-документа до построения эшелонированной защиты многоаккаунтных организаций и подготовки к сложным техническим ассессментам. Курс разделен на пятнадцать последовательных тем и сопровождается словарем терминов.</p>
+
+    <h3>Фундамент и модель вычислений (главы 01-03)</h3>
+    <ol>
+      <li><strong><a href="01.html">Кто решает и по какому правилу</a></strong><br>
+      Фундаментальная механика авторизации в облаке: структура входящего запроса (Principal, Action, Resource, Context), жизненный цикл обработки запроса ядром IAM, различие между аутентификацией (Authn) и авторизацией (Authz). Почему политика в AWS - это декларативный JSON-документ, а не процедурный скрипт.</li>
+      <li><strong><a href="02.html">Язык политики JSON</a></strong><br>
+      Анатомия спецификации политик IAM: обязательные элементы <code>Version</code> и <code>Statement</code>, операторы <code>Effect</code>, <code>Action</code>, <code>NotAction</code>, <code>Resource</code>, <code>NotResource</code>, <code>Condition</code> и <code>Principal</code>. Синтаксические правила, строгие типы данных и типичные ошибки парсинга, приводящие к недействительным конфигурациям.</li>
+      <li><strong><a href="03.html">Как вычисляется ответ</a></strong><br>
+      Полный детерминированный алгоритм вычисления вердикта движка авторизации AWS. Безусловный приоритет явного запрета (Explicit Deny) над любыми разрешениями, логика отсутствия совпадений (Default / Implicit Deny) и математика наложения фильтров: пересечение политик учетных записей, SCP и сессионных ограничений.</li>
+    </ol>
+
+    <h3>Архитектура привилегий и субъекты (главы 04-06)</h3>
+    <ol start="4">
+      <li><strong><a href="04.html">Политика на личности и на ресурсе</a></strong><br>
+      Два фундаментальных полюса управления правами: Identity-based политики (Managed и Inline, привязанные к пользователям, группам и ролям) против Resource-based политик (S3 Bucket Policy, KMS Key Policy, SQS Policy). Правила объединения прав внутри одного аккаунта и критические отличия при меж-аккаунтном доступе (cross-account).</li>
+      <li><strong><a href="05.html">Роли и доверие</a></strong><br>
+      Анатомия IAM-ролей и служба AWS STS (Security Token Service). Доверительные политики (Trust Policy / AssumeRolePolicyDocument) как единственный шлюз для принятия роли. Временные учетные данные (AccessKeyId, SecretAccessKey, SessionToken), срок их жизни и инстанс-профили для сервисов compute (EC2, ECS, Lambda).</li>
+      <li><strong><a href="06.html">Границы разрешений</a></strong><br>
+      Механизмы сужения максимальных полномочий: Permissions Boundaries для делегирования создания ролей разработчикам без риска эскалации привилегий, Service Control Policies (SCP) на уровне AWS Organizations и Session Policies при вызове STS. Почему объединение этих уровней - это логическое И, а не ИЛИ.</li>
+    </ol>
+
+    <h3>Контекст, безопасность и диагностика (главы 07-09)</h3>
+    <ol start="7">
+      <li><strong><a href="07.html">Условия и контекстные ключи</a></strong><br>
+      Глубокая грануляризация доступа через блок <code>Condition</code>: операторы проверки строк, чисел, дат, IP-адресов и булевых значений. Глобальные контекстные ключи (<code>aws:PrincipalArn</code>, <code>aws:PrincipalOrgID</code>, <code>aws:SecureTransport</code>, <code>aws:SourceIp</code>, <code>aws:CurrentTime</code>) и динамические подстановки переменных политики.</li>
+      <li><strong><a href="08.html">Ключи, федерация и машины</a></strong><br>
+      Эволюция доступа рабочих нагрузок: почему статические долгоживущие ключи IAM-пользователей являются техническим долгом и риском безопасности. Федерация через SAML 2.0 и OpenID Connect (OIDC), аутентификация подов Kubernetes (IRSA и Pod Identity), бесключевой доступ из GitHub Actions и использование IAM Roles Anywhere для on-premises серверов.</li>
+      <li><strong><a href="09.html">Почему доступ запрещён</a></strong><br>
+      Инженерная методология расследования отказов в доступе. Анализ закодированных сообщений об ошибках через <code>aws sts decode-authorization-message</code>, трассировка событий в AWS CloudTrail, валидация гипотез через IAM Policy Simulator и выявление неиспользуемых прав с помощью IAM Access Analyzer.</li>
+    </ol>
+
+    <h3>Практические сценарии и банки вопросов (главы 10-15)</h3>
+    <ol start="10">
+      <li><strong>Боевые сценарии по уровням зрелости:</strong><br>
+      Каждая практическая глава содержит 7 выверенных на практике сценариев конфигураций в строгой триаде «Задача - Код - Почему так»:<br>
+      <a href="10.html">10 · Примеры · Noob</a> - базовый фундамент инженера: чтение из одного конкретного S3-бакета без утечек, изолированные домашние папки пользователей через <code>${aws:username}</code>, принудительный TLS/HTTPS в Bucket Policy, блокировка критических действий без MFA, безопасный read-only аудит биллинга, региональное ограничение <code>aws:RequestedRegion</code> и профиль самообслуживания для смены пароля и MFA.<br>
+      <a href="11.html">11 · Примеры · Pro</a> - командный продакшн и бесключевая автоматизация: OIDC-аутентификация для GitHub Actions без долгоживущих секретов, Permissions Boundary для безопасного создания ролей в CI/CD, KMS Key Policy для шифрования EBS в Auto Scaling, IRSA для подов Kubernetes с доступом к SQS, кросс-аккаунтный S3 с принудительным <code>BucketOwnerEnforced</code>, защита корпоративного IP-периметра с учетом <code>aws:ViaAWSService</code> и безопасная связка Lambda + Secrets Manager + KMS.<br>
+      <a href="12.html">12 · Примеры · IGL</a> - уровень системного архитектора и платформы: глобальный геоблокинг регионов через SCP с белым списком <code>NotAction</code>, абсолютная защита неизменяемости CloudTrail и логов аудита, сетевой защитный периметр через VPC Endpoint и <code>aws:sourceVpc</code>, организационный барьер <code>aws:PrincipalOrgID</code>, архитектура аварийной Break-Glass роли с алертами через EventBridge/SNS, бессерверная X.509 PKI-аутентификация через IAM Roles Anywhere и непрерывный мониторинг внешнего доступа с IAM Access Analyzer.</li>
+      <li><strong>Банки квалификационных вопросов (150 вопросов с глубоким инженерным разбором):</strong><br>
+      Три фундаментальных банка вопросов по 50 вопросов в каждом, сгруппированных по 5 логическим блокам с обоснованием «Зачем спрашивают»:<br>
+      <a href="13.html">13 · Вопросы · Noob</a> - 50 базовых вопросов: синтаксис JSON и обязательные элементы (1-10), субъекты, роли, пользователи и группы (11-20), пространства имен действий сервисов (21-30), явный и неявный отказ (31-40), аутентификация, MFA и гигиена учетных записей (41-50).<br>
+      <a href="14.html">14 · Вопросы · Pro</a> - 50 вопросов Middle+/Senior уровня: кросс-аккаунтное доверие и рукопожатие прав (1-10), операторы условий Condition и глобальные контекстные ключи (11-20), специфика Key Policy в KMS и гранты (21-30), бесключевой OIDC и контейнеры IRSA в EKS (31-40), делегирование прав и Permissions Boundaries (41-50).<br>
+      <a href="15.html">15 · Вопросы · IGL</a> - 50 вопросов уровня Lead/Principal: Service Control Policies в Organizations (1-10), защитный периметр данных Data Perimeter и изоляция сетей (11-20), моделирование векторов атак и эскалация привилегий (21-30), гибридная архитектура и IAM Roles Anywhere (31-40), непрерывный аудит Access Analyzer и протокол Break-Glass (41-50).</li>
+      <li><strong>Сквозные инженерные инструменты курса:</strong><br>
+      <a href="navigator.html">Инженерный навигатор</a> - синтез предметной области через 9 канонических линз: Компоненты, Код, Сила, Слабости, Экосистема, В контексте AI, В контексте облака, DevOps-практики и SRE-практики со сквозными ссылками на главы курса.<br>
+      <a href="glossary.html">Словарь понятий</a> - 30 фундаментальных терминов и механизмов AWS IAM (от Policy Engine и STS до Data Perimeter и Automated Reasoning) с объяснением физики рантайма и последствий ошибок в продакшне.</li>
+    </ol>
+
+    <h2 id="levels">Три уровня зрелости, и зачем они разделены <a class="anchor-link" href="#levels">#</a></h2>
+    <p>В индустрии облачной разработки ценность инженера измеряется не скоростью нажатия кнопок в веб-консоли AWS, а глубиной понимания модели безопасности и системных рисков. Одну и ту же типовую задачу по разграничению доступа можно решить диаметрально противоположными способами в зависимости от квалификации:</p>
+    <ul>
+      <li><strong>Noob (Начинающий)</strong> - инженер решает сиюминутную задачу изоляции отдельного скрипта или контейнера. Фокус: преодолеть страх перед ошибками <code>AccessDenied</code>, освоить грамматику JSON, отказаться от прав администратора и научиться описывать точные действия для конкретного ресурса.</li>
+      <li><strong>Pro (Профессионал)</strong> - инженер проектирует надежную инфраструктуру для продуктовой команды. Фокус: полное исключение статических учетных данных, переход на временные токены через STS и OIDC, защита KMS-ключей, настройка строгих условий по сетевым атрибутам и автоматизация выдачи прав через Infrastructure as Code (Terraform, CloudFormation).</li>
+      <li><strong>IGL (In-Game Leader / внутриигровой лидер)</strong> - системный архитектор облачной платформы, который видит всю карту рисков организации, задает корпоративные стандарты безопасности и отвечает за надежность и комплаенс всего бизнеса. Инженерия и архитектура - это командная игра: IGL разрабатывает политики верхнего уровня (SCP), предотвращает возможность эскалации привилегий через Permissions Boundaries, внедряет автоматический поиск аномалий и гарантирует, что даже при взломе отдельного микросервиса злоумышленник не покинет изолированный периметр.</li>
+    </ul>
+
+    <div class="box">
+      <h3>Практический пример: как меняется ответ с ростом уровня</h3>
+      <p>Вопрос с технического ассессмента: <em>«Как предоставить микросервису в Kubernetes (EKS) или пайплайну в GitHub Actions доступ к приватному S3-бакету в AWS?»</em></p>
+      <p><strong>Ответ уровня Noob:</strong> «Создаем IAM-пользователя в консоли AWS, прикрепляем к нему готовую политику <code>AmazonS3FullAccess</code>, генерируем пару ключей <code>AWS_ACCESS_KEY_ID</code> и <code>AWS_SECRET_ACCESS_KEY</code> и прописываем их в секреты репозитория GitHub или Secret в Kubernetes, передавая через переменные окружения в под».</p>
+      <p><strong>Ответ уровня Pro:</strong> «Генерация статических ключей - критическая уязвимость. Для GitHub Actions и EKS используется бесключевая федерация по протоколу OIDC. В AWS IAM регистрируется Identity Provider (OIDC URL провайдера). Создается IAM-роль с доверительной политикой Trust Policy, ограничивающей вызов <code>sts:AssumeRoleWithWebIdentity</code> строгими условиями: по аудитории (<code>aud: sts.amazonaws.com</code>) и subject-claim (<code>sub: repo:org/repo:ref:refs/heads/main</code> для GitHub или ServiceAccount namespace/name для EKS). К роли прикрепляется минимальная inline-политика, разрешающая строго необходимые действия (например, <code>s3:GetObject</code> и <code>s3:PutObject</code>) только для ARN нужного префикса бакета. Раннер получает временные короткоживущие токены STS на лету без хранения секретов».</p>
+      <p><strong>Ответ уровня IGL:</strong> «Архитектор проектирует доступ как многоуровневую эшелонированную систему контроля (Defense in Depth). 1) Аутентификация: бесключевая OIDC-федерация с жесткой валидацией subject-claim и контролем времени жизни токена. 2) Ограничение полномочий роли: на роль накладывается Permissions Boundary, исключающая возможность эскалации прав через IAM API. 3) Контроль на уровне организации: Service Control Policy (SCP) в корне аккаунта гарантирует, что бакет не может быть сделан публичным или удален, а также запрещает любые действия без TLS-шифрования. 4) Защита на стороне ресурса: S3 Bucket Policy содержит явный запрет (Deny) для любых запросов без <code>aws:SecureTransport: true</code>, а также ограничивает доступ условием <code>aws:PrincipalOrgID</code>, блокируя утечки даже при компрометации внешних политик. 5) Наблюдаемость: включен CloudTrail Data Events для аудита доступа к объектам, а IAM Access Analyzer непрерывно проверяет отсутствие непреднамеренного публичного или кросс-аккаунтного доступа».</p>
+    </div>
+
+    <h2 id="features">Особенности и возможности этого сайта <a class="anchor-link" href="#features">#</a></h2>
+    <p>Сайт спроектирован по канонам Простой Веб-Архитектуры (Simple Web Architecture): он обеспечивает молниеносную скорость работы, не требует сторонних сервисов и полностью автономен.</p>
+    <ul>
+      <li><strong>Мгновенный локальный поиск</strong> - строка поиска в шапке моментально находит сервисы, действия, операторы условий и квалификационные вопросы без обращения к серверу. Индекс подгружается только при вводе запроса.</li>
+      <li><strong>Контекстные всплывающие термины</strong> - ключевые концепции архитектуры IAM снабжены пунктирным подчеркиванием. Клик по термину показывает точное определение и ссылку в словарь без потери места чтения.</li>
+      <li><strong>Поддержка четырех языков</strong> - архитектура страниц рассчитана на синхронное чтение на русском, английском, украинском и немецком языках с сохранением текущего раздела.</li>
+      <li><strong>Адаптивная эргономика интерфейса</strong> - светлая и темная темы оформления, три градации размера шрифта с сохранением предпочтений в локальном хранилище браузера.</li>
+      <li><strong>Копирование проверенных конфигураций</strong> - все примеры JSON-политик и CLI-команд снабжены кнопками копирования в буфер обмена с мгновенным подтверждением.</li>
+      <li><strong>Машинное доказательство каждого утверждения</strong> - все факты о синтаксисе политик и поведении IAM, опубликованные в курсе, верифицируются автоматизированными тестами через модель CLI и синтаксические парсеры.</li>
+      <li><strong>Полная автономность</strong> - сайт функционирует без единого внешнего CDN или бэкенда и открывается прямо из файловой системы по протоколу <code>file://</code>.</li>
+    </ul>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Время, затраченное на освоение архитектуры авторизации, возвращается надежностью ваших систем, успешным прохождением аудитов безопасности и уверенностью на архитектурных интервью. Изучив этот справочник, вы получаете четыре осязаемых практических результата:</p>
+      <ol>
+        <li><strong>Точная ментальная модель авторизации:</strong> понимание пошагового алгоритма вычисления прав ядром AWS IAM, позволяющее моментально определить причину любого <code>AccessDenied</code> без гаданий.</li>
+        <li><strong>Навык бесключевой архитектуры:</strong> способность проектировать контуры аутентификации микросервисов и CI/CD пайплайнов на базе OIDC и STS, полностью исключающие компрометацию статических ключей.</li>
+        <li><strong>Эшелонированная защита облака:</strong> владение связкой из Identity-based политик, Resource-based политик, Permissions Boundaries и Service Control Policies (SCP) для защиты корпоративной инфраструктуры от взлома и человеческих ошибок.</li>
+        <li><strong>Готовность к квалификационным ассессментам:</strong> проработанные ответы на 150 глубоких технических вопросов от базового синтаксиса до архитектуры безопасности enterprise-уровня.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="01.html">Кто решает и по какому правилу</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>

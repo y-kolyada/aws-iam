@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 2 · devops-aws-iam · ai|</title>
+<title>Язык политики JSON · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Спецификация грамматики AWS IAM: анатомия элементов Version, Statement, Effect, Action, Resource, Condition, Principal, строгие типы данных и типичные...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/02.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/02.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/02.html">
@@ -14,15 +14,15 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 2">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Язык политики JSON">
+<meta property="og:description" content="Спецификация грамматики AWS IAM: анатомия элементов Version, Statement, Effect, Action, Resource, Condition, Principal, строгие типы данных и типичные...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/02.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 2","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/02.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Язык политики JSON","description":"Спецификация грамматики AWS IAM: анатомия элементов Version, Statement, Effect, Action, Resource, Condition, Principal, строгие типы данных и типичные...","url":"https://y-kolyada.github.io/aws-iam/ru/02.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/02.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="02.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="02.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/02.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/02.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html" aria-current="page"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -92,28 +93,92 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 2</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Язык политики JSON</h1>
+    <p class="page-size" data-words="992">Слов: 992</p>
+    <p class="lead">Спецификация грамматики AWS IAM: анатомия элементов Version, Statement, Effect, Action, Resource, Condition, Principal, строгие типы данных и типичные синтаксические ошибки.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Политика AWS IAM представляет собой строго типизированный документ в формате JSON, подчиняющийся формальной спецификации грамматики AWS. Каждое имя ключа, регистр символов и вложенность структуры имеют однозначный смысл. Ошибка в значении версии, попытка вставить комментарий через двойной слэш или случайное добавление блока <code>Principal</code> в политику пользователя делают документ невалидным и отклоняются компилятором IAM.</p>
+      <p>Освоение языка политик требует отказа от восприятия JSON как «просто словаря с произвольными полями». В IAM каждый элемент документа выполняет строгую семантическую функцию: <code>Version</code> определяет диалект парсера, <code>Statement</code> формирует массив предикатов, а связка <code>Effect</code>, <code>Action</code>, <code>Resource</code> и <code>Condition</code> задает логику вычисления доступа.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="grammar-overview">1 · Анатомия корневых элементов JSON-политики (Policy Grammar): Version, Id, Statement <a class="anchor-link" href="#grammar-overview">#</a></h2>
+    <p>На верхнем уровне <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">документ политики IAM (Policy Document)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">JSON-документ политики</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Декларативная спецификация правил разграничения прав доступа в формате JSON со спецификацией Version 2012-10-17.</span><span class="term-links"><a href="glossary.html#term-policy-document">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> является объектом JSON, содержащим до трех ключей:</p>
+    <ul>
+      <li><strong>Version (Обязательный стандарт)</strong> - строковый литерал, указывающий версию языка политик. Сегодня существует единственный актуальный стандарт: <code>"Version": "2012-10-17"</code>. Если этот ключ опущен или указана устаревшая версия <code>"2008-10-17"</code>, парсер AWS отключает поддержку динамических переменных политик (таких как <code>${aws:username}</code> или <code>${aws:PrincipalTag/Team}</code>) и строгую валидацию типов. Распространенная ошибка новичков - указывать в поле Version сегодняшнюю дату: такой документ вызовет ошибку валидации схемы.</li>
+      <li><strong>Id (Опциональный идентификатор)</strong> - строка произвольного формата, служащая для уникальной идентификации всего документа политики. Обычно используется в политиках ресурсов (например, S3 Bucket Policy) или генерируется автоматически в виде GUID.</li>
+      <li><strong>Statement (Обязательный массив утверждений)</strong> - основной контейнер документа, содержащий одно или несколько индивидуальных утверждений. Хотя спецификация AWS допускает указание единственного объекта вместо массива, лучшей инженерной практикой является всегда использовать массив <code>"Statement": [ ... ]</code>, что исключает ошибки при программном добавлении новых правил в коде Terraform или CloudFormation.</li>
+    </ul>
+
+    <h2 id="statement-core">2 · Ядро оператора: Sid, Effect, Action, NotAction <a class="anchor-link" href="#statement-core">#</a></h2>
+    <p>Каждый элемент массива <code>Statement</code> описывает одно атомарное правило авторизации. Внутри блока Statement действуют следующие ключевые поля:</p>
+    <ul>
+      <li><strong>Sid (Statement ID)</strong> - опциональный строковый идентификатор утверждения, состоящий из букв и цифр (без спецсимволов и пробелов). Служит для читаемости и документирования: поскольку в стандартном JSON запрещены комментарии, понятный <code>Sid</code> (например, <code>"AllowListAllBuckets"</code> или <code>"DenyUnencryptedTraffic"</code>) объясняет назначение блока коллегам и автоматизированным аудиторам.</li>
+      <li><strong>Effect (Эффект)</strong> - обязательное поле, принимающее строго одно из двух значений: <code>"Allow"</code> или <code>"Deny"</code>. Значения чувствительны к регистру. Никаких промежуточных статусов (вроде "Warn" или "Audit") в грамматике IAM не существует.</li>
+      <li><strong><span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Action (Действия)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Действие сервиса (Action)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Именованная операция API конкретной службы AWS, адрес которой передается в политику.</span><span class="term-links"><a href="glossary.html#term-action">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span></strong> - строка или массив строк с названиями разрешаемых или запрещаемых API-операций. Допускается использование подстановочного знака звездочки <code>*</code> (например, <code>"s3:Get*"</code> охватывает <code>s3:GetObject</code>, <code>s3:GetObjectAcl</code>, <code>s3:GetObjectTagging</code>).</li>
+      <li><strong>NotAction (Исключающие действия)</strong> - инверсия списка действий. Утверждение сопоставляется со всеми действиями сервиса, кроме перечисленных в <code>NotAction</code>. <strong>Критическая ловушка:</strong> связка <code>"Effect": "Allow"</code> и <code>"NotAction": "iam:*"</code> НЕ запрещает доступ к IAM! Она разрешает все действия во всех сервисах AWS, кроме IAM, превращая субъект в опасного суперпользователя. Использовать <code>NotAction</code> безопасно только в комбинации с <code>"Effect": "Deny"</code>.</li>
+    </ul>
+
+    <h2 id="resource-and-principal">3 · Определение целей: Resource, NotResource и Principal <a class="anchor-link" href="#resource-and-principal">#</a></h2>
+    <p>Следующая пара элементов определяет, к чему применяется правило и кто является действующим лицом:</p>
+    <p><strong>Resource и NotResource:</strong> Указывают целевые ресурсы в формате <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Amazon Resource Name (ARN)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Amazon Resource Name (ARN)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Уникальный глобальный идентификатор любого целевого объекта в облаке AWS.</span><span class="term-links"><a href="glossary.html#term-resource">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>. Поле обязательно почти во всех политиках личности. Если действие по своей природе не имеет гранулярного ресурса на стороне API (например, <code>iam:ListUsers</code> или <code>ec2:DescribeInstances</code>), в поле Resource указывается звездочка <code>"Resource": "*"</code>. Использование <code>NotResource</code> сопоставляет правило со всеми ресурсами, кроме указанных, и требует максимальной осторожности.</p>
+    <p><strong><span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Principal (Субъект)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Субъект авторизации (Principal)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Идентифицированная сущность (пользователь, роль, сервис или аккаунт), совершающая вызов API.</span><span class="term-links"><a href="glossary.html#term-principal">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>:</strong> Определяет, кому предоставляется или запрещается доступ. Спецификация IAM формулирует жесткое железное правило:</p>
+    <div class="box">
+      <p><strong>Закон элемента Principal:</strong> Элемент <code>Principal</code> ОБЯЗАТЕЛЕН в политиках ресурсов (Resource-based policies: S3 Bucket Policy, KMS Key Policy, Trust Policy для принятия роли) и СТРОГО ЗАПРЕЩЕН в политиках личности (Identity-based policies: управляемые и встраиваемые политики, прикрепляемые к IAM-пользователям, группам и ролям).</p>
+      <p>Причина тривиальна: в политике личности субъект уже определен самим фактом прикрепления документа к пользователю или роли. Попытка вставить блок <code>"Principal"</code> в identity-based политику приводит к ошибке <code>MalformedPolicyDocument</code>.</p>
+    </div>
+
+    <h2 id="condition-block">4 · Блок Condition: тонкая фильтрация и контекстные ключи <a class="anchor-link" href="#condition-block">#</a></h2>
+    <p>Блок <code>Condition</code> (Условие) - самый мощный инструмент точного разграничения прав. Он активирует правило только тогда, когда контекст запроса удовлетворяет набору логических операторов. Структура блока имеет трехуровневую вложенность:</p>
+    <pre><code>"Condition": {
+  "ConditionOperator": {
+    "ConditionKey": "ConditionValue"
+  }
+}</code></pre>
+    <p>Операторы условий делятся на категории по типам сравниваемых данных:</p>
+    <ul>
+      <li><strong>Строковые (StringEquals, StringNotEquals, StringLike):</strong> точное сравнение или сопоставление по маске (например, ограничение ветки репозитория при OIDC-федерации: <code>"StringLike": {"token.actions.githubusercontent.com:sub": "repo:org/app:*"}</code>).</li>
+      <li><strong>Числовые (NumericLessThan, NumericGreaterThanEquals):</strong> проверка числовых параметров.</li>
+      <li><strong>Сетевые (IpAddress, NotIpAddress):</strong> сопоставление IP-адреса клиента в нотации CIDR (например, <code>"IpAddress": {"aws:SourceIp": "198.51.100.0/24"}</code>).</li>
+      <li><strong>Булевые (Bool):</strong> проверка булевых флагов контекста, например требование SSL-шифрования <code>"Bool": {"aws:SecureTransport": "true"}</code>.</li>
+      <li><strong>Модификаторы IfExists:</strong> добавление суффикса <code>IfExists</code> (например, <code>StringEqualsIfExists</code>) означает: если ключ контекста присутствует в запросе, он обязан совпасть со значением; если ключ отсутствует, условие считается выполненным.</li>
+    </ul>
+
+    <h2 id="data-types-and-linting">5 · Типизация данных, экранирование и инструменты статической проверки <a class="anchor-link" href="#data-types-and-linting">#</a></h2>
+    <p>Парсер AWS IAM предъявляет бескомпромиссные требования к типам данных JSON:</p>
+    <ol>
+      <li><strong>Обязательные кавычки:</strong> Все имена ключей и строковые значения обязаны быть заключены в двойные кавычки. Использование одинарных кавычек делает JSON недействительным.</li>
+      <li><strong>Значения условий:</strong> Значение ключа в блоке <code>Condition</code> всегда передается как строка (в двойных кавычках) или массив строк, даже если оператор является числовым или булевым: <code>"NumericLessThan": {"s3:max-keys": "10"}</code>, <code>"Bool": {"aws:SecureTransport": "true"}</code>. Передача булевого литерала <code>true</code> без кавычек в блоке Bool вызывает ошибку парсинга.</li>
+      <li><strong>Валидация перед публикацией:</strong> Проверка корректности синтаксиса выполняется стандартной утилитой <code>python3 -m json.tool policy.json</code>, а семантическая проверка на уровне правил AWS - с помощью команды CLI <code>aws accessanalyzer validate-policy --policy-document file://policy.json</code>.</li>
+    </ol>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Изучив грамматику JSON-политик, вы овладели точным техническим языком, на котором общаются все компоненты защиты AWS. Ваши практические артефакты после этой темы:</p>
+      <ol>
+        <li><strong>Знание стандарта спецификации:</strong> безусловное использование версии <code>"2012-10-17"</code> для поддержки переменных и строгой типизации.</li>
+        <li><strong>Защита от синтаксических ловушек:</strong> понимание опасности связки <code>NotAction</code> с <code>Allow</code> и безошибочное применение <code>Principal</code> только в ресурсных политиках.</li>
+        <li><strong>Уверенное конструирование блоков Condition:</strong> навык описания контекстных проверок IP-адресов, TLS и атрибутов сессии.</li>
+        <li><strong>Инструментарий валидации:</strong> интеграция статического анализа JSON и валидатора Access Analyzer в конвейеры сборки.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="03.html">Как вычисляется ответ</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="01.html">Кто решает и по какому правилу</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>

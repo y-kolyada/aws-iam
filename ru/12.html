@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 12 · devops-aws-iam · ai|</title>
+<title>Примеры · IGL · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Семь архитектурных корпоративных сценариев IAM: геофенсинг в SCP, неизменяемость CloudTrail, изоляция VPC Endpoints, aws:PrincipalOrgID, Break-Glass роль и...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/12.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/12.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/12.html">
@@ -14,15 +14,15 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 12">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Примеры · IGL">
+<meta property="og:description" content="Семь архитектурных корпоративных сценариев IAM: геофенсинг в SCP, неизменяемость CloudTrail, изоляция VPC Endpoints, aws:PrincipalOrgID, Break-Glass роль и...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/12.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 12","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/12.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Примеры · IGL","description":"Семь архитектурных корпоративных сценариев IAM: геофенсинг в SCP, неизменяемость CloudTrail, изоляция VPC Endpoints, aws:PrincipalOrgID, Break-Glass роль и...","url":"https://y-kolyada.github.io/aws-iam/ru/12.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/12.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="12.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="12.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/12.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/12.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html" aria-current="page"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -92,28 +93,208 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 12</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Примеры · IGL</h1>
+    <p class="page-size" data-words="949">Слов: 949</p>
+    <p class="lead">Семь архитектурных корпоративных сценариев IAM: геофенсинг в SCP, неизменяемость CloudTrail, изоляция VPC Endpoints, aws:PrincipalOrgID, Break-Glass роль и Roles Anywhere.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>На уровне In-Game Leader (IGL) инженер видит все цифровое пространство компании целиком: мульти-аккаунтную топологию AWS Organizations, корпоративный комплаенс, эшелонированную защиту сетевого периметра и протоколы действий в чрезвычайных ситуациях. На этом уровне решения принимаются не для одного приложения, а для сотен учетных записей и тысяч микросервисов.</p>
+      <p>В этой главе собраны семь комплексных архитектурных сценариев enterprise-масштаба. Каждый сценарий раскрывает триаду: формулировка системного риска, готовый боевой артефакт конфигурации и глубокий анализ архитектурных последствий в блоке «Почему так». Архитектура IGL формирует непреодолимые защитные барьеры (Guardrails), которые физически невозможно обойти даже локальным администраторам аккаунтов, создавая математически доказуемую модель безопасности предприятия.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="scp-region-geofencing">1 · Геофенсинг регионов: Service Control Policy для запрета неразрешенных дата-центров <a class="anchor-link" href="#scp-region-geofencing">#</a></h2>
+    <p><strong>Задача:</strong> Заблокировать создание любых инфраструктурных ресурсов во всех регионах мира, кроме Франкфурта (<code>eu-central-1</code>) и Ирландии (<code>eu-west-1</code>), на уровне всей организации AWS Organizations, сохранив работоспособность глобальных служб управления.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "EnforceEuropeanRegionGeofencing",
+      "Effect": "Deny",
+      "NotAction": [
+        "iam:*",
+        "organizations:*",
+        "route53:*",
+        "budgets:*",
+        "support:*",
+        "cloudfront:*",
+        "wafv2:*"
+      ],
+      "Resource": "*",
+      "Condition": {
+        "StringNotEquals": {
+          "aws:RequestedRegion": [
+            "eu-central-1",
+            "eu-west-1"
+          ]
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Директива <code>NotAction</code> критически важна: глобальные сервисы AWS (IAM, Route53, CloudFront) физически маршрутизируют API-вызовы через регион Северной Вирджинии (<code>us-east-1</code>). Если запретить все регионы без исключений в NotAction, сотрудники потеряют возможность аутентифицироваться в консоли, а DNS-маршрутизация перестанет обновляться. Сервисные политики SCP выступают фильтрационным конвертом максимальных прав, отсекая любые действия вне доверенной юрисдикции.</div>
+
+    <h2 id="scp-audit-immutability">2 · Корпоративная защита аудита: неизменяемость CloudTrail даже для Root-пользователя <a class="anchor-link" href="#scp-audit-immutability">#</a></h2>
+    <p><strong>Задача:</strong> Гарантировать, что ни один администратор и ни один скомпрометированный корневой пользователь (Root User) в дочерних аккаунтах не сможет остановить логирование CloudTrail, удалить журнал событий или стереть бакет с аудиторскими записями.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "ProtectSecurityAuditInfrastructure",
+      "Effect": "Deny",
+      "Action": [
+        "cloudtrail:DeleteTrail",
+        "cloudtrail:StopLogging",
+        "cloudtrail:UpdateTrail",
+        "guardduty:DeleteDetector",
+        "guardduty:DisassociateFromMasterAccount",
+        "securityhub:DisableSecurityHub",
+        "s3:DeleteBucket"
+      ],
+      "Resource": "*"
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Сервисные политики SCP в AWS Organizations обладают абсолютной юрисдикцией: они ограничивают даже локального Root-пользователя аккаунта. При попытке злоумышленника замести следы атаки удалением трейла, шлюз AWS заблокирует запрос на уровне организации, сохраняя доказательную базу для расследования инцидента.</div>
+
+    <h2 id="vpc-endpoint-perimeter">3 · Изоляция периметра данных: Bucket Policy с привязкой строго к целевому VPC <a class="anchor-link" href="#vpc-endpoint-perimeter">#</a></h2>
+    <p><strong>Задача:</strong> Защитить критический бакет банковской тайны <code>core-banking-records</code>, сделав его физически недоступным из публичного интернета и разрешив запросы строго через приватный шлюз виртуальной сети <code>vpc-0123456789abcdef0</code>.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "StrictVPCNetworkPerimeterIsolation",
+      "Effect": "Deny",
+      "Principal": "*",
+      "Action": "s3:*",
+      "Resource": [
+        "arn:aws:s3:::core-banking-records",
+        "arn:aws:s3:::core-banking-records/*"
+      ],
+      "Condition": {
+        "StringNotEquals": {
+          "aws:sourceVpc": "vpc-0123456789abcdef0"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Условие <code>aws:sourceVpc</code> проверяет идентификатор VPC, из которого трафик прошел через VPC Gateway Endpoint. Любые запросы, пришедшие из публичного интернета, других сетей или даже правильных аккаунтов, но вне пределов этой приватной сети, блокируются безусловным Deny. Это формирует физический <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">периметр защиты данных (Data Perimeter)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Периметр данных (Data Perimeter)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Эшелонированный комплекс превентивных барьеров, исключающий утечку данных за пределы корпорации.</span><span class="term-links"><a href="glossary.html#term-data-perimeter">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>: даже в случае утечки легитимных IAM-ключей доступа злоумышленник не сможет скачать данные из внешнего интернета.</div>
+
+    <h2 id="principal-orgid-boundary">4 · Корпоративный периметр: фильтрация доступа ко всем бакетам через aws:PrincipalOrgID <a class="anchor-link" href="#principal-orgid-boundary">#</a></h2>
+    <p><strong>Задача:</strong> Настроить политику общего репозитория Docker-образов или артефактов S3, разрешив доступ субъектам из всех существующих и будущих аккаунтов корпорации без ручного ведения списков 12-значных Account ID.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowAccessFromEntireOrganization",
+      "Effect": "Allow",
+      "Principal": "*",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::corporate-shared-binaries",
+        "arn:aws:s3:::corporate-shared-binaries/*"
+      ],
+      "Condition": {
+        "StringEquals": {
+          "aws:PrincipalOrgID": "o-a1b2c3d4e5"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Глобальный контекстный ключ <code>aws:PrincipalOrgID</code> динамически сверяет идентификатор организации вызывающего субъекта. Когда компания добавляет 50 новых продуктовых аккаунтов в свою организацию <code>o-a1b2c3d4e5</code>, все их роли автоматически получают доступ без внесения единой строчки правок в политику ресурса.</div>
+
+    <h2 id="break-glass-emergency-role">5 · Проектирование аварийной Break-Glass роли с автоматической тревогой <a class="anchor-link" href="#break-glass-emergency-role">#</a></h2>
+    <p><strong>Задача:</strong> Спроектировать <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">механизм аварийного доступа (Break-Glass роль)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Аварийный протокол Break-Glass</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Изолированная резервная роль для чрезвычайных ситуаций в обход внешнего IdP.</span><span class="term-links"><a href="glossary.html#term-break-glass">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> на случай глобального падения внешнего провайдера SSO (Okta/Entra ID), гарантируя, что любое принятие роли мгновенно создает критический инцидент в Security Operations Center.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "BreakGlassTrustWithMFA",
+      "Effect": "Allow",
+      "Principal": {
+        "AWS": "arn:aws:iam::123456789012:root"
+      },
+      "Action": "sts:AssumeRole",
+      "Condition": {
+        "Bool": {
+          "aws:MultiFactorAuthPresent": "true"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> Роль аварийного доступа отвязана от сторонних SaaS IDP и требует прямого аппаратного MFA. Правило Amazon EventBridge отслеживает вызов <code>AssumeRole</code> по имени роли в журналах CloudTrail и немедленно публикует уведомление наивысшего приоритета в корпоративный PagerDuty дежурного архитектора. Это удовлетворяет строгим требованиям стандартов комплаенса SOC 2 и ISO 27001 по контролю привилегированного доступа.</div>
+
+    <h2 id="roles-anywhere-hybrid-pki">6 · Бесключевой доступ для локального ЦОД: интеграция через IAM Roles Anywhere <a class="anchor-link" href="#roles-anywhere-hybrid-pki">#</a></h2>
+    <p><strong>Задача:</strong> Предоставить серверам баз данных, работающим на физическом железе в корпоративном ЦОД, возможность заливать резервные копии в S3 без использования постоянных ключей AKIA, опираясь на внутренний корпоративный центр сертификации X.509.</p>
+    <pre><code>{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowRolesAnywhereAssumeWithCert",
+      "Effect": "Allow",
+      "Principal": {
+        "Service": "rolesanywhere.amazonaws.com"
+      },
+      "Action": [
+        "sts:AssumeRole",
+        "sts:SetSourceIdentity",
+        "sts:TagSession"
+      ],
+      "Condition": {
+        "ArnEquals": {
+          "aws:PrincipalArn": "arn:aws:rolesanywhere:eu-central-1:123456789012:trust-anchor/12345678-1234-1234-1234-123456789abc"
+        }
+      }
+    }
+  ]
+}</code></pre>
+    <div class="prints"><strong>Почему так:</strong> На локальном сервере утилита <code>aws_signing_helper</code> подписывает запрос на получение токенов закрытым ключом сертификата, выданного корпоративным PKI. Служба IAM Roles Anywhere проверяет валидность цепочки сертификата и выдает временные сессионные учетные данные STS ровно на время создания бэкапа.</div>
+
+    <h2 id="access-analyzer-drift-audit">7 · Непрерывный аудит внешнего доступа и автоматический отлов дрифта прав <a class="anchor-link" href="#access-analyzer-drift-audit">#</a></h2>
+    <p><strong>Задача:</strong> Развернуть непрерывный автоматизированный аудит всей организации через AWS IAM Access Analyzer для выявления ресурсов, непреднамеренно открытых внешним аккаунтам или всему миру.</p>
+    <pre><code># Создание анализатора уровня организации через AWS CLI
+aws accessanalyzer create-analyzer \
+  --analyzer-name EnterpriseAccessBoundaryAuditor \
+  --type ORGANIZATION
+
+# Запрос активных инцидентов обнаружения публичного доступа
+aws accessanalyzer list-findings \
+  --analyzer-arn "arn:aws:access-analyzer:eu-central-1:123456789012:analyzer/EnterpriseAccessBoundaryAuditor" \
+  --filter '{"status":{"eq":["ACTIVE"]}}'</code></pre>
+    <div class="prints"><strong>Почему так:</strong> IAM Access Analyzer использует методы автоматизированного доказательства теорем (Automated Reasoning). Он математически доказывает, может ли внешний субъект прочитать или изменить ресурс, не дожидаясь реальных сетевых обращений, и мгновенно оповещает команду безопасности при опасных изменениях в Terraform.</div>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив семь сценариев высшей квалификации уровня IGL, вы держите в руках системные рычаги управления безопасностью предприятия:</p>
+      <ol>
+        <li><strong>Глобальный контроль организации:</strong> жесткий геофенсинг регионов и защита аудита через SCP, действующие даже на Root-пользователя.</li>
+        <li><strong>Сетевая изоляция периметра:</strong> привязка критических хранилищ строго к внутренним сетям через <code>aws:sourceVpc</code>.</li>
+        <li><strong>Масштабирование на сотни сред:</strong> объединение политик через глобальный идентификатор организации <code>aws:PrincipalOrgID</code>.</li>
+        <li><strong>Бесключевое гибридное облако:</strong> интеграция локальных дата-центров через IAM Roles Anywhere и проектирование аварийных протоколов Break-Glass.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="13.html">Вопросы · Noob</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="11.html">Примеры · Pro</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>

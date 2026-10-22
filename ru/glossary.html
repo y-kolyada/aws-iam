@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Словарь понятий · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Тридцать ключевых понятий AWS IAM: не академические определения, а точная физика рантайма, архитектурные механики и последствия ошибок в production.">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/glossary.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/glossary.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/glossary.html">
@@ -15,14 +15,14 @@
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
 <meta property="og:title" content="Словарь понятий">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:description" content="Тридцать ключевых понятий AWS IAM: не академические определения, а точная физика рантайма, архитектурные механики и последствия ошибок в production.">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/glossary.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Словарь понятий","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"DefinedTermSet","name":"Словарь понятий","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html","inLanguage":"ru","hasDefinedTerm":[{"@type":"DefinedTerm","name":"AWS IAM (Identity and Access Management)","description":"Глобальный бессерверный сервис контроля доступа, авторизующий каждый входящий API-запрос к инфраструктуре AWS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-iam"},{"@type":"DefinedTerm","name":"JSON-документ политики (Policy Document)","description":"Декларативная спецификация правил разграничения прав доступа в формате JSON.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-policy-document"},{"@type":"DefinedTerm","name":"Субъект авторизации (Principal)","description":"Идентифицированная сущность (пользователь, роль, сервис или аккаунт), совершающая вызов API.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-principal"},{"@type":"DefinedTerm","name":"Действие сервиса (Action)","description":"Именованная операция API конкретной службы AWS, адрес которой передается в политику.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-action"},{"@type":"DefinedTerm","name":"Amazon Resource Name (ARN)","description":"Универсальный глобальный идентификатор любого инфраструктурного объекта в облаке AWS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-resource"},{"@type":"DefinedTerm","name":"Блок условий (Condition)","description":"Механизм гранулярной фильтрации запроса по контекстным атрибутам окружения и метаданным.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-condition"},{"@type":"DefinedTerm","name":"Явный запрет (Explicit Deny)","description":"Правило политики с директивой Deny, обладающее безусловным высшим приоритетом в алгоритме вычисления.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-explicit-deny"},{"@type":"DefinedTerm","name":"Неявный отказ по умолчанию (Implicit / Default Deny)","description":"Базовое состояние движка авторизации AWS, при котором любое действие считается запрещенным, пока не разрешено явно.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-implicit-deny"},{"@type":"DefinedTerm","name":"Принцип наименьших привилегий (Least Privilege)","description":"Фундаментальный стандарт ИБ, требующий выдавать субъектам строго минимальный набор прав для выполнения служебной задачи.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-least-privilege"},{"@type":"DefinedTerm","name":"Подпись SigV4 (Signature Version 4)","description":"Криптографический протокол подписи каждого входящего HTTP-обращения к API AWS с использованием производного симметричного ключа.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-sigv4"},{"@type":"DefinedTerm","name":"Многофакторная аутентификация (MFA)","description":"Обязательное подтверждение личности субъекта вторым независимым фактором владения (аппаратный токен FIDO2 / WebAuthn или виртуальный TOTP).","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-mfa"},{"@type":"DefinedTerm","name":"AWS Security Token Service (STS)","description":"Глобальная криптографическая веб-служба генерации временных короткоживущих учетных данных.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-sts"},{"@type":"DefinedTerm","name":"Доверительная политика (Trust Policy)","description":"Resource-based документ IAM-роли, определяющий, какие субъекты имеют право принимать эту роль.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-trust-policy"},{"@type":"DefinedTerm","name":"Принятие роли (AssumeRole / Role Chaining)","description":"API-операция обмена текущих учетных данных субъекта на временные права целевой IAM-роли.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-assumerole"},{"@type":"DefinedTerm","name":"Политика на личности (Identity-based Policy)","description":"Политика разрешений, прикрепляемая непосредственно к IAM-пользователю, группе пользователей или роли.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-identity-policy"},{"@type":"DefinedTerm","name":"Политика на ресурсе (Resource-based Policy)","description":"JSON-документ разрешений, прикрепленный непосредственно к целевому ресурсу AWS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-resource-policy"},{"@type":"DefinedTerm","name":"Граница разрешений (Permissions Boundary)","description":"Управляемая политика верхнего уровня, устанавливающая максимальный потолок прав для IAM-сущности.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-permissions-boundary"},{"@type":"DefinedTerm","name":"Сессионная политика (Session Policy)","description":"Временный фильтр разрешений, передаваемый непосредственно в момент вызова AWS STS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-session-policy"},{"@type":"DefinedTerm","name":"Attribute-Based Access Control (ABAC)","description":"Стратегия авторизации, сопоставляющая теги вызывающего субъекта с тегами целевого ресурса.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-abac"},{"@type":"DefinedTerm","name":"Role-Based Access Control (RBAC)","description":"Классическая модель разграничения прав на основе назначения субъектам предопределенных статических ролей.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-rbac"},{"@type":"DefinedTerm","name":"OpenID Connect Federation (OIDC)","description":"Промышленный стандарт бесключевой криптографической федерации рабочих нагрузок с внешними системами.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-oidc"},{"@type":"DefinedTerm","name":"IAM Roles for Service Accounts (IRSA)","description":"Архитектурный механизм безопасной гранулярной доставки IAM-ролей подам в кластере Amazon EKS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-irsa"},{"@type":"DefinedTerm","name":"Instance Metadata Service v2 (IMDSv2)","description":"Локальный сетевой сервис виртуальных машин EC2 для получения метаданных и сессионных токенов роли.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-imds"},{"@type":"DefinedTerm","name":"Федерация SAML 2.0 и SCIM","description":"Открытые стандарты интеграции корпоративных каталогов удостоверений (IdP: Okta, Microsoft Entra ID, Google Workspace) с инфраструктурой AWS.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-saml"},{"@type":"DefinedTerm","name":"Service Control Policy (SCP)","description":"Централизованная политика AWS Organizations, задающая предельные рамки прав для целых учетных записей.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-scp"},{"@type":"DefinedTerm","name":"Защитный периметр данных (Data Perimeter)","description":"Эшелонированный комплекс превентивных барьеров, исключающий утечку данных за пределы корпорации.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-data-perimeter"},{"@type":"DefinedTerm","name":"AWS KMS и Key Policy","description":"Аппаратный криптографический сервис управления ключами шифрования и их обязательными ресурсными политиками.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-kms"},{"@type":"DefinedTerm","name":"Грант шифрования (KMS Grant)","description":"Программное временное делегирование прав на использование ключа KMS конкретным облачным службам.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-kms-grant"},{"@type":"DefinedTerm","name":"AWS IAM Roles Anywhere","description":"Сервис аутентификации серверов вне облака AWS с использованием корпоративных сертификатов X.509.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-roles-anywhere"},{"@type":"DefinedTerm","name":"AWS IAM Access Analyzer","description":"Аналитический инструмент непрерывного аудита политик на основе автоматического доказательства теорем.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-access-analyzer"},{"@type":"DefinedTerm","name":"Аварийный протокол Break-Glass","description":"Изолированный высокопривилегированный контур экстренного доступа при глобальных сбоях корпоративного SSO.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-break-glass"},{"@type":"DefinedTerm","name":"Атака подставного помощника (Confused Deputy)","description":"Уязвимость меж-аккаунтного делегирования, при которой сервис совершает несанкционированные действия от чужого имени.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-confused-deputy"},{"@type":"DefinedTerm","name":"AWS CloudTrail и Data Events","description":"Централизованный сервис криптографического аудита и журналирования всех API-вызовов в аккаунте.","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-cloudtrail"},{"@type":"DefinedTerm","name":"Resource Control Policy (RCP)","description":"Централизованные превентивные политики AWS Organizations, устанавливающие предельные границы прав на уровне самих ресурсов (S3, SQS, KMS, Secrets Manager).","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-rcp"},{"@type":"DefinedTerm","name":"Автоматизированное доказательство (Automated Reasoning)","description":"Математическая формальная верификация логики политик безопасности на базе алгоритмов доказательства теорем (Satisfiability Modulo Theories).","url":"https://y-kolyada.github.io/aws-iam/ru/glossary.html#term-automated-reasoning"}]}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html" aria-current="page"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="glossary.html" aria-current="page"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -93,16 +94,472 @@
 
   <main id="main">
     <h1>Словарь понятий</h1>
-    <p class="page-size" data-words="22">Слов: 22</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <p class="page-size" data-words="2494">Слов: 2494</p>
+    <p class="lead">Тридцать ключевых понятий AWS IAM: не академические определения, а точная физика рантайма, архитектурные механики и последствия ошибок в production.</p>
 
-    <p>Текст этого раздела ещё не написан.</p>
+    <div class="box key" id="key-idea">
+      <h2>Главная мысль словаря <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
+      <p>Словарь устраняет двусмысленность и терминологическую путаницу в инженерной коммуникации: пока «User» и «Role», «Trust Policy» и «Permissions Boundary», «Explicit Deny» и «Default Deny», «IRSA» и «Instance Profile» воспринимаются как смутные синонимы, проектировать безопасные и надежные облачные платформы невозможно. Понятия сгруппированы по трем фундаментальным слоям: архитектура ядра и грамматика политик, субъекты и бесключевая федерация, корпоративное управление и защитный периметр данных. Каждая карточка раскрывает внутреннюю физику процесса, синтаксический контракт и риски нарушения в продакшне.</p>
+    </div>
+
+    <h2 id="block-core-grammar">Архитектура ядра, грамматика политик и логика решений <a class="anchor-link" href="#block-core-grammar">#</a></h2>
+
+    <div class="glossary-term" id="term-iam">
+      <h2>
+        <span class="glossary-title">AWS IAM (Identity and Access Management)</span>
+        <code class="glossary-object">iam · Policy Engine · SigV4</code>
+        <a class="anchor-link" href="#term-iam">#</a>
+      </h2>
+      <p class="glossary-lead">Глобальный бессерверный сервис контроля доступа, авторизующий каждый входящий API-запрос к инфраструктуре AWS.</p>
+      <p>IAM не хранит состояния между вызовами. При поступлении запроса ядро авторизации (Policy Engine) парсит криптографическую подпись SigV4, извлекает параметры контекста (Principal, Action, Resource, Context) и детерминированно вычисляет бинарный вердикт Allow или Deny, сопоставляя запрос со всеми применимыми политиками.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#decision-core">Кто решает и как · Архитектура запроса</a>, <a href="navigator.html#lens-components">Навигатор · Компоненты</a>, <a href="index.html">Посадочная страница</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-policy-document">
+      <h2>
+        <span class="glossary-title">JSON-документ политики (Policy Document)</span>
+        <code class="glossary-object">Version: 2012-10-17 · Statement[]</code>
+        <a class="anchor-link" href="#term-policy-document">#</a>
+      </h2>
+      <p class="glossary-lead">Декларативная спецификация правил разграничения прав доступа в формате JSON.</p>
+      <p>Обязан содержать элемент <code>"Version": "2012-10-17"</code>, активирующий поддержку контекстных переменных и операторов условий. Внутри массива <code>Statement</code> объявляются блоки правил, определяющие эффект (<code>Effect</code>), разрешенные или запрещенные действия (<code>Action</code> / <code>NotAction</code>), целевые ресурсы (<code>Resource</code> / <code>NotResource</code>) и опциональные фильтры (<code>Condition</code>).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#grammar-overview">Язык политики JSON · Анатомия документа</a>, <a href="navigator.html#lens-code">Навигатор · Код и скрипты</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-principal">
+      <h2>
+        <span class="glossary-title">Субъект авторизации (Principal)</span>
+        <code class="glossary-object">Principal: { "AWS": "...", "Service": "..." }</code>
+        <a class="anchor-link" href="#term-principal">#</a>
+      </h2>
+      <p class="glossary-lead">Идентифицированная сущность (пользователь, роль, сервис или аккаунт), совершающая вызов API.</p>
+      <p>В resource-based политиках (S3 Bucket Policy, KMS Key Policy) и Trust Policy элемент <code>Principal</code> является строго обязательным. В identity-based политиках он запрещен, так как субъект однозначно определяется фактом прикрепления документа к пользователю или роли. Указание <code>"AWS": "arn:aws:iam::account:root"</code> означает делегирование прав администраторам указанного аккаунта.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Элемент Principal</a>, <a href="04.html#two-poles">На личности и ресурсе</a>, <a href="index.html">Посадочная страница</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-action">
+      <h2>
+        <span class="glossary-title">Действие сервиса (Action)</span>
+        <code class="glossary-object">service:ActionName · NotAction</code>
+        <a class="anchor-link" href="#term-action">#</a>
+      </h2>
+      <p class="glossary-lead">Именованная операция API конкретной службы AWS, адрес которой передается в политику.</p>
+      <p>Формируется из префикса пространства имен службы в нижнем регистре и чувствительного к регистру имени метода API (например, <code>s3:GetObject</code>, <code>ec2:RunInstances</code>). Маска <code>*</code> предоставляет права на все действия сервиса. Элемент <code>NotAction</code> совпадает со всеми действиями всех служб AWS, кроме явно перечисленных исключений.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#statement-core">Язык политики JSON · Action и NotAction</a>, <a href="13.html#actions-service-namespaces">Вопросы Noob (21-30)</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-resource">
+      <h2>
+        <span class="glossary-title">Amazon Resource Name (ARN)</span>
+        <code class="glossary-object">arn:partition:service:region:account:resource</code>
+        <a class="anchor-link" href="#term-resource">#</a>
+      </h2>
+      <p class="glossary-lead">Универсальный глобальный идентификатор любого инфраструктурного объекта в облаке AWS.</p>
+      <p>Строго разделяет операции над контейнером и его содержимым. Для S3 имя <code>arn:aws:s3:::my-bucket</code> адресует бакет (операции метаданных <code>s3:ListBucket</code>), а суффикс <code>arn:aws:s3:::my-bucket/*</code> адресует ключи объектов (операции данных <code>s3:GetObject</code>, <code>s3:PutObject</code>). Поддерживает контекстную интерполяцию переменных вида <code>${aws:username}</code>.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Анатомия ARN</a>, <a href="10.html#s3-read-only">Примеры Noob · Бакет S3</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-condition">
+      <h2>
+        <span class="glossary-title">Блок условий (Condition)</span>
+        <code class="glossary-object">Condition: { "Operator": { "Key": "Value" } }</code>
+        <a class="anchor-link" href="#term-condition">#</a>
+      </h2>
+      <p class="glossary-lead">Механизм гранулярной фильтрации запроса по контекстным атрибутам окружения и метаданным.</p>
+      <p>Включает операторы проверки строк (<code>StringEquals</code>, <code>StringLike</code>), чисел, дат, IP-адресов (<code>IpAddress</code>, <code>NotIpAddress</code>), булевых значений (<code>Bool</code>) и оператора присутствия ключа (<code>Null</code>). Модификатор <code>IfExists</code> предотвращает ложные отказы при отсутствии ключа в контексте. Несколько операторов внутри одного Statement объединяются логическим И (AND).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="07.html#operators-catalog">Условия и контекстные ключи</a>, <a href="14.html#condition-keys-operators">Вопросы Pro (11-20)</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-explicit-deny">
+      <h2>
+        <span class="glossary-title">Явный запрет (Explicit Deny)</span>
+        <code class="glossary-object">"Effect": "Deny"</code>
+        <a class="anchor-link" href="#term-explicit-deny">#</a>
+      </h2>
+      <p class="glossary-lead">Правило политики с директивой Deny, обладающее безусловным высшим приоритетом в алгоритме вычисления.</p>
+      <p>Если хотя бы одно применимое правило (в identity-политике, resource-политике, SCP или сессионной политике) содержит явный Deny для данного действия, запрос немедленно и окончательно блокируется с ошибкой Access Denied, независимо от наличия любых разрешающих правил Allow.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#evaluation-flowchart">Как вычисляется ответ · Приоритет Deny</a>, <a href="navigator.html#lens-strength">Навигатор · Сила</a>, <a href="index.html">Посадочная страница</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-implicit-deny">
+      <h2>
+        <span class="glossary-title">Неявный отказ по умолчанию (Implicit / Default Deny)</span>
+        <code class="glossary-object">Zero Trust Baseline · Default Deny</code>
+        <a class="anchor-link" href="#term-implicit-deny">#</a>
+      </h2>
+      <p class="glossary-lead">Базовое состояние движка авторизации AWS, при котором любое действие считается запрещенным, пока не разрешено явно.</p>
+      <p>Основа модели нулевого доверия: если ни одна активная политика прямо не предоставила право <code>Effect: Allow</code>, операция отклоняется. В отличие от явного запрета, неявный отказ легко перекрывается любым разрешающим правилом в другой применимой политике субъекта.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#three-verdicts">Как вычисляется ответ · Запрет по умолчанию</a>, <a href="13.html#deny-allow-evaluation">Вопросы Noob (31-40)</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-least-privilege">
+      <h2>
+        <span class="glossary-title">Принцип наименьших привилегий (Least Privilege)</span>
+        <code class="glossary-object">Principle of Least Privilege · PoLP</code>
+        <a class="anchor-link" href="#term-least-privilege">#</a>
+      </h2>
+      <p class="glossary-lead">Фундаментальный стандарт ИБ, требующий выдавать субъектам строго минимальный набор прав для выполнения служебной задачи.</p>
+      <p>Исключает использование масок <code>*</code> в действиях и ресурсах. Внедряется через гранулярные Customer Managed политики, <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Permissions Boundaries</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Граница разрешений (Permissions Boundary)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Управляемая политика верхнего уровня, устанавливающая максимальный потолок прав для IAM-сущности.</span><span class="term-links"><a href="glossary.html#term-permissions-boundary">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> и регулярный аудит неиспользуемых разрешений через <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">IAM Access Analyzer</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS IAM Access Analyzer</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Аналитический инструмент непрерывного аудита политик на основе автоматического доказательства теорем.</span><span class="term-links"><a href="glossary.html#term-access-analyzer">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> для минимизации радиуса поражения (Blast Radius) при компрометации учетной записи.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#zero-trust-principle">Кто решает и как · Принципы безопасности</a>, <a href="navigator.html#lens-devops">Навигатор · Практики DevOps</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-sigv4">
+      <h2>
+        <span class="glossary-title">Подпись SigV4 (Signature Version 4)</span>
+        <code class="glossary-object">HMAC-SHA256 · Authorization Header</code>
+        <a class="anchor-link" href="#term-sigv4">#</a>
+      </h2>
+      <p class="glossary-lead">Криптографический протокол подписи каждого входящего HTTP-обращения к API AWS с использованием производного симметричного ключа.</p>
+      <p>SigV4 гарантирует подлинность отправителя (Authn), защиту от модификации передаваемого пейлоада в транзите и защиту от атак повторного воспроизведения (Replay Attacks) за счет жесткого временного окна валидности временной метки (15 минут). Проверяется фронтальным шлюзом AWS до запуска движка авторизации IAM.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#authn-vs-authz">Кто решает и как · SigV4 против политик</a>, <a href="navigator.html#lens-components">Навигатор · Компоненты</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-mfa">
+      <h2>
+        <span class="glossary-title">Многофакторная аутентификация (MFA)</span>
+        <code class="glossary-object">aws:MultiFactorAuthPresent: true · TOTP / FIDO2</code>
+        <a class="anchor-link" href="#term-mfa">#</a>
+      </h2>
+      <p class="glossary-lead">Обязательное подтверждение личности субъекта вторым независимым фактором владения (аппаратный токен FIDO2 / WebAuthn или виртуальный TOTP).</p>
+      <p>В политиках IAM проверяется через глобальный контекстный ключ <code>aws:MultiFactorAuthPresent</code> или через фильтр времени жизни сессии <code>aws:MultiFactorAuthAge</code>. Является строгим отраслевым требованием для учетных записей администраторов, операций удаления резервных копий и входа под Root User.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#zero-trust-principle">Кто решает и как · Принцип Zero Trust</a>, <a href="10.html#mfa-protection">Примеры Noob · Защита MFA</a>, <a href="navigator.html#lens-strength">Навигатор · В чем сила</a>
+      </div>
+    </div>
+
+    <h2 id="block-identities-federation">Субъекты, роли, федерация и контейнеры <a class="anchor-link" href="#block-identities-federation">#</a></h2>
+
+    <div class="glossary-term" id="term-sts">
+      <h2>
+        <span class="glossary-title">AWS Security Token Service (STS)</span>
+        <code class="glossary-object">sts:AssumeRole · SessionToken</code>
+        <a class="anchor-link" href="#term-sts">#</a>
+      </h2>
+      <p class="glossary-lead">Глобальная криптографическая веб-служба генерации временных короткоживущих учетных данных.</p>
+      <p>Возвращает триаду аутентификации: <code>AccessKeyId</code> (с префиксом <code>ASIA...</code>), <code>SecretAccessKey</code> и криптографический <code>SessionToken</code>. Временные токены имеют настраиваемый срок жизни (от 15 минут до 12 часов), не требуют ручной ротации и самоуничтожаются по истечении тайм-аута.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#sts-and-tokens">Роли и доверие · Архитектура STS</a>, <a href="navigator.html#lens-components">Навигатор · Компоненты</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-trust-policy">
+      <h2>
+        <span class="glossary-title">Доверительная политика (Trust Policy)</span>
+        <code class="glossary-object">AssumeRolePolicyDocument · sts:AssumeRole</code>
+        <a class="anchor-link" href="#term-trust-policy">#</a>
+      </h2>
+      <p class="glossary-lead">Resource-based документ IAM-роли, определяющий, какие субъекты имеют право принимать эту роль.</p>
+      <p>Является единственным входным шлюзом для принятия роли. В блоке <code>Principal</code> перечисляет доверенные сервисы (например, <code>ec2.amazonaws.com</code>), внешние аккаунты или <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">OIDC-провайдеры</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">OpenID Connect Federation (OIDC)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Промышленный стандарт бесключевой криптографической федерации рабочих нагрузок с внешними системами.</span><span class="term-links"><a href="glossary.html#term-oidc">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>, а в блоке <code>Condition</code> накладывает ограничения по веткам, тегам или параметру <code>sts:ExternalId</code>.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#trust-policy-anatomy">Роли и доверие · Анатомия Trust Policy</a>, <a href="11.html#github-actions-oidc">Примеры Pro · OIDC</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-assumerole">
+      <h2>
+        <span class="glossary-title">Принятие роли (AssumeRole / Role Chaining)</span>
+        <code class="glossary-object">sts:AssumeRole · RoleArn · RoleSessionName</code>
+        <a class="anchor-link" href="#term-assumerole">#</a>
+      </h2>
+      <p class="glossary-lead">API-операция обмена текущих учетных данных субъекта на временные права целевой IAM-роли.</p>
+      <p>Субъект временно сбрасывает свои постоянные права и действует строго в рамках прав принятой роли. При построении цепочек принятия ролей (Role Chaining, когда роль A принимает B, а B принимает C) максимальный срок жизни каждого последующего сессионного токена принудительно ограничивается ровно 1 часом.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#sts-and-tokens">Роли и доверие · Жизненный цикл сессии</a>, <a href="14.html#eval-logic-crossaccount">Вопросы Pro (1-10)</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-identity-policy">
+      <h2>
+        <span class="glossary-title">Политика на личности (Identity-based Policy)</span>
+        <code class="glossary-object">Managed Policy · Inline Policy</code>
+        <a class="anchor-link" href="#term-identity-policy">#</a>
+      </h2>
+      <p class="glossary-lead">Политика разрешений, прикрепляемая непосредственно к IAM-пользователю, группе пользователей или роли.</p>
+      <p>Определяет, какие действия данный субъект может совершать над ресурсами. Разделяется на Inline-политики (неразрывно встроены в сущность) и Managed Policies (автономные переиспользуемые объекты IAM с собственным ARN). Не содержит элемента Principal.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#managed-vs-inline">На личности и ресурсе · Identity-based</a>, <a href="13.html#principals-roles-users">Вопросы Noob (11-20)</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-resource-policy">
+      <h2>
+        <span class="glossary-title">Политика на ресурсе (Resource-based Policy)</span>
+        <code class="glossary-object">Bucket Policy · KMS Key Policy · SQS Policy</code>
+        <a class="anchor-link" href="#term-resource-policy">#</a>
+      </h2>
+      <p class="glossary-lead">JSON-документ разрешений, прикрепленный непосредственно к целевому ресурсу AWS.</p>
+      <p>Определяет, кто именно (элемент <code>Principal</code>) и при каких условиях (<code>Condition</code>) имеет доступ к данному объекту. Критически важна для кросс-аккаунтного доступа: без явного подтверждения в политике ресурса субъекты из других аккаунтов не допускаются к объекту.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#resource-policies-catalog">На личности и ресурсе · Resource-based</a>, <a href="14.html#resource-policies-kms">Вопросы Pro (21-30)</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-permissions-boundary">
+      <h2>
+        <span class="glossary-title">Граница разрешений (Permissions Boundary)</span>
+        <code class="glossary-object">iam:PermissionsBoundary · Intersection (AND)</code>
+        <a class="anchor-link" href="#term-permissions-boundary">#</a>
+      </h2>
+      <p class="glossary-lead">Управляемая политика верхнего уровня, устанавливающая максимальный потолок прав для IAM-сущности.</p>
+      <p>Итоговые права вычисляются как строгое пересечение множеств (логическое И) между <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">identity-политикой</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Политика на личности (Identity-based Policy)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Политика разрешений, прикрепляемая непосредственно к IAM-пользователю, группе пользователей или роли.</span><span class="term-links"><a href="glossary.html#term-identity-policy">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> и границей. Никогда не предоставляет прав сама по себе. Позволяет безопасно делегировать разработчикам право создавать роли в CI/CD без риска эскалации прав до администратора.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#boundary-mechanics">Границы разрешений · Механика потолка</a>, <a href="11.html#ci-permissions-boundary">Примеры Pro · CI/CD Boundary</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-session-policy">
+      <h2>
+        <span class="glossary-title">Сессионная политика (Session Policy)</span>
+        <code class="glossary-object">Policy / PolicyArns in sts:AssumeRole</code>
+        <a class="anchor-link" href="#term-session-policy">#</a>
+      </h2>
+      <p class="glossary-lead">Временный фильтр разрешений, передаваемый непосредственно в момент вызова AWS STS.</p>
+      <p>Сужает полномочия выписываемой временной сессии роли: итоговые права сессии равны пересечению прав самой роли и переданной сессионной политики. Широко применяется в мульти-тенантных SaaS-сервисах для динамического ограничения доступа к каталогам конкретных клиентов.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#session-policies">Границы разрешений · Сессионные фильтры</a>, <a href="14.html#eval-logic-crossaccount">Вопросы Pro (1-10)</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-abac">
+      <h2>
+        <span class="glossary-title">Attribute-Based Access Control (ABAC)</span>
+        <code class="glossary-object">aws:PrincipalTag · aws:ResourceTag</code>
+        <a class="anchor-link" href="#term-abac">#</a>
+      </h2>
+      <p class="glossary-lead">Стратегия авторизации, сопоставляющая теги вызывающего субъекта с тегами целевого ресурса.</p>
+      <p>В отличие от классического RBAC, не требует обновления политик при добавлении новых пользователей или ресурсов: доступ разрешается автоматически правилом <code>StringEquals: {"aws:ResourceTag/Project": "${aws:PrincipalTag/Project}"}</code>, масштабируя управление на тысячи сущностей.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="07.html#policy-variables">Условия и переменные · Модель ABAC</a>, <a href="navigator.html#lens-strength">Навигатор · Сила</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-rbac">
+      <h2>
+        <span class="glossary-title">Role-Based Access Control (RBAC)</span>
+        <code class="glossary-object">IAM Roles · Group Membership</code>
+        <a class="anchor-link" href="#term-rbac">#</a>
+      </h2>
+      <p class="glossary-lead">Классическая модель разграничения прав на основе назначения субъектам предопределенных статических ролей.</p>
+      <p>Права привязываются к служебным ролям (например, ReadOnly, Developer, DBA), которые затем назначаются пользователям или сервисным аккаунтам. При росте организации до сотен микросервисов приводит к взрывному росту числа ролей (Role Explosion), требуя перехода к элементам ABAC.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#decision-core">Кто решает и как · Модели доступа</a>, <a href="07.html#policy-variables">Условия и переменные</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-oidc">
+      <h2>
+        <span class="glossary-title">OpenID Connect Federation (OIDC)</span>
+        <code class="glossary-object">sts:AssumeRoleWithWebIdentity · JWT Token</code>
+        <a class="anchor-link" href="#term-oidc">#</a>
+      </h2>
+      <p class="glossary-lead">Промышленный стандарт бесключевой криптографической федерации рабочих нагрузок с внешними системами.</p>
+      <p>Внешний раннер (GitHub Actions, GitLab CI) запрашивает у своего провайдера подписанный JSON Web Token (JWT) и передает его в AWS STS. Служба STS валидирует подпись по открытым ключам JWKS, проверяет аудиторию (<code>aud</code>) и тему (<code>sub</code>) и выписывает временные учетные данные без хранения статических ключей.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#oidc-federation">Ключи и федерация · OpenID Connect</a>, <a href="11.html#github-actions-oidc">Примеры Pro · GitHub Actions</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-irsa">
+      <h2>
+        <span class="glossary-title">IAM Roles for Service Accounts (IRSA)</span>
+        <code class="glossary-object">eks.amazonaws.com · Projected ServiceAccount Token</code>
+        <a class="anchor-link" href="#term-irsa">#</a>
+      </h2>
+      <p class="glossary-lead">Архитектурный механизм безопасной гранулярной доставки IAM-ролей подам в кластере Amazon EKS.</p>
+      <p>Кластер EKS настраивается как доверенный OIDC Identity Provider. Мутирующий вебхук инжектирует в контейнер токен сервисного аккаунта Kubernetes, сопоставленный с аннотацией <code>eks.amazonaws.com/role-arn</code>, позволяя изолировать права между подами на одном физическом сервере.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#kubernetes-identity">Ключи и федерация · Контейнеры</a>, <a href="11.html#kubernetes-irsa-sqs">Примеры Pro · EKS IRSA</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-imds">
+      <h2>
+        <span class="glossary-title">Instance Metadata Service v2 (IMDSv2)</span>
+        <code class="glossary-object">169.254.169.254 · X-aws-ec2-metadata-token</code>
+        <a class="anchor-link" href="#term-imds">#</a>
+      </h2>
+      <p class="glossary-lead">Локальный сетевой сервис виртуальных машин EC2 для получения метаданных и сессионных токенов роли.</p>
+      <p>В отличие от уязвимого IMDSv1, версия IMDSv2 требует обязательного сессионного токена через HTTP PUT запрос с ограничением TTL заголовков (Hop Limit = 1), что делает физически невозможной кражу учетных данных роли через уязвимости веб-приложений типа SSRF (Server-Side Request Forgery).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#instance-profiles">Роли и доверие · Инстанс-профили</a>, <a href="14.html#oidc-workloads-irsa">Вопросы Pro (31-40)</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-saml">
+      <h2>
+        <span class="glossary-title">Федерация SAML 2.0 и SCIM</span>
+        <code class="glossary-object">sts:AssumeRoleWithSAML · IAM Identity Center</code>
+        <a class="anchor-link" href="#term-saml">#</a>
+      </h2>
+      <p class="glossary-lead">Открытые стандарты интеграции корпоративных каталогов удостоверений (IdP: Okta, Microsoft Entra ID, Google Workspace) с инфраструктурой AWS.</p>
+      <p>Протокол SAML 2.0 передает подписанные XML-утверждения (Assertions) в вызов API <code>sts:AssumeRoleWithSAML</code> для получения временных сессий, а протокол SCIM автоматически синхронизирует пользователей и группы из внешнего IdP в сервис IAM Identity Center (AWS SSO) без ручного дублирования учетных записей.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#workforce-identity">Ключи и федерация · Workforce Identity</a>, <a href="navigator.html#lens-ecosystem">Навигатор · Экосистема</a>
+      </div>
+    </div>
+
+    <h2 id="block-governance-perimeter">Корпоративный контроль, периметр данных и практики надежности <a class="anchor-link" href="#block-governance-perimeter">#</a></h2>
+
+    <div class="glossary-term" id="term-scp">
+      <h2>
+        <span class="glossary-title">Service Control Policy (SCP)</span>
+        <code class="glossary-object">AWS Organizations · Root User Envelope</code>
+        <a class="anchor-link" href="#term-scp">#</a>
+      </h2>
+      <p class="glossary-lead">Централизованная политика AWS Organizations, задающая предельные рамки прав для целых учетных записей.</p>
+      <p>Действует как внешний защитный конверт: ограничивает даже локального Root User дочернего аккаунта. Никогда не предоставляет прав сама по себе. Применяется для принудительного геоблокинга неразрешенных регионов мира и защиты неизменяемости аудиторских трейлов CloudTrail.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#scp-organizations">Границы разрешений · Сервисные политики</a>, <a href="12.html#scp-region-geofencing">Примеры IGL · Геоблокинг SCP</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-data-perimeter">
+      <h2>
+        <span class="glossary-title">Защитный периметр данных (Data Perimeter)</span>
+        <code class="glossary-object">Trusted Identities · Trusted Resources · Trusted Networks</code>
+        <a class="anchor-link" href="#term-data-perimeter">#</a>
+      </h2>
+      <p class="glossary-lead">Эшелонированный комплекс превентивных барьеров, исключающий утечку данных за пределы корпорации.</p>
+      <p>Опирается на три независимых опоры: 1) доверенные субъекты (<code>aws:PrincipalOrgID</code>); 2) доверенные ресурсы (<code>aws:ResourceOrgID</code>); 3) доверенные сетевые контуры (<code>aws:sourceVpc</code> / <code>aws:sourceVpce</code>). Предотвращает несанкционированную эксфильтрацию данных даже при компрометации IAM-ключей.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="12.html#vpc-endpoint-perimeter">Примеры IGL · Сетевой периметр</a>, <a href="navigator.html#lens-cloud">Навигатор · В контексте облака</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-kms">
+      <h2>
+        <span class="glossary-title">AWS KMS и Key Policy</span>
+        <code class="glossary-object">kms:Decrypt · Key Policy Delegation</code>
+        <a class="anchor-link" href="#term-kms">#</a>
+      </h2>
+      <p class="glossary-lead">Аппаратный криптографический сервис управления ключами шифрования и их обязательными ресурсными политиками.</p>
+      <p>Кастомный ключ шифрования KMS не может работать без Key Policy. Если в Key Policy явно не делегировать управление корневому аккаунту (<code>"arn:aws:iam::account:root"</code>), никакие identity-политики администраторов не смогут получить доступ к ключу, изолируя криптографический периметр.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#resource-policies-catalog">На личности и ресурсе · KMS</a>, <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS и EBS</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-kms-grant">
+      <h2>
+        <span class="glossary-title">Грант шифрования (KMS Grant)</span>
+        <code class="glossary-object">kms:CreateGrant · GenerateDataKeyWithoutPlaintext</code>
+        <a class="anchor-link" href="#term-kms-grant">#</a>
+      </h2>
+      <p class="glossary-lead">Программное временное делегирование прав на использование ключа KMS конкретным облачным службам.</p>
+      <p>Используется сервисами инфраструктуры (Auto Scaling, EBS, RDS) для автоматического шифрования и дешифрования системных томов конкретными инстансами без внесения изменений в статический текст Key Policy, предотвращая исчерпание лимита размера политики ключа.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS Grants</a>, <a href="14.html#resource-policies-kms">Вопросы Pro (21-30)</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-roles-anywhere">
+      <h2>
+        <span class="glossary-title">AWS IAM Roles Anywhere</span>
+        <code class="glossary-object">rolesanywhere.amazonaws.com · Trust Anchor · X.509 PKI</code>
+        <a class="anchor-link" href="#term-roles-anywhere">#</a>
+      </h2>
+      <p class="glossary-lead">Сервис аутентификации серверов вне облака AWS с использованием корпоративных сертификатов X.509.</p>
+      <p>Опирается на доверенный удостоверяющий центр (Trust Anchor). Утилита <code>aws_signing_helper</code> подписывает вызов закрытым ключом локального сервера и обменивает его на сессионные токены STS, полностью исключая хранение статических ключей в локальных дата-центрах.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="12.html#roles-anywhere-hybrid-pki">Примеры IGL · Roles Anywhere</a>, <a href="navigator.html#lens-cloud">Навигатор · В контексте облака</a>, <a href="08.html">Глава 08</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-access-analyzer">
+      <h2>
+        <span class="glossary-title">AWS IAM Access Analyzer</span>
+        <code class="glossary-object">Automated Reasoning · CheckNoNewAccess</code>
+        <a class="anchor-link" href="#term-access-analyzer">#</a>
+      </h2>
+      <p class="glossary-lead">Аналитический инструмент непрерывного аудита политик на основе автоматического доказательства теорем.</p>
+      <p>Математически доказывает, какие внешние субъекты имеют доступ к ресурсам организации без реальных сетевых вызовов. В пайплайнах CI/CD валидирует планы Terraform до их применения (Policy-as-Code) и генерирует минимальные политики на основе фактических логов CloudTrail.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#access-analyzer">Почему отказ · Access Analyzer</a>, <a href="12.html#access-analyzer-drift-audit">Примеры IGL · Аудит дрифта</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-break-glass">
+      <h2>
+        <span class="glossary-title">Аварийный протокол Break-Glass</span>
+        <code class="glossary-object">Emergency Role · EventBridge Alert</code>
+        <a class="anchor-link" href="#term-break-glass">#</a>
+      </h2>
+      <p class="glossary-lead">Изолированный высокопривилегированный контур экстренного доступа при глобальных сбоях корпоративного SSO.</p>
+      <p>Полностью отвязан от сторонних identity-провайдеров (Okta, Entra ID) и требует аппаратного MFA. Любое принятие аварийной роли мгновенно инициирует высокоприоритетный инцидент через Amazon EventBridge и SNS в PagerDuty дежурного архитектора безопасности.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="12.html#break-glass-emergency-role">Примеры IGL · Break-Glass роль</a>, <a href="navigator.html#lens-sre">Навигатор · Практики SRE</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-confused-deputy">
+      <h2>
+        <span class="glossary-title">Атака подставного помощника (Confused Deputy)</span>
+        <code class="glossary-object">sts:ExternalId · Cross-Account Privilege Escalation</code>
+        <a class="anchor-link" href="#term-confused-deputy">#</a>
+      </h2>
+      <p class="glossary-lead">Уязвимость меж-аккаунтного делегирования, при которой сервис совершает несанкционированные действия от чужого имени.</p>
+      <p>Возникает, когда доверенная роль стороннего SaaS-вендора вызывается атакующим для доступа к аккаунту жертвы. Нейтрализуется обязательной проверкой секретного параметра <code>sts:ExternalId</code> в доверительной политике роли (Trust Policy).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#confused-deputy">Роли и доверие · Подставной помощник</a>, <a href="14.html#eval-logic-crossaccount">Вопросы Pro (1-10)</a>, <a href="navigator.html">Навигатор</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-cloudtrail">
+      <h2>
+        <span class="glossary-title">AWS CloudTrail и Data Events</span>
+        <code class="glossary-object">Management Events · Data Events · CloudTrail Lake</code>
+        <a class="anchor-link" href="#term-cloudtrail">#</a>
+      </h2>
+      <p class="glossary-lead">Централизованный сервис криптографического аудита и журналирования всех API-вызовов в аккаунте.</p>
+      <p>Фиксирует каждое обращение к облаку: личность вызывающего (userIdentity), время, эндпоинт, IP-адрес источника, входные параметры и статус ответа. Разделяется на бесплатные события управления (Management Events) и платные события доступа к объектам (Data Events в S3 и Lambda).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#cloudtrail-auditing">Почему отказ · Трассировка CloudTrail</a>, <a href="navigator.html#lens-ecosystem">Навигатор · Связи в экосистеме</a>, <a href="index.html">Посадочная страница</a> </div>
+    </div>
+
+    <div class="glossary-term" id="term-rcp">
+      <h2>
+        <span class="glossary-title">Resource Control Policy (RCP)</span>
+        <code class="glossary-object">AWS Organizations · Inbound Resource Guardrail</code>
+        <a class="anchor-link" href="#term-rcp">#</a>
+      </h2>
+      <p class="glossary-lead">Централизованные превентивные политики AWS Organizations, устанавливающие предельные границы прав на уровне самих ресурсов (S3, SQS, KMS, Secrets Manager).</p>
+      <p>В отличие от <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">SCP</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Service Control Policy (SCP)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованная политика AWS Organizations, задающая предельные рамки прав для целых учетных записей.</span><span class="term-links"><a href="glossary.html#term-scp">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>, которые фильтруют исходящие действия субъектов внутри аккаунта, RCP контролируют входящий доступ к ресурсам организации отовсюду, включая внешние сторонние аккаунты. Вместе с SCP формируют непреодолимый фундамент защитного периметра данных (Data Perimeter).</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="15.html#scp-multiaccount-governance">Вопросы IGL · Управление SCP и RCP</a>, <a href="navigator.html#lens-cloud">Навигатор · В контексте облака</a>
+      </div>
+    </div>
+
+    <div class="glossary-term" id="term-automated-reasoning">
+      <h2>
+        <span class="glossary-title">Автоматизированное доказательство (Automated Reasoning)</span>
+        <code class="glossary-object">Z3 SMT Solver · Formal Policy Verification</code>
+        <a class="anchor-link" href="#term-automated-reasoning">#</a>
+      </h2>
+      <p class="glossary-lead">Математическая формальная верификация логики политик безопасности на базе алгоритмов доказательства теорем (Satisfiability Modulo Theories).</p>
+      <p>Технология, лежащая в основе сервисов <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">IAM Access Analyzer</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS IAM Access Analyzer</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Аналитический инструмент непрерывного аудита политик на основе автоматического доказательства теорем.</span><span class="term-links"><a href="glossary.html#term-access-analyzer">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> и Zelkova. Анализирует не отдельные примеры вызовов, а строго математически доказывает отсутствие непреднамеренного публичного или кросс-аккаунтного доступа для всего бесконечного пространства возможных входных запросов до развертывания политик в продакшен.</p>
+      <div class="glossary-meta">
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#access-analyzer">Почему отказ · IAM Access Analyzer</a>, <a href="navigator.html#lens-strength">Навигатор · В чем сила</a>, <a href="navigator.html#lens-ai">Навигатор · В контексте AI</a>
+      </div>
+    </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="navigator.html">Навигатор инженера</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="15.html">Вопросы · IGL</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>

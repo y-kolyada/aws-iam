@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 9 · devops-aws-iam · ai|</title>
+<title>Почему доступ запрещён · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Инженерная методология расследования отказов AccessDenied: расшифровка сообщений STS, аудит в CloudTrail, симуляция политик и анализ в Access Analyzer.">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/09.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/09.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/09.html">
@@ -14,15 +14,15 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 9">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Почему доступ запрещён">
+<meta property="og:description" content="Инженерная методология расследования отказов AccessDenied: расшифровка сообщений STS, аудит в CloudTrail, симуляция политик и анализ в Access Analyzer.">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/09.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 9","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/09.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Почему доступ запрещён","description":"Инженерная методология расследования отказов AccessDenied: расшифровка сообщений STS, аудит в CloudTrail, симуляция политик и анализ в Access Analyzer.","url":"https://y-kolyada.github.io/aws-iam/ru/09.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/09.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="09.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="09.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/09.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/09.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html" aria-current="page"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -92,28 +93,94 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 9</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Почему доступ запрещён</h1>
+    <p class="page-size" data-words="966">Слов: 966</p>
+    <p class="lead">Инженерная методология расследования отказов AccessDenied: расшифровка сообщений STS, аудит в CloudTrail, симуляция политик и анализ в Access Analyzer.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>Когда приложение или скрипт деплоя падает со стандартной строкой <code>ClientError: An error occurred (AccessDenied) when calling the PutObject operation: Access Denied</code>, неопытный специалист начинает действовать методом слепого подбора: добавляет права администратора, хаотично правит политики и коммитит наугад. Это приводит к потере часов рабочего времени и возникновению опасных брешей в защите.</p>
+      <p>Профессиональный инженер ведет расследование как системный следователь: 1) Расшифровывает закодированное диагностическое сообщение через <code>sts decode-authorization-message</code>; 2) Извлекает точные параметры вызова из журнала AWS CloudTrail; 3) Локализует несовпавшее правило с помощью симулятора политик IAM Policy Simulator; 4) Выстраивает минимально достаточную политику (Least Privilege) на базе реального трафика через IAM Access Analyzer.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="access-denied-anatomy">1 · Анатомия ошибки AccessDenied: почему сообщение по умолчанию скрывает детали <a class="anchor-link" href="#access-denied-anatomy">#</a></h2>
+    <p>Почему публичный API AWS по умолчанию отвечает сухой фразой «Access Denied», не объясняя, какого именно разрешения не хватило? Это осознанное архитектурное решение по предотвращению атак типа «оракул разрешений» (Information Disclosure / Oracle Attack).</p>
+    <p>Если бы API подробно сообщал: «вам запрещен доступ, потому что бакет confidential-finances принадлежит аккаунту 111122223333, а в роли не хватает права kms:Decrypt», внешний злоумышленник мог бы перебором имен исследовать внутреннюю структуру закрытых аккаунтов, имена бакетов и конфигурации шифрования компании.</p>
+    <p>Однако для легитимных инженеров и сервисных ролей AWS передает в теле ответа длинную строку закодированного сообщения (Base64-encoded диагностический токен). Расшифровать его может только субъект, обладающий правом на API-действие <code>sts:DecodeAuthorizationMessage</code>. Без этого права вызов декодера возвращает ошибку, что защищает диагностическую информацию от посторонних глаз. Назначение этого права сервисным инженерам и платформенным командам является фундаментальным требованием для оперативного расследования сбоев в работе микросервисов.</p>
+
+    <h2 id="sts-decode-message">2 · Декодирование сообщений через STS: декодер скрытых отказов <a class="anchor-link" href="#sts-decode-message">#</a></h2>
+    <p>Команда декодирования превращает нечитаемый токен в структурированный JSON-документ:</p>
+    <pre><code>aws sts decode-authorization-message \
+  --encoded-message "AQAAAP..." | jq '.DecodedMessage | fromjson'</code></pre>
+    <p>В расшифрованном выводе содержится исчерпывающий протокол вычисления решения ядром IAM:</p>
+    <ul>
+      <li><code>allowed: false</code> - итоговый вердикт системы авторизации.</li>
+      <li><code>explicitDeny: true/false</code> - был ли отказ вызван конкретным правилом с <code>"Effect": "Deny"</code> или банальным отсутствием разрешающего правила (Default / Implicit Deny). Это моментально отсекает половину ложных гипотез.</li>
+      <li><code>matchedStatements</code> - перечень конкретных Sid и номеров утверждений, которые совпали с запросом во время оценки.</li>
+      <li><code>failures</code> - точный компонент архитектуры, заблокировавший запрос. Вывод содержит однозначные константы: <code>"FAILURE_IN_SCP"</code> (если заблокировала политика организации AWS Organizations), <code>"FAILURE_IN_PERMISSIONS_BOUNDARY"</code> (если действие вышло за пределы назначенной границы), <code>"FAILURE_IN_SESSION_POLICY"</code> (если ограничила сессионная политика STS) или <code>"FAILURE_IN_RESOURCE_POLICY"</code>.</li>
+      <li><code>context</code> - зафиксированные в момент вызова значения контекстных ключей: переданный IP-адрес клиента, флаг безопасного транспорта TLS, ARN вызывающего субъекта, целевой ресурс и теги.</li>
+    </ul>
+
+    <h2 id="cloudtrail-auditing">3 · Трассировка вызовов в AWS CloudTrail: поиск истины в журналах аудита <a class="anchor-link" href="#cloudtrail-auditing">#</a></h2>
+    <p>Главным источником правды о любых событиях в облаке является сервис непрерывного аудита <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">AWS CloudTrail</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS CloudTrail и Data Events</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованный сервис криптографического аудита и логирования всех API-вызовов в аккаунте.</span><span class="term-links"><a href="glossary.html#term-cloudtrail">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>. Каждый сетевой вызов к API фиксируется в виде неизменяемой JSON-записи.</p>
+    <p>Критически важно различать два класса событий CloudTrail:</p>
+    <dl>
+      <dt><strong>События управления (Management Events):</strong></dt>
+      <dd>Операции плоскости управления (Control Plane): создание пользователей, прикрепление политик, запуск виртуальных машин EC2, создание таблиц DynamoDB. Они логируются по умолчанию и хранятся в Event History в течение 90 дней бесплатно. Для оперативного поиска недавних отказов через CLI используется команда:<br>
+      <code>aws cloudtrail lookup-events --lookup-attributes AttributeKey=EventName,AttributeValue=PutObject</code></dd>
+      <dt><strong>События данных (Data Events):</strong></dt>
+      <dd>Вызовы плоскости данных (Data Plane): операции чтения и записи объектов <code>s3:GetObject</code>, <code>s3:PutObject</code>, вызовы функций <code>lambda:Invoke</code>, дешифровка ключей <code>kms:Decrypt</code>. Из-за огромного объема они отключены по умолчанию и требуют явной настройки логирования в S3.</dd>
+    </dl>
+    <p>При расследовании отказа инженер фильтрует журнал через CloudWatch Logs Insights или Amazon Athena:</p>
+    <pre><code>fields @timestamp, eventName, userIdentity.arn, sourceIPAddress, errorMessage
+| filter errorCode = "AccessDenied"
+| sort @timestamp desc
+| limit 20</code></pre>
+    <p>В поле <code>userIdentity</code> фиксируется точный ARN личности, включая имя сессии assume-role, что позволяет безошибочно определить, кто именно отправил упавший запрос. Поля <code>requestParameters</code> и <code>responseElements</code> сохраняют переданные аргументы вызова.</p>
+
+    <h2 id="policy-simulator">4 · Инструменты симуляции: IAM Policy Simulator <a class="anchor-link" href="#policy-simulator">#</a></h2>
+    <p>Чтобы проверить гипотезу об исправлении политики без внесения изменений в живой продакшн, используется симулятор политик - через веб-консоль или интерфейс командной строки CLI:</p>
+    <pre><code>aws iam simulate-principal-policy \
+  --policy-source-arn "arn:aws:iam::123456789012:role/BackendAppRole" \
+  --action-names "s3:GetObject" "s3:PutObject" \
+  --resource-arns "arn:aws:s3:::production-vault/data/*" \
+  --context-entries ContextKeyName=aws:SecureTransport,ContextKeyValues=true,ContextKeyType=boolean</code></pre>
+    <p>Симулятор полностью воспроизводит алгоритм ядра IAM: он считывает все прикрепленные к роли политики, границы разрешений и SCP, прогоняет тестовый вектор и возвращает вердикт <code>allowed</code> / <code>explicitDeny</code> / <code>implicitDeny</code> с указанием конкретных строк документа. В симулятор можно передавать произвольные контекстные параметры через <code>--context-entries</code>, моделируя вызовы с корпоративных IP или без MFA. Это исключает разрушительные эксперименты на работающих серверах.</p>
+
+    <h2 id="access-analyzer">5 · Поиск неиспользуемых прав и генерация политик: IAM Access Analyzer <a class="anchor-link" href="#access-analyzer">#</a></h2>
+    <p>Диагностика отказов - это лишь половина работы инженера. Вторая половина - устранение избыточных прав, выданных во время решения инцидента. Для этого применяется <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">AWS IAM Access Analyzer</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">AWS IAM Access Analyzer</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Инструмент математического анализа политик для выявления неиспользуемых прав и публичного доступа.</span><span class="term-links"><a href="glossary.html#term-access-analyzer">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>:</p>
+    <ol>
+      <li><strong>Анализатор внешнего доступа (External Access Findings):</strong> На базе технологии <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Automated Reasoning</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Automated Reasoning</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Формальная математическая верификация логики политик безопасности на базе Z3 SMT Solver.</span><span class="term-links"><a href="glossary.html#term-automated-reasoning">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> непрерывно анализирует ресурсные политики бакетов S3, KMS-ключей, очередей SQS и ролей IAM, моментально сигнализируя, если ресурс стал доступен публично или расшарен внешнему неизвестному аккаунту.</li>
+      <li><strong>Анализатор неиспользуемых прав (Unused Access):</strong> Отслеживает реальную активность сущностей за последние 90 дней. Если на роль назначены 50 действий, а микросервис использует только 3, Access Analyzer помечает остальные 47 как неиспользуемые.</li>
+      <li><strong>Автоматическая генерация политик из CloudTrail:</strong> Access Analyzer сканирует журнал CloudTrail за указанный период, извлекает все фактически выполненные ролью API-вызовы и генерирует готовую минимальную JSON-политику строго под эти действия. Инженеру остается скопировать выверенный документ в код Terraform, гарантируя соблюдение принципа наименьших привилегий.</li>
+    </ol>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив методологию диагностики и профилирования прав, вы больше никогда не будете тратить часы на угадывание причин <code>AccessDenied</code>. Ваши практические артефакты:</p>
+      <ol>
+        <li><strong>Инструмент дешифровки STS:</strong> моментальное раскрытие скрытых причин отказов через <code>sts decode-authorization-message</code>.</li>
+        <li><strong>Журнальное расследование:</strong> навыки поиска упавших вызовов в Management и Data Events сервиса CloudTrail через SQL-запросы Athena и CLI <code>lookup-events</code>.</li>
+        <li><strong>Безопасное тестирование:</strong> проверка исправлений политик через <code>simulate-principal-policy</code> с подстановкой контекстных ключей.</li>
+        <li><strong>Автоматизация Least Privilege:</strong> использование IAM Access Analyzer для генерации идеальных политик на основе реальной активности.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="10.html">Примеры · Noob</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="08.html">Ключи, федерация и машины</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>

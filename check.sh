@@ -25,6 +25,11 @@
 set -uo pipefail
 cd "$(dirname "$0")" || exit 2
 
+if [ "${1:-}" = "--fast" ]; then
+  shift
+  exec ./tools/check-fast.sh "$@"
+fi
+
 FAIL=0
 NAMES=()
 CODES=()
@@ -43,9 +48,11 @@ run() {
 }
 
 run "страница и заголовок" ./tools/check-page.sh ru/index.html
+run "оболочка и навигация" python3 tools/build-nav.py --check
 run "утверждения сайта"    ./tools/check-claims.sh
 run "примеры запускаются"  ./tools/check-examples.sh
 run "ссылки и якоря"       python3 tools/check-links.py
+run "термины и словарь"    python3 tools/check-terms.py
 run "пунктуация"          python3 tools/check-text.py
 run "индекс поиска"        python3 tools/build-search.py --check
 run "данные страниц"       python3 tools/build-meta.py --check

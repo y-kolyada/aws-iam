@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Раздел 6 · devops-aws-iam · ai|</title>
+<title>Границы разрешений · devops-aws-iam · ai|</title>
 <!-- meta: built by tools/build-meta.py - do not edit by hand -->
-<meta name="description" content="Лид страницы: о чём она и кому нужна.">
+<meta name="description" content="Архитектура защитных барьеров IAM: механика Permissions Boundaries, Service Control Policies (SCP) в AWS Organizations, сессионные ограничения и безопасное...">
 <link rel="canonical" href="https://y-kolyada.github.io/aws-iam/ru/06.html">
 <link rel="alternate" hreflang="ru" href="https://y-kolyada.github.io/aws-iam/ru/06.html">
 <link rel="alternate" hreflang="en" href="https://y-kolyada.github.io/aws-iam/en/06.html">
@@ -14,15 +14,15 @@
 <link rel="alternate" hreflang="x-default" href="https://y-kolyada.github.io/aws-iam/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="devops-aws-iam">
-<meta property="og:title" content="Раздел 6">
-<meta property="og:description" content="Лид страницы: о чём она и кому нужна.">
+<meta property="og:title" content="Границы разрешений">
+<meta property="og:description" content="Архитектура защитных барьеров IAM: механика Permissions Boundaries, Service Control Policies (SCP) в AWS Organizations, сессионные ограничения и безопасное...">
 <meta property="og:url" content="https://y-kolyada.github.io/aws-iam/ru/06.html">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary">
 <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Раздел 6","description":"Лид страницы: о чём она и кому нужна.","url":"https://y-kolyada.github.io/aws-iam/ru/06.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"TechArticle","headline":"Границы разрешений","description":"Архитектура защитных барьеров IAM: механика Permissions Boundaries, Service Control Policies (SCP) в AWS Organizations, сессионные ограничения и безопасное...","url":"https://y-kolyada.github.io/aws-iam/ru/06.html","inLanguage":"ru","isPartOf":{"@type":"WebSite","name":"devops-aws-iam","url":"https://y-kolyada.github.io/aws-iam/"}}</script>
 <!-- /meta -->
-<link rel="stylesheet" href="../assets/style.css?v=1">
+<link rel="stylesheet" href="../assets/style.css?v=2">
 <script>
   (function() {
     var s = document.documentElement.dataset.site || 'swa';
@@ -48,7 +48,7 @@
   <div class="utility-tray" role="toolbar" aria-label="Настройки отображения и язык">
     <nav class="lang-switcher" aria-label="Язык страницы">
       <a href="../en/06.html" lang="en" hreflang="en" aria-label="English">EN</a>
-      <a href="06.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">Раздел 1</a>
+      <a href="06.html" lang="ru" hreflang="ru" aria-label="Русский" class="active" aria-current="page">RU</a>
       <a href="../uk/06.html" lang="uk" hreflang="uk" aria-label="Українська">UK</a>
       <a href="../de/06.html" lang="de" hreflang="de" aria-label="Deutsch">DE</a>
     </nav>
@@ -67,24 +67,25 @@
 
   <nav class="contents" aria-label="Разделы сайта">
     <ol>
-      <li><a href="01.html" aria-current="page">Раздел 1</a></li>
-      <li><a href="02.html">Раздел 2</a></li>
-      <li><a href="03.html">Раздел 3</a></li>
-      <li><a href="04.html">Раздел 4</a></li>
-      <li><a href="05.html">Раздел 5</a></li>
-      <li><a href="06.html">Раздел 6</a></li>
-      <li><a href="07.html">Раздел 7</a></li>
-      <li><a href="08.html">Раздел 8</a></li>
-      <li><a href="09.html">Раздел 9</a></li>
-      <li><a href="10.html">Раздел 10</a></li>
-      <li><a href="11.html">Раздел 11</a></li>
-      <li><a href="12.html">Раздел 12</a></li>
-      <li><a href="13.html">Раздел 13</a></li>
-      <li><a href="14.html">Раздел 14</a></li>
-      <li><a href="15.html">Раздел 15</a></li>
+      <li><a href="01.html"><span class="num">1</span>Кто решает и как</a></li>
+      <li><a href="02.html"><span class="num">2</span>Язык политики</a></li>
+      <li><a href="03.html"><span class="num">3</span>Как вычисляется ответ</a></li>
+      <li><a href="04.html"><span class="num">4</span>На личности и ресурсе</a></li>
+      <li><a href="05.html"><span class="num">5</span>Роли и доверие</a></li>
+      <li><a href="06.html" aria-current="page"><span class="num">6</span>Границы разрешений</a></li>
+      <li><a href="07.html"><span class="num">7</span>Условия и переменные</a></li>
+      <li><a href="08.html"><span class="num">8</span>Ключи и федерация</a></li>
+      <li><a href="09.html"><span class="num">9</span>Почему отказ</a></li>
+      <li><a href="10.html"><span class="num">10</span>Примеры · Noob</a></li>
+      <li><a href="11.html"><span class="num">11</span>Примеры · Pro</a></li>
+      <li><a href="12.html"><span class="num">12</span>Примеры · IGL</a></li>
+      <li><a href="13.html"><span class="num">13</span>Вопросы · Noob</a></li>
+      <li><a href="14.html"><span class="num">14</span>Вопросы · Pro</a></li>
+      <li><a href="15.html"><span class="num">15</span>Вопросы · IGL</a></li>
     </ol>
     <div class="nav-extra">
-      <a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a>
+      <div><a href="navigator.html"><svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> Навигатор</a></div>
+      <div><a href="glossary.html"><svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg> Словарь понятий</a></div>
     </div>
     <div class="page-toc" id="pageToc" aria-label="Разделы этой страницы" hidden>
       <ul class="toc-list" id="tocList"></ul>
@@ -92,28 +93,110 @@
   </nav>
 
   <main id="main">
-    <h1>Раздел 6</h1>
-    <p class="page-size" data-words="48">Слов: 48</p>
-    <p class="lead">Лид страницы: о чём она и кому нужна. Одно предложение, не длиннее 160 знаков.</p>
+    <h1>Границы разрешений</h1>
+    <p class="page-size" data-words="953">Слов: 953</p>
+    <p class="lead">Архитектура защитных барьеров IAM: механика Permissions Boundaries, Service Control Policies (SCP) в AWS Organizations, сессионные ограничения и безопасное делегирование прав.</p>
 
     <div class="box key" id="key-idea">
       <h2>Главная мысль страницы <a class="anchor-link" href="#key-idea" aria-label="ссылка на этот блок">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p>В корпоративной среде перед платформенной командой встает классическая дилемма: как позволить разработчикам самостоятельно создавать IAM-роли для микросервисов, лямбда-функций и конвейеров CI/CD, не превращая каждого инженера в полноценного администратора облака? Если дать разработчику право <code>iam:CreateRole</code> и <code>iam:AttachRolePolicy</code>, он сможет создать роль с правами <code>AdministratorAccess</code>, принять ее и захватить контроль над всей инфраструктурой.</p>
+      <p>Решением этой проблемы является концепция защитных барьеров (Guardrails): границы разрешений (Permissions Boundaries) и сервисные политики контроля (Service Control Policies, SCP). Эти механизмы не дают прав сами по себе, но устанавливают жесткий потолок (максимально допустимую квоту полномочий), выше которого субъект не сможет подняться ни при каких обстоятельствах.</p>
     </div>
 
-    <h2 id="first">1 · Раздел 1 <a class="anchor-link" href="#first">#</a></h2>
-    <p>Текст этого раздела ещё не написан.</p>
+    <h2 id="boundary-mechanics">1 · Механика Permissions Boundary: ограничение максимальных полномочий <a class="anchor-link" href="#boundary-mechanics">#</a></h2>
+    <p><span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Граница разрешений (Permissions Boundary)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Граница разрешений</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Превентивный фильтр, ограничивающий максимальные права создаваемых ролей через логическое И.</span><span class="term-links"><a href="glossary.html#term-permissions-boundary">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> - это продвинутая функция AWS IAM, использующая стандартную управляемую политику (Customer Managed Policy) в качестве верхнего предела полномочий для пользователя или роли.</p>
+    <p>Главный закон границы разрешений формулируется математически: <strong>эффективные права субъекта равны строгому пересечению его политик личности и назначенной границы:</strong></p>
+    <pre><code>Эффективные_Права = Identity_Policy ∩ Permissions_Boundary</code></pre>
+    <p>Permissions Boundary обладает следующими фундаментальными свойствами:</p>
+    <ul>
+      <li>Она <strong>не дает</strong> прав. Если к роли прикреплена только граница разрешений без обычной политики личности, эффективные права роли равны абсолютному нулю (Default Deny).</li>
+      <li>Она <strong>ограничивает</strong> права. Если к роли прикреплена политика <code>AdministratorAccess</code> (разрешено все), а в качестве Permissions Boundary назначена политика с доступом только к Amazon S3, роль сможет работать исключительно с бакетами S3. Любые попытки вызвать EC2, RDS или IAM будут немедленно заблокированы.</li>
+      <li>Явный <code>Deny</code> в границе разрешений имеет безусловный приоритет и блокирует действие, даже если политика личности содержит <code>Allow</code>.</li>
+    </ul>
+
+    <h2 id="delegated-administration">2 · Безопасное делегирование создания ролей разработчикам <a class="anchor-link" href="#delegated-administration">#</a></h2>
+    <p>Классический сценарий внедрения Permissions Boundary в enterprise-командах - делегированное администрирование IAM без риска несанкционированного повышения привилегий (Privilege Escalation):</p>
+    <p>1. Администраторы безопасности создают жесткую управляемую политику <code>ScopeBoundaryPolicy</code>, разрешающую доступ только к ресурсам сред разработки и запрещающую удаление логов CloudTrail, изменение биллинговых настроек и создание сетевых шлюзов.</p>
+    <p>2. Разработчикам выдается право создавать роли через <code>iam:CreateRole</code> и прикреплять к ним политики через <code>iam:PutRolePolicy</code> / <code>iam:AttachRolePolicy</code>, но со строгим обязательным условием в блоке <code>Condition</code>:</p>
+    <pre><code>{
+  "Sid": "AllowCreateRoleWithBoundary",
+  "Effect": "Allow",
+  "Action": [
+    "iam:CreateRole",
+    "iam:AttachRolePolicy",
+    "iam:PutRolePolicy"
+  ],
+  "Resource": "arn:aws:iam::123456789012:role/app-*",
+  "Condition": {
+    "StringEquals": {
+      "iam:PermissionsBoundary": "arn:aws:iam::123456789012:policy/ScopeBoundaryPolicy"
+    }
+  }
+}</code></pre>
+    <p>3. Отдельным блоком разработчикам категорически запрещается изменять саму политику <code>ScopeBoundaryPolicy</code> и снимать границу с ролей через вызов <code>iam:DeleteRolePermissionsBoundary</code>.</p>
+    <p>В результате разработчик получает полную свободу: он может создавать любые сервисные роли для своих микросервисов в коде Terraform, но если он попытается создать роль без указания границы или с чужой границей, AWS IAM моментально заблокирует вызов API с ошибкой <code>AccessDenied</code>.</p>
+
+    <h2 id="scp-organizations">3 · Service Control Policies (SCP): управление на уровне AWS Organizations <a class="anchor-link" href="#scp-organizations">#</a></h2>
+    <p>Если Permissions Boundary настраивается локально внутри одного аккаунта инженерами платформы, то <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">Service Control Policies (SCP)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Service Control Policy (SCP)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Централизованные превентивные guardrails AWS Organizations, ограничивающие даже Root User.</span><span class="term-links"><a href="glossary.html#term-scp">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> действуют на самом верхнем уровне иерархии - в сервисе AWS Organizations.</p>
+    <p>SCP прикрепляются к корню организации (Root), организационным единицам (Organizational Units, OU) или отдельным учетным записям. Они задают максимальные пределы полномочий для ВСЕХ сущностей внутри дочерних аккаунтов.</p>
+    <div class="box">
+      <p><strong>Фундаментальное отличие SCP от обычных политик:</strong> SCP распространяют свое действие на ВСЕХ пользователей и роли в аккаунте, <strong>ВКЛЮЧАЯ КОРНЕВОГО ПОЛЬЗОВАТЕЛЯ АККАУНТА (ROOT USER)!</strong></p>
+      <p>Ни один пользователь, даже обладающий абсолютными правами внутри аккаунта, не может выполнить действие, запрещенное политикой SCP на уровне организации. Это делает SCP главным барьером соответствия требованиям регуляторов (Compliance).</p>
+    </div>
+    <p>По умолчанию в каждой организации включена политика <code>FullAWSAccess</code> (разрешающая все действия <code>*</code>). Чтобы запретить определенное поведение во всех дочерних средах, архитекторы добавляют защитные SCP:</p>
+    <ul>
+      <li><strong>Географический геофенсинг (Region Restriction):</strong> явный запрет на запуск любых ресурсов за пределами разрешенных регионов (например, за пределами Франкфурта <code>eu-central-1</code> и Ирландии <code>eu-west-1</code>), блокирующий случайные развертывания инфраструктуры в удаленных дата-центрах.</li>
+      <li><strong>Неизменяемость аудита (Immutability):</strong> запрет на отключение или удаление трейлов AWS CloudTrail, хранилищ AWS Config и детектора угроз Amazon GuardDuty.</li>
+      <li><strong>Запрет публичных ресурсов:</strong> блокировка создания публичных S3-бакетов или снятия шифрования EBS-томов.</li>
+    </ul>
+
+    <h2 id="session-policies">4 · Сессионные политики (Session Policies) в STS <a class="anchor-link" href="#session-policies">#</a></h2>
+    <p>Третий уровень динамического ограничения максимальных прав - <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">сессионные политики (Session Policies)</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Сессионная политика</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Временный фильтр, передаваемый при вызове AssumeRole для дополнительного сужения прав сессии.</span><span class="term-links"><a href="glossary.html#term-session-policy">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span>. Они передаются в качестве аргумента при вызове команд службы STS:</p>
+    <pre><code>aws sts assume-role \
+  --role-arn arn:aws:iam::123456789012:role/DataWorkerRole \
+  --role-session-name TenantWorkerSession \
+  --policy file://session-policy.json</code></pre>
+    <p>Сессионная политика не может добавить ни одного права, которого нет у целевой роли. Она выступает временным одноразовым фильтром на время жизни выпущенного токена. Это стандартный паттерн для мультитенантных SaaS-систем: единый микросервис с общей ролью принимает задачи разных клиентов и при выпуске токена STS накладывает сессионную политику, ограничивающую доступ строго префиксом <code>arn:aws:s3:::customer-data/tenant-42/*</code>.</p>
+
+    <h2 id="guardrails-matrix">5 · Сравнение уровней ограничения: SCP vs Boundary vs Session Policy <a class="anchor-link" href="#guardrails-matrix">#</a></h2>
+    <p>Для безошибочного выбора защитного механизма инженер должен четко различать границы ответственности каждого уровня:</p>
+    <dl>
+      <dt><strong>Уровень применения:</strong></dt>
+      <dd>SCP действует на уровне Организации, OU и Аккаунтов. Permissions Boundary действует на уровне пользователей и ролей IAM. Session Policy действует на уровне конкретной временной сессии STS.</dd>
+      <dt><strong>Влияние на корневого пользователя (Root User):</strong></dt>
+      <dd>SCP - <strong>ДА</strong>, ограничивает root. Permissions Boundary - <strong>НЕТ</strong>, на root не действует. Session Policy - <strong>НЕТ</strong>, на root не действует.</dd>
+      <dt><strong>Кто управляет:</strong></dt>
+      <dd>SCP находится в руках enterprise-архитекторов и службы информационной безопасности. Permissions Boundary настраивается платформенной DevOps-командой. Session Policy передается программно из кода приложений.</dd>
+      <dt><strong>Математическая модель:</strong></dt>
+      <dd>Все три барьера работают как логическое умножение. Итоговое действие выполняется, только если оно входит в общее пересечение всех трех плоскостей.</dd>
+    </dl>
 
     <div class="box key" id="artifacts">
       <h2>Артефакты: что у вас есть после этой страницы <a class="anchor-link" href="#artifacts">#</a></h2>
-      <p>Текст этого раздела ещё не написан.</p>
+      <p class="artifacts-slogan">Чтение &gt;&gt; Ваш квант времени жизни · Партнёрство достоинства вместе с AI · Перестройка вашей нейросети</p>
+      <p>Освоив механику защитных барьеров, вы можете безопасно масштабировать облачную платформу компании на десятки продуктовых команд. Ваши практические результаты:</p>
+      <ol>
+        <li><strong>Владение Permissions Boundary:</strong> понимание роли границы как потолка максимальных прав без риска эскалации привилегий.</li>
+        <li><strong>Архитектура делегированного IAM:</strong> шаблон условий <code>iam:PermissionsBoundary</code> для безопасной передачи прав создания ролей разработчикам.</li>
+        <li><strong>Контроль организации через SCP:</strong> умение конструировать глобальные запреты регионов и защиты аудита, действующие даже на root-пользователя.</li>
+        <li><strong>Мультитенантная изоляция:</strong> динамическое сужение привилегий через сессионные политики STS без необходимости создания тысяч отдельных ролей.</li>
+      </ol>
     </div>
+  
+
+    <footer>
+      <nav class="pager" aria-label="Соседние темы">
+        <p class="pager-next">Следующая тема: <a href="07.html">Условия и контекстные ключи</a></p>
+        <p class="pager-prev">Предыдущая тема: <a href="05.html">Роли и доверие</a></p>
+      </nav>
+      <p class="footer-note">Сайт серии AI Factory. Сделан той же оснасткой, что и остальные: обычный HTML и CSS, проверка на bash, публикация через GitHub Pages.</p>
+    </footer>
   </main>
 
 </div>
 </div>
-<script src="../assets/swa.js?v=1"></script>
-<script src="../assets/terms.js?v=1"></script>
-<script src="../assets/cp.js?v=1"></script>
+<script src="../assets/swa.js?v=2"></script>
+<script src="../assets/terms.js?v=2"></script>
+<script src="../assets/cp.js?v=2"></script>
 </body>
 </html>
