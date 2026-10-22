@@ -311,4 +311,4 @@ bdcdb7a feat(content): deliver question banks 13-15, navigator, and glossary
 
 | Кто | Вердикт |
 | :-- | :-- |
-| Conductor | |
+| Conductor | Принято («Батч 4 принят. Делаем Батч 5...») |
