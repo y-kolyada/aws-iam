@@ -94,7 +94,7 @@
 
   <main id="main">
     <h1>Словарь понятий</h1>
-    <p class="page-size" data-words="2466">Слов: 2466</p>
+    <p class="page-size" data-words="2494">Слов: 2494</p>
     <p class="lead">Тридцать ключевых понятий AWS IAM: не академические определения, а точная физика рантайма, архитектурные механики и последствия ошибок в production.</p>
 
     <div class="box key" id="key-idea">
@@ -113,8 +113,7 @@
       <p class="glossary-lead">Глобальный бессерверный сервис контроля доступа, авторизующий каждый входящий API-запрос к инфраструктуре AWS.</p>
       <p>IAM не хранит состояния между вызовами. При поступлении запроса ядро авторизации (Policy Engine) парсит криптографическую подпись SigV4, извлекает параметры контекста (Principal, Action, Resource, Context) и детерминированно вычисляет бинарный вердикт Allow или Deny, сопоставляя запрос со всеми применимыми политиками.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#decision-core">Кто решает и как · Архитектура запроса</a>, <a href="navigator.html#lens-components">Навигатор · Компоненты</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="01.html#decision-core">Кто решает и как · Архитектура запроса</a>, <a href="navigator.html#lens-components">Навигатор · Компоненты</a>, <a href="index.html">Посадочная страница</a> </div>
     </div>
 
     <div class="glossary-term" id="term-policy-document">
@@ -139,8 +138,7 @@
       <p class="glossary-lead">Идентифицированная сущность (пользователь, роль, сервис или аккаунт), совершающая вызов API.</p>
       <p>В resource-based политиках (S3 Bucket Policy, KMS Key Policy) и Trust Policy элемент <code>Principal</code> является строго обязательным. В identity-based политиках он запрещен, так как субъект однозначно определяется фактом прикрепления документа к пользователю или роли. Указание <code>"AWS": "arn:aws:iam::account:root"</code> означает делегирование прав администраторам указанного аккаунта.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Элемент Principal</a>, <a href="04.html#two-poles">На личности и ресурсе</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Элемент Principal</a>, <a href="04.html#two-poles">На личности и ресурсе</a>, <a href="index.html">Посадочная страница</a> </div>
     </div>
 
     <div class="glossary-term" id="term-action">
@@ -165,8 +163,7 @@
       <p class="glossary-lead">Универсальный глобальный идентификатор любого инфраструктурного объекта в облаке AWS.</p>
       <p>Строго разделяет операции над контейнером и его содержимым. Для S3 имя <code>arn:aws:s3:::my-bucket</code> адресует бакет (операции метаданных <code>s3:ListBucket</code>), а суффикс <code>arn:aws:s3:::my-bucket/*</code> адресует ключи объектов (операции данных <code>s3:GetObject</code>, <code>s3:PutObject</code>). Поддерживает контекстную интерполяцию переменных вида <code>${aws:username}</code>.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Анатомия ARN</a>, <a href="10.html#s3-read-only">Примеры Noob · Бакет S3</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="02.html#resource-and-principal">Язык политики JSON · Анатомия ARN</a>, <a href="10.html#s3-read-only">Примеры Noob · Бакет S3</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-condition">
@@ -178,8 +175,7 @@
       <p class="glossary-lead">Механизм гранулярной фильтрации запроса по контекстным атрибутам окружения и метаданным.</p>
       <p>Включает операторы проверки строк (<code>StringEquals</code>, <code>StringLike</code>), чисел, дат, IP-адресов (<code>IpAddress</code>, <code>NotIpAddress</code>), булевых значений (<code>Bool</code>) и оператора присутствия ключа (<code>Null</code>). Модификатор <code>IfExists</code> предотвращает ложные отказы при отсутствии ключа в контексте. Несколько операторов внутри одного Statement объединяются логическим И (AND).</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="07.html#operators-catalog">Условия и контекстные ключи</a>, <a href="14.html#condition-keys-operators">Вопросы Pro (11-20)</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="07.html#operators-catalog">Условия и контекстные ключи</a>, <a href="14.html#condition-keys-operators">Вопросы Pro (11-20)</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-explicit-deny">
@@ -191,8 +187,7 @@
       <p class="glossary-lead">Правило политики с директивой Deny, обладающее безусловным высшим приоритетом в алгоритме вычисления.</p>
       <p>Если хотя бы одно применимое правило (в identity-политике, resource-политике, SCP или сессионной политике) содержит явный Deny для данного действия, запрос немедленно и окончательно блокируется с ошибкой Access Denied, независимо от наличия любых разрешающих правил Allow.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#evaluation-flowchart">Как вычисляется ответ · Приоритет Deny</a>, <a href="navigator.html#lens-strength">Навигатор · Сила</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#evaluation-flowchart">Как вычисляется ответ · Приоритет Deny</a>, <a href="navigator.html#lens-strength">Навигатор · Сила</a>, <a href="index.html">Посадочная страница</a> </div>
     </div>
 
     <div class="glossary-term" id="term-implicit-deny">
@@ -204,8 +199,7 @@
       <p class="glossary-lead">Базовое состояние движка авторизации AWS, при котором любое действие считается запрещенным, пока не разрешено явно.</p>
       <p>Основа модели нулевого доверия: если ни одна активная политика прямо не предоставила право <code>Effect: Allow</code>, операция отклоняется. В отличие от явного запрета, неявный отказ легко перекрывается любым разрешающим правилом в другой применимой политике субъекта.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#three-verdicts">Как вычисляется ответ · Запрет по умолчанию</a>, <a href="13.html#deny-allow-evaluation">Вопросы Noob (31-40)</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="03.html#three-verdicts">Как вычисляется ответ · Запрет по умолчанию</a>, <a href="13.html#deny-allow-evaluation">Вопросы Noob (31-40)</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-least-privilege">
@@ -323,8 +317,7 @@
       <p class="glossary-lead">Управляемая политика верхнего уровня, устанавливающая максимальный потолок прав для IAM-сущности.</p>
       <p>Итоговые права вычисляются как строгое пересечение множеств (логическое И) между <span class="term"><button type="button" class="term-btn" aria-expanded="false" style="background:none;border:none;padding:1px 4px;margin:-1px -4px;font:inherit;color:inherit;cursor:pointer;border-bottom:2px dashed var(--term-accent,#db8b0e);border-radius:4px;">identity-политикой</button><span class="term-card" role="tooltip" hidden><span class="term-header"><strong class="term-title">Политика на личности (Identity-based Policy)</strong><button type="button" class="term-close" aria-label="Закрыть">×</button></span><span class="term-desc">Политика разрешений, прикрепляемая непосредственно к IAM-пользователю, группе пользователей или роли.</span><span class="term-links"><a href="glossary.html#term-identity-policy">В словарь понятий <svg class="icon" data-icon="book" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.6 3.8h4.8a2.6 2.6 0 0 1 2.6 2.6v10a2.2 2.2 0 0 0-2.2-1.8H2.6z"/><path d="M17.4 3.8h-4.8a2.6 2.6 0 0 0-2.6 2.6v10a2.2 2.2 0 0 1 2.2-1.8h5.2z"/></svg></a></span></span></span> и границей. Никогда не предоставляет прав сама по себе. Позволяет безопасно делегировать разработчикам право создавать роли в CI/CD без риска эскалации прав до администратора.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#boundary-mechanics">Границы разрешений · Механика потолка</a>, <a href="11.html#ci-permissions-boundary">Примеры Pro · CI/CD Boundary</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#boundary-mechanics">Границы разрешений · Механика потолка</a>, <a href="11.html#ci-permissions-boundary">Примеры Pro · CI/CD Boundary</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-session-policy">
@@ -375,8 +368,7 @@
       <p class="glossary-lead">Промышленный стандарт бесключевой криптографической федерации рабочих нагрузок с внешними системами.</p>
       <p>Внешний раннер (GitHub Actions, GitLab CI) запрашивает у своего провайдера подписанный JSON Web Token (JWT) и передает его в AWS STS. Служба STS валидирует подпись по открытым ключам JWKS, проверяет аудиторию (<code>aud</code>) и тему (<code>sub</code>) и выписывает временные учетные данные без хранения статических ключей.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#oidc-federation">Ключи и федерация · OpenID Connect</a>, <a href="11.html#github-actions-oidc">Примеры Pro · GitHub Actions</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#oidc-federation">Ключи и федерация · OpenID Connect</a>, <a href="11.html#github-actions-oidc">Примеры Pro · GitHub Actions</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-irsa">
@@ -388,8 +380,7 @@
       <p class="glossary-lead">Архитектурный механизм безопасной гранулярной доставки IAM-ролей подам в кластере Amazon EKS.</p>
       <p>Кластер EKS настраивается как доверенный OIDC Identity Provider. Мутирующий вебхук инжектирует в контейнер токен сервисного аккаунта Kubernetes, сопоставленный с аннотацией <code>eks.amazonaws.com/role-arn</code>, позволяя изолировать права между подами на одном физическом сервере.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#kubernetes-identity">Ключи и федерация · Контейнеры</a>, <a href="11.html#kubernetes-irsa-sqs">Примеры Pro · EKS IRSA</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="08.html#kubernetes-identity">Ключи и федерация · Контейнеры</a>, <a href="11.html#kubernetes-irsa-sqs">Примеры Pro · EKS IRSA</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-imds">
@@ -401,8 +392,7 @@
       <p class="glossary-lead">Локальный сетевой сервис виртуальных машин EC2 для получения метаданных и сессионных токенов роли.</p>
       <p>В отличие от уязвимого IMDSv1, версия IMDSv2 требует обязательного сессионного токена через HTTP PUT запрос с ограничением TTL заголовков (Hop Limit = 1), что делает физически невозможной кражу учетных данных роли через уязвимости веб-приложений типа SSRF (Server-Side Request Forgery).</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#instance-profiles">Роли и доверие · Инстанс-профили</a>, <a href="14.html#oidc-workloads-irsa">Вопросы Pro (31-40)</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="05.html#instance-profiles">Роли и доверие · Инстанс-профили</a>, <a href="14.html#oidc-workloads-irsa">Вопросы Pro (31-40)</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-saml">
@@ -429,8 +419,7 @@
       <p class="glossary-lead">Централизованная политика AWS Organizations, задающая предельные рамки прав для целых учетных записей.</p>
       <p>Действует как внешний защитный конверт: ограничивает даже локального Root User дочернего аккаунта. Никогда не предоставляет прав сама по себе. Применяется для принудительного геоблокинга неразрешенных регионов мира и защиты неизменяемости аудиторских трейлов CloudTrail.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#scp-organizations">Границы разрешений · Сервисные политики</a>, <a href="12.html#scp-region-geofencing">Примеры IGL · Геоблокинг SCP</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="06.html#scp-organizations">Границы разрешений · Сервисные политики</a>, <a href="12.html#scp-region-geofencing">Примеры IGL · Геоблокинг SCP</a>, <a href="index.html">Посадочная страница</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-data-perimeter">
@@ -455,8 +444,7 @@
       <p class="glossary-lead">Аппаратный криптографический сервис управления ключами шифрования и их обязательными ресурсными политиками.</p>
       <p>Кастомный ключ шифрования KMS не может работать без Key Policy. Если в Key Policy явно не делегировать управление корневому аккаунту (<code>"arn:aws:iam::account:root"</code>), никакие identity-политики администраторов не смогут получить доступ к ключу, изолируя криптографический периметр.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#resource-policies-catalog">На личности и ресурсе · KMS</a>, <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS и EBS</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#resource-policies-catalog">На личности и ресурсе · KMS</a>, <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS и EBS</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-kms-grant">
@@ -468,8 +456,7 @@
       <p class="glossary-lead">Программное временное делегирование прав на использование ключа KMS конкретным облачным службам.</p>
       <p>Используется сервисами инфраструктуры (Auto Scaling, EBS, RDS) для автоматического шифрования и дешифрования системных томов конкретными инстансами без внесения изменений в статический текст Key Policy, предотвращая исчерпание лимита размера политики ключа.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS Grants</a>, <a href="14.html#resource-policies-kms">Вопросы Pro (21-30)</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="11.html#kms-key-policy-ebs">Примеры Pro · KMS Grants</a>, <a href="14.html#resource-policies-kms">Вопросы Pro (21-30)</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-roles-anywhere">
@@ -481,8 +468,7 @@
       <p class="glossary-lead">Сервис аутентификации серверов вне облака AWS с использованием корпоративных сертификатов X.509.</p>
       <p>Опирается на доверенный удостоверяющий центр (Trust Anchor). Утилита <code>aws_signing_helper</code> подписывает вызов закрытым ключом локального сервера и обменивает его на сессионные токены STS, полностью исключая хранение статических ключей в локальных дата-центрах.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="12.html#roles-anywhere-hybrid-pki">Примеры IGL · Roles Anywhere</a>, <a href="navigator.html#lens-cloud">Навигатор · В контексте облака</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="12.html#roles-anywhere-hybrid-pki">Примеры IGL · Roles Anywhere</a>, <a href="navigator.html#lens-cloud">Навигатор · В контексте облака</a>, <a href="08.html">Глава 08</a> </div>
     </div>
 
     <div class="glossary-term" id="term-access-analyzer">
@@ -494,8 +480,7 @@
       <p class="glossary-lead">Аналитический инструмент непрерывного аудита политик на основе автоматического доказательства теорем.</p>
       <p>Математически доказывает, какие внешние субъекты имеют доступ к ресурсам организации без реальных сетевых вызовов. В пайплайнах CI/CD валидирует планы Terraform до их применения (Policy-as-Code) и генерирует минимальные политики на основе фактических логов CloudTrail.</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#access-analyzer">Почему отказ · Access Analyzer</a>, <a href="12.html#access-analyzer-drift-audit">Примеры IGL · Аудит дрифта</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#access-analyzer">Почему отказ · Access Analyzer</a>, <a href="12.html#access-analyzer-drift-audit">Примеры IGL · Аудит дрифта</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-break-glass">
@@ -520,8 +505,7 @@
       <p class="glossary-lead">Уязвимость меж-аккаунтного делегирования, при которой сервис совершает несанкционированные действия от чужого имени.</p>
       <p>Возникает, когда доверенная роль стороннего SaaS-вендора вызывается атакующим для доступа к аккаунту жертвы. Нейтрализуется обязательной проверкой секретного параметра <code>sts:ExternalId</code> в доверительной политике роли (Trust Policy).</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#confused-deputy">Роли и доверие · Подставной помощник</a>, <a href="14.html#eval-logic-crossaccount">Вопросы Pro (1-10)</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="04.html#confused-deputy">Роли и доверие · Подставной помощник</a>, <a href="14.html#eval-logic-crossaccount">Вопросы Pro (1-10)</a>, <a href="navigator.html">Навигатор</a> </div>
     </div>
 
     <div class="glossary-term" id="term-cloudtrail">
@@ -533,8 +517,7 @@
       <p class="glossary-lead">Централизованный сервис криптографического аудита и журналирования всех API-вызовов в аккаунте.</p>
       <p>Фиксирует каждое обращение к облаку: личность вызывающего (userIdentity), время, эндпоинт, IP-адрес источника, входные параметры и статус ответа. Разделяется на бесплатные события управления (Management Events) и платные события доступа к объектам (Data Events в S3 и Lambda).</p>
       <div class="glossary-meta">
-        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#cloudtrail-auditing">Почему отказ · Трассировка CloudTrail</a>, <a href="navigator.html#lens-ecosystem">Навигатор · Связи в экосистеме</a>
-      </div>
+        <svg class="icon" data-icon="target" viewBox="0 0 20 20" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="10" cy="10" r="7.4"/><circle cx="10" cy="10" r="3.6"/><circle cx="10" cy="10" r="0.7" fill="currentColor"/></svg> <strong>Где встретилось:</strong> <a href="09.html#cloudtrail-auditing">Почему отказ · Трассировка CloudTrail</a>, <a href="navigator.html#lens-ecosystem">Навигатор · Связи в экосистеме</a>, <a href="index.html">Посадочная страница</a> </div>
     </div>
 
     <div class="glossary-term" id="term-rcp">
