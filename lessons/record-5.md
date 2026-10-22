@@ -17,11 +17,13 @@
 | Глава 15: Банк вопросов IGL (50 вопросов с обоснованием «Зачем спрашивают», 5 блоков по 10) | [ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html) (`data-words="2594"`, 0 заглушек, 50 вопросов) |
 | Инженерный навигатор по 9 каноническим линзам без таблиц и языковые заглушки | [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html) (~1780 слов, 9 линз, взаимные ссылки), [en/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/en/navigator.html), [uk/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/uk/navigator.html), [de/](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/de/navigator.html) |
 | Терминологический словарь: 35 карточек по 3 блокам с терминами Навигатора | [ru/glossary.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/glossary.html) (`data-words="2361"`, 35 карточек, перекрестные ссылки) |
-| Интерактивная семантическая разметка понятий (.term) по главам курса (35 карточек) и Навигатору (22 карточки) | [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/09.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/09.html), [ru/11.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/11.html), [ru/12.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/12.html), [ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html), [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html) (ровно 57 карточек `.term` на сайте: 35 в главах + 22 в 9 линзах Навигатора) |
-| Синхронизация посадочной страницы снизу вверх по 150 вопросам и инструментам | [ru/index.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/index.html) (обновленные описания глав 13-15 и панели инструментов) |
+| Интерактивная семантическая разметка понятий (.term): тотальный посев 70 карточек по всем страницам курса | [ru/index.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/index.html) (7 на посадочной), [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html) (35 в главах), [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html) (22 в 9 линзах), [ru/glossary.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/glossary.html) (6 кросс-ссылок в определениях) - ровно 70 карточек |
+| Синхронизация посадочной страницы снизу вверх по 150 вопросам и инструментам | [ru/index.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/index.html) (обновленные описания глав 13-15, панели инструментов и интерактивные термины) |
 | Стандарт Active Tool Promotion и блочная обертка ссылок nav-extra | [ru/01.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/01.html)..[ru/15.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/15.html), [ru/navigator.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/navigator.html), [ru/glossary.html](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/ru/glossary.html) |
+| Новая оснастка движка: валидатор `check-terms.py` и генератор сносок `build-terms.py` | [tools/check-terms.py](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/tools/check-terms.py), [tools/build-terms.py](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/tools/build-terms.py) (автоматическая синхронизация сносок «Где встретилось:» и защита двустороннего контракта) |
+| Посев движка и упряжи во все сайты серии | Запущен `seed/swa/sync.sh ../../courses/*` (синхронизированы `bash`, `git`, `github-actions`, `observability`, `terraform`, `aws-iam`) |
 | 11 новых верифицируемых утверждений (44 всего) | [tools/claims.tsv](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/tools/claims.tsv) (`./tools/check-claims.sh` -> 44/44 ДА, `ЗЕЛЁНОЕ`) |
-| Актуализированный поисковый индекс | [assets/search-ru.js](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/assets/search-ru.js) (281 запись, 465 КБ) |
+| Актуализированный поисковый индекс | [assets/search-ru.js](file:///home/ik/lab/ai-factory-builder/courses/aws-iam/assets/search-ru.js) (281 запись, 467 КБ) |
 
 ---
 
@@ -63,25 +65,41 @@
   $ grep -c 'id="block-' ru/glossary.html
   3
   ```
-- Интерактивная семантическая разметка `.term > .term-btn + .term-card` внедрена во всех главах курса на первом смысловом появлении каждого из 35 понятий словаря, а также во всех 9 линзах Инженерного навигатора:
+- Интерактивная семантическая разметка `.term > .term-btn + .term-card` внедрена на ВСЕХ страницах курса (тотальный посев: посадочная, главы, навигатор, словарь):
   ```bash
-  $ python3 -c 'import glob, re; print(sum(len(re.findall(r"class=\"term\"", open(f).read())) for f in glob.glob("ru/*.html")))'
-  57
-  $ python3 -c 'import re; print(len(re.findall(r"class=\"term\"", open("ru/navigator.html").read())))'
-  22
+  $ python3 tools/check-terms.py
+    терминов в словаре:          35
+    карточек .term на страницах: 70
+      из них на посадочной:      7
+      из них в главах (01-15):   35
+      из них в навигаторе:       22
+      из них в словаре:          6
+    покрытие терминов словаря:   35/35
+    неразмеченных терминов:      0
+    битых ссылок на термины:     0
+    ЗЕЛЁНОЕ
+  ```
+- Сноски в словаре понятий нормализованы в канонический формат «Где встретилось:» со списком всех страниц употребления через утилиту `tools/build-terms.py`:
+  ```bash
+  $ python3 tools/build-terms.py --check
+    терминов в словаре:               35
+    устаревших сносок «впервые:»:      0
+    терминов с дополненными ссылками: 0
+    ЗЕЛЁНОЕ
   ```
 - Объем страниц в словах превышает установленный порог:
   - `ru/13.html`: `data-words="2302"` (порог 800)
   - `ru/14.html`: `data-words="2475"` (порог 800)
   - `ru/15.html`: `data-words="2594"` (порог 800)
   - `ru/navigator.html`: `~1780` слов (порог 800)
-  - `ru/glossary.html`: `data-words="2361"` (порог 800)
+  - `ru/glossary.html`: `data-words="2494"` (порог 800)
+  - `ru/index.html`: `data-words="1993"` (порог 800)
 - Проверка верстки мобильного экрана 390px, крупного шрифта и липкой панели на всех 73 страницах: `node tools/check-pages.mjs` возвращает `ЗЕЛЁНОЕ` (в браке: 0).
 - **Вердикт по предикату 1:** ДА.
 
 ### Предикат 2 (Утверждения: манифест tools/claims.tsv пополнен 11 новыми фактами, `./tools/check-claims.sh` дает ЗЕЛЁНОЕ)
 
-- В файл `tools/claims.tsv` добавлено 11 новых проверяемых утверждений по темам вопросов, навигатора, словаря и интерактивной разметки терминов (общее число выросло с 33 до 44, при требовании задания не менее 42):
+- В файл `tools/claims.tsv` добавлено 11 новых проверяемых утверждений по темам вопросов, навигатора, словаря и тотальной разметки терминов (общее число 44):
   - Механика защиты от Confused Deputy через STS `ExternalId`.
   - Сопоставление тегов `PrincipalTag` и `ResourceTag` в Condition ABAC.
   - Обязательные аргументы создания гранта KMS `create-grant`.
@@ -92,16 +110,16 @@
   - Структурирование Навигатора строго по 9 каноническим линзам (`#lens-components`..`#lens-sre`).
   - Наличие не менее 30 терминологических карточек в словаре понятий.
   - Реализация стандарта Active Tool Promotion на странице Навигатора.
-  - Наличие интерактивной семантической разметки понятий `class="term"` в главах курса и Навигаторе (ровно 57 карточек суммарно).
+  - Наличие интерактивной семантической разметки понятий `class="term"` на всех страницах курса (ровно 70 карточек суммарно).
 - Запуск `./tools/check-claims.sh` выполняет все 44 утверждения, код возврата 0, вердикт `ЗЕЛЁНОЕ` (44/44 ДА).
 - **Вердикт по предикату 2:** ДА.
 
-### Предикат 3 (Целостность: синхронизация ru/index.html снизу вверх, стандарты навигации nav-extra, двусторонний контракт словаря и глав, git diff в границах батча, полный ./check.sh дает ЗЕЛЁНОЕ 9/9)
+### Предикат 3 (Целостность: синхронизация ru/index.html снизу вверх, стандарты навигации nav-extra, двусторонний контракт словаря и глав, git diff в границах батча, полный ./check.sh дает ЗЕЛЁНОЕ 10/10)
 
-- Посадочная страница `ru/index.html` синхронизирована снизу вверх: в сводке глав 13-15 подробно раскрыты ключевые темы вопросов Noob, Pro и IGL, а также актуализировано описание Навигатора и Словаря.
+- Посадочная страница `ru/index.html` синхронизирована снизу вверх: в сводке глав 13-15 подробно раскрыты ключевые темы вопросов Noob, Pro и IGL, в вводных разделах размещены интерактивные карточки базовых понятий IAM, актуализировано описание Навигатора и Словаря.
 - На всех страницах курса ссылки в `<div class="nav-extra">` обернуты в индивидуальные блоки `<div><a ...></a></div>`, на странице Навигатора ссылка на Навигатор идет первой (`aria-current="page"`), на странице Словаря первой идет ссылка на Словарь.
-- Двусторонний контракт терминалов, Навигатора и глав полностью соблюден: 100% понятий словаря (35 терминов) покрывают концепты Навигатора и имеют интерактивные всплывающие карточки первого вхождения в главах курса и линзах Навигатора (57 карточек всего).
-- Полный тестовый скрипт `./check.sh` проходит с кодом 0 и выдает `ЗЕЛЁНОЕ` по всем 9 блокам проверок.
+- Двусторонний контракт терминалов, Навигатора, словаря и глав полностью соблюден и защищен машинной проверкой `python3 tools/check-terms.py`: 100% понятий словаря (35 терминов) покрывают концепты Навигатора и имеют интерактивные всплывающие карточки первого вхождения во всех главах курса, в линзах Навигатора, на посадочной странице и в определениях самого Словаря (70 карточек всего).
+- Полный тестовый скрипт `./check.sh` проходит с кодом 0 и выдает `ЗЕЛЁНОЕ` по всем 10 блокам проверок (включая проверку `термины и словарь`).
 - **Вердикт по предикату 3:** ДА.
 
 ---
@@ -172,7 +190,7 @@
   [ ДА  ] Инженерный навигатор структурирован строго по 9 каноническим линзам
   [ ДА  ] Словарь понятий содержит не менее 30 терминологических словарных карточек
   [ ДА  ] Навигатор на своей странице расположен первым в блоке nav-extra
-  [ ДА  ] Главы курса и Инженерный навигатор содержат интерактивную семантическую разметку понятий term
+  [ ДА  ] Все страницы курса содержат интерактивную семантическую разметку понятий term
   ----------------------------------------------
   ЗЕЛЁНОЕ
 
@@ -188,8 +206,23 @@
   Линейка ссылок
   ----------------------------------------------
   страниц просмотрено: 73
-  ссылок проверено:    2206 (из них якорей: 366)
+  ссылок проверено:    2239 (из них якорей: 379)
   битых:               0
+  ----------------------------------------------
+  ЗЕЛЁНОЕ
+
+
+  Двусторонний контракт терминов
+  ----------------------------------------------
+  терминов в словаре:          35
+  карточек .term на страницах: 70
+    из них на посадочной:      7
+    из них в главах (01-15):   35
+    из них в навигаторе:       22
+    из них в словаре:          6
+  покрытие терминов словаря:   35/35
+  неразмеченных терминов:      0
+  битых ссылок на термины:     0
   ----------------------------------------------
   ЗЕЛЁНОЕ
 
@@ -204,7 +237,7 @@
 
   Индекс поиска
   ----------------------------------------------
-  ru:   281 записей,  465 КБ - без изменений
+  ru:   281 записей,  467 КБ - без изменений
   en:     0 записей,    0 КБ - без изменений
   uk:     0 записей,    0 КБ - без изменений
   de:     0 записей,    0 КБ - без изменений
@@ -224,8 +257,8 @@
   разбор темы (01-09)       938-1213        25        18        22
   примеры (10-12)            923-952        25        18        22
   банк вопросов (13-15)    2302-2594        25        18        22
-  словарь                       2361        25        18        22
-  посадочная                    1873        29        22        26
+  словарь                       2494        25        18        22
+  посадочная                    1993        29        22        26
   ------------------------------------------------------
 
 
@@ -244,6 +277,7 @@
   [ ДА  ] утверждения сайта
   [ ДА  ] примеры запускаются
   [ ДА  ] ссылки и якоря
+  [ ДА  ] термины и словарь
   [ ДА  ] пунктуация
   [ ДА  ] индекс поиска
   [ ДА  ] данные страниц
@@ -257,6 +291,12 @@
 ## Список коммитов смены
 
 ```
+3c9025d feat(content): enrich glossary 'Где встретилось:' cross-references across all pages
+31bf3aa chore(engine): sync from seed build-terms tool
+d9ca684 docs(notes): document check-terms validator addition in lessons/notes-1.md
+a3f8081 feat(content): seed interactive terms on landing and glossary pages
+fbfa6c0 chore(engine): sync from seed check-terms validator and updated check.sh
+e5fe33b docs(record): record navigator term markup and updated checks in lessons/record-5.md
 f4fea6b feat(content): integrate in-page interactive term markup across navigator
 d64c1be docs(record): update Batch 4 record with in-page terms and full glossary
 36435cc feat(content): add in-page term markup and sync glossary with navigator
